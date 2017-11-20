@@ -1,0 +1,29 @@
+graph G {
+    "leaf01":"swp13" -- "spine01":"swp1"
+    "leaf02":"swp13" -- "spine01":"swp2"
+    "leaf03":"swp13" -- "spine01":"swp3"
+    "leaf04":"swp13" -- "spine01":"swp4"
+    "leaf01":"swp14" -- "spine02":"swp1"
+    "leaf02":"swp14" -- "spine02":"swp2"
+    "leaf03":"swp14" -- "spine02":"swp3"
+    "leaf04":"swp14" -- "spine02":"swp4"
+
+    "leaf01":"swp15" -- "leaf02":"swp15"
+    "leaf01":"swp16" -- "leaf02":"swp16"
+    "leaf03":"swp15" -- "leaf04":"swp15"
+    "leaf03":"swp16" -- "leaf04":"swp16"
+
+    "leaf01":"swp3" -- "BA6-ST1-MPLS-PE-114-J11-02-LAB":"Te0/0/0/18" [BFD="echoSupport=1,echoMinRx=250,slowMinTx=1000"]
+    "leaf01":"swp4" -- "UPM-ST1-MPLS-PE-114-J11-01-LAB":"Te0/0/0/18" [BFD="echoSupport=1,echoMinRx=250,slowMinTx=1000"]
+    "leaf02":"swp3" -- "BA6-ST1-MPLS-PE-114-J11-02-LAB":"Te0/0/0/19" [BFD="echoSupport=1,echoMinRx=250,slowMinTx=1000"]
+    "leaf02":"swp4" -- "UPM-ST1-MPLS-PE-114-J11-01-LAB":"Te0/0/0/19" [BFD="echoSupport=1,echoMinRx=250,slowMinTx=1000"]
+
+    "leaf01":"swp1s0" --  "esxi01.lab.local":"00:50:56:5b:3c:29" [LLDP="match_hostname=fqdn"]
+    "leaf01":"swp1s1" --  "esxi02.lab.local":"00:50:56:53:a1:d5" [LLDP="match_hostname=fqdn"]
+    "leaf02":"swp1s0" --  "esxi01.lab.local":"00:50:56:5b:91:ce" [LLDP="match_hostname=fqdn"]
+    "leaf02":"swp1s1" --  "esxi02.lab.local":"00:50:56:54:68:37" [LLDP="match_hostname=fqdn"]
+    "leaf03":"swp1s0" --  "esxi03.lab.local":"00:50:56:5a:7a:09" [LLDP="match_hostname=fqdn"]
+    "leaf03":"swp1s1" --  "esxi04.lab.local":"00:50:56:59:26:2b" [LLDP="match_hostname=fqdn"]
+    "leaf04":"swp1s0" --  "esxi03.lab.local":"00:50:56:54:99:af" [LLDP="match_hostname=fqdn"]
+    "leaf04":"swp1s1" --  "esxi04.lab.local":"00:50:56:55:36:bb" [LLDP="match_hostname=fqdn"]
+}

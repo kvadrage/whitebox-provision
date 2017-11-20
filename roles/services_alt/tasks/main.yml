@@ -1,0 +1,94 @@
+#Setup the switch time zone (Note this will always report changed if re-run after the dpkg-reconfigure)
+- name: setup timezone
+  lineinfile:
+    dest: "{{clock_file}}"
+    regexp: "{{item.regexp}}"
+    line: "{{item.line}}"
+  when: global.clock is defined and global.clock.timezone
+  with_items:
+    - { regexp: "^ZONE=", line: "ZONE={{global.clock.timezone}}"}
+  notify:
+    - update timezone
+  tags:
+    - time_setup
+    - initial_setup
+
+- name: setup NTP
+  template: src=ntp.j2 dest=/etc/ntp.conf
+  when: global.services is defined and global.services.ntp is defined
+  notify:
+    - restart NTP
+    - verify NTP
+  tags:
+    - time_setup
+    - ntp_setup
+    - initial_setup
+
+- name: setup SNMP
+  template: src=snmpd.j2 dest=/etc/snmp/snmpd.conf
+  when: global.services is defined and global.services.snmp is defined
+  notify:
+    - restart SNMP
+    - verify SNMP
+  tags:
+    - snmp_setup
+    - initial_setup
+
+- name: create proxy files if needed
+  copy:
+    content: ""
+    dest: "{{item.dest}}"
+    force: no
+    group: root
+    owner: root
+    mode: "{{item.mode}}"
+  with_items:
+    - { dest: '/etc/profile.d/proxy.sh', mode: "0755" }
+    - { dest: '/etc/apt/apt.conf.d/90apt-proxy', mode: "0644" }
+  when: global.proxy is defined
+  tags:
+    - proxy_setup
+    - initial_setup
+
+- name: setup proxy
+  blockinfile:
+    dest: "{{item.dest}}"
+    marker: "##{mark} -- Proxy Ansible -- ##"
+    block: |
+      {{item.proxy}}
+  with_items:
+    - { dest: '/etc/wgetrc', proxy: "http_proxy = {{global.proxy.http}}" }
+    - { dest: '/etc/wgetrc', proxy: "https_proxy = {{global.proxy.https}}" }
+    - { dest: '/etc/wgetrc', proxy: "ftp_proxy = {{global.proxy.ftp}}" }
+    - { dest: '/etc/profile.d/proxy.sh', proxy: 'export http_proxy={{global.proxy.http|""}}' }
+    - { dest: '/etc/profile.d/proxy.sh', proxy: 'export https_proxy={{global.proxy.https|""}}' }
+    - { dest: '/etc/profile.d/proxy.sh', proxy: 'export ftp_proxy={{global.proxy.ftp|""}}' }
+  when: global.proxy is defined
+  tags:
+    - proxy_setup
+    - initial_setup
+
+#This overrides the http proxy in the 90apt-proxy
+- name: Setup APT proxy
+  copy: content='Acquire::http::Proxy "{{global.proxy.apt}}";\n' dest='/etc/apt/apt.conf.d/90apt-proxy'
+  when: global.proxy is defined and global.proxy.apt is defined
+  tags:
+    - apt_proxy_setup
+    - initial_setup
+
+# - name: Setup TACACS+ authentication
+#   template: src=tacplus_servers.j2 dest=/etc/tacplus_servers
+#   when: global.services is defined and global.services.tacacs is defined
+#   notify: restart auditd
+#   tags:
+#     - tacacs_setup
+#     - initial_setup
+
+- name: Setup Zabbix Agent
+  template: src=zabbix_agentd.j2 dest=/etc/zabbix/zabbix_agentd.conf
+  when: global.services is defined and global.services.zabbix_agent is defined
+  notify:
+    - restart Zabbix Agent
+  tags:
+    - zabbix_setup
+    - initial_setup

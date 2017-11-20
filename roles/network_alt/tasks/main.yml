@@ -1,0 +1,28 @@
+---
+- name: set up routing
+  lineinfile:
+    dest: "{{sysctl_file}}"
+    regexp: "{{item.regexp}}"
+    line: "{{item.line}}"
+  with_items:
+    - { regexp: "^net.ipv4.ip_forward", line: "net.ipv4.ip_forward = 1"}
+    - { regexp: "^net.ipv4.conf.default.rp_filter", line: "net.ipv4.conf.default.rp_filter = 0"}
+    - { regexp: "^net.ipv4.tcp_syncookies", line: "net.ipv4.tcp_syncookies = 0"}
+    - { regexp: "^net.ipv4.tcp_l3mdev_accept", line: "net.ipv4.tcp_l3mdev_accept = 1"}
+    - { regexp: "^net.ipv4.udp_l3mdev_accept", line: "net.ipv4.udp_l3mdev_accept = 1"}
+  tags:
+    - setup_routing
+
+- name: render files locally
+  include: "render_locally.yml"
+  static: no
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - ifaces_setup
+    - local
+
+- name: render files remotely
+  include: render_remotely.yml
+  static: no
+  tags:
+    - ifaces_setup

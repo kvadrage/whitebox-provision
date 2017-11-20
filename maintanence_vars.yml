@@ -1,0 +1,4 @@
+test_prefix_fabric: "1.1.1.31/32"
+test_prefix_servers: "1.1.1.0/24"
+min_redundant_paths: 2
+target_leaf: "leaf01"

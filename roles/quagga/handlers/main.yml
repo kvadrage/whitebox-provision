@@ -1,0 +1,17 @@
+- name: check zebra
+  shell: bash -c '[[ -z $(zebra --dryrun) ]]'
+- name: enable zebra
+  service: name=zebra state=started enabled=yes
+- name: restart zebra
+  service: name=zebra state=restarted
+- name: reload zebra
+  service: name=zebra state=reloaded
+
+- name: check ospfd
+  shell: bash -c '[[ -z $(ospfd --dryrun) ]]'
+- name: enable ospfd
+  service: name=ospfd state=started enabled=yes
+- name: restart ospfd
+  service: name=ospfd state=restarted
+- name: reload ospfd
+  service: name=ospfd state=reloaded

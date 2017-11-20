@@ -1,0 +1,37 @@
+site:
+  PPRB2NET:
+    # IP address pools
+    ip_pools:
+      loopbacks:
+        leafs: 10.116.255.0/26
+        spines: 10.116.255.64/26
+        servers: 10.116.255.192/26
+      p2p:
+        leafs: 10.116.251.0/24
+        servers: 10.116.252.0/24
+    # BGP ASN pools (starting with N+1)
+    as_pools:
+      leafs: 65100
+      spines: 65200
+      servers: 65500
+    leafs_in_rack: 2
+    leafs: [ leaf01, leaf02, leaf03, leaf04 ]
+    spines: [ spine01, spine02 ]
+    racks:
+      - rack1:
+        uplinks: 4
+        server_links: 4
+        servers: [server01, server02]
+        speed: 10G
+      - rack2:
+        uplinks: 4
+        server_links: 2
+        servers: [server02, server03]
+
+    service:
+      red:
+        vrf: 10
+        servers: [server01, server03]
+      blue:
+        vrf: 20
+        servers: [server02, server04]

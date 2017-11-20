@@ -1,0 +1,58 @@
+---
+- hosts: switches_alt
+  user: admin
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: shutdown ifaces
+      command: ifdown {{item}}
+      with_items: "{{node[ansible_hostname].interfaces|default({})}}"
+    - name: clear ifaces
+      file:
+        path: "/etc/net/ifaces/{{item}}/"
+        state: absent
+      with_items: "{{node[ansible_hostname].interfaces|default({})}}"
+      notify: restart network
+    - name: clear bird config
+      copy: content="" dest=/etc/bird.conf
+
+    - name: initialize bird config
+      blockinfile:
+        dest: /etc/bird.conf
+        block: |
+          protocol kernel {
+          }
+      notify: stop bird
+  handlers:
+    - name: restart network
+      service: name=network state=restarted
+    - name: stop bird
+      service: name=bird state=stopped
+
+- hosts: servers_centos
+  user: admin
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: shutdown ifaces
+      command: ifdown {{item}}
+      with_items: "{{node[ansible_hostname].interfaces|default({})}}"
+    - name: clear ifaces
+      file:
+        path: "/etc/sysconfig/network-scripts/ifcfg-{{item}}"
+        state: absent
+      with_items: "{{node[ansible_hostname].interfaces|default({})}}"
+      notify: restart network
+    - name: clear zebra config
+      copy: content="" dest=/etc/quagga/zebra.conf
+      notify: stop zebra
+    - name: clear ospfd config
+      copy: content="" dest=/etc/quagga/ospfd.conf
+      notify: stop ospfd
+  handlers:
+    - name: restart network
+      service: name=network state=restarted
+    - name: stop zebra
+      service: name=zebra state=stopped
+    - name: stop ospfd
+      service: name=ospfd state=stopped

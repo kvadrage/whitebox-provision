@@ -1,0 +1,6 @@
+- name: enable bird
+  service: name=bird state=started enabled=yes
+- name: restart bird
+  service: name=bird state=restarted
+- name: reload bird
+  service: name=bird state=reloaded

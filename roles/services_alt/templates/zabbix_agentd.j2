@@ -1,0 +1,288 @@
+{% if global.zabbix is defined %}
+{% set zvars = global.zabbix %}
+{% endif %}
+{% if node[ansible_hostname].zabbix is defined %}
+{% set zvars = node[ansible_hostname].zabbix %}
+{% endif %}
+
+# This is a configuration file for Zabbix agent daemon (Unix)
+# To get more information about Zabbix, visit http://www.zabbix.com
+# Created by Ansible
+
+############ GENERAL PARAMETERS #################
+
+### Option: PidFile
+#	Name of PID file.
+#
+# Mandatory: no
+# Default:
+# PidFile=/tmp/zabbix_agentd.pid
+
+{% if zvars.pid_file is defined -%}
+PidFile={{zvars.pid_file}}
+{% else %}
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+{% endif -%}
+
+### Option: LogType
+#	Specifies where log messages are written to:
+#		system  - syslog
+#		file    - file specified with LogFile parameter
+#		console - standard output
+#
+# Mandatory: no
+# Default:
+# LogType=file
+
+{% if zvars.log_type is defined -%}
+LogType={{zvars.log_type}}
+{% else %}
+LogType=file
+{% endif -%}
+
+### Option: LogFile
+#	Log file name for LogType 'file' parameter.
+#
+# Mandatory: no
+# Default:
+# LogFile=
+
+{% if zvars.log_file is defined -%}
+LogFile={{zvars.log_file}}
+{% else %}
+LogFile=/var/log/zabbix/zabbix_agentd.log
+{% endif -%}
+
+### Option: LogFileSize
+#	Maximum size of log file in MB.
+#	0 - disable automatic log rotation.
+#
+# Mandatory: no
+# Range: 0-1024
+# Default:
+# LogFileSize=1
+
+{% if zvars.log_file_size is defined -%}
+LogFileSize={{zvars.log_file_size}}
+{% else %}
+LogFileSize=0
+{% endif -%}
+
+### Option: DebugLevel
+#	Specifies debug level:
+#	0 - basic information about starting and stopping of Zabbix processes
+#	1 - critical information
+#	2 - error information
+#	3 - warnings
+#	4 - for debugging (produces lots of information)
+#	5 - extended debugging (produces even more information)
+#
+# Mandatory: no
+# Range: 0-5
+# Default:
+# DebugLevel=3
+
+{% if zvars.debug_level is defined -%}
+DebugLevel={{zvars.debug_level}}
+{% else %}
+DebugLevel=3
+{% endif -%}
+
+### Option: SourceIP
+#	Source IP address for outgoing connections.
+#
+# Mandatory: no
+# Default:
+# SourceIP=
+
+{% if zvars.source_ip is defined -%}
+SourceIP={{zvars.source_ip}}
+{% endif -%}
+
+### Option: EnableRemoteCommands
+#	Whether remote commands from Zabbix server are allowed.
+#	0 - not allowed
+#	1 - allowed
+#
+# Mandatory: no
+# Default:
+# EnableRemoteCommands=0
+
+{% if zvars.enable_remote_commands is defined -%}
+EnableRemoteCommands={{zvars.enable_remote_commands}}
+{% endif -%}
+
+### Option: LogRemoteCommands
+#	Enable logging of executed shell commands as warnings.
+#	0 - disabled
+#	1 - enabled
+#
+# Mandatory: no
+# Default:
+# LogRemoteCommands=0
+
+{% if zvars.log_remote_commands is defined -%}
+LogRemoteCommands={{zvars.log_remote_commands}}
+{% endif -%}
+
+##### Passive checks related
+
+### Option: Server
+#	List of comma delimited IP addresses (or hostnames) of Zabbix servers.
+#	Incoming connections will be accepted only from the hosts listed here.
+#	If IPv6 support is enabled then '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1' are treated equally.
+#
+# Mandatory: no
+# Default:
+# Server=
+
+{% if zvars.server is defined -%}
+Server={{zvars.server}}
+{% endif -%}
+
+### Option: ListenPort
+#	Agent will listen on this port for connections from the server.
+#
+# Mandatory: no
+# Range: 1024-32767
+# Default:
+# ListenPort=10050
+
+{% if zvars.listen_port is defined -%}
+ListenPort={{zvars.listen_port}}
+{% else %}
+ListenPort=10050
+{% endif -%}
+
+### Option: ListenIP
+#	List of comma delimited IP addresses that the agent should listen on.
+#	First IP address is sent to Zabbix server if connecting to it to retrieve list of active checks.
+#
+# Mandatory: no
+# Default:
+# ListenIP=0.0.0.0
+
+{% if zvars.listen_ip is defined -%}
+ListenIP={{zvars.listen_ip}}
+{% else %}
+ListenIP=0.0.0.0
+{% endif -%}
+
+### Option: StartAgents
+#	Number of pre-forked instances of zabbix_agentd that process passive checks.
+#	If set to 0, disables passive checks and the agent will not listen on any TCP port.
+#
+# Mandatory: no
+# Range: 0-100
+# Default:
+# StartAgents=3
+
+{% if zvars.start_agents is defined -%}
+StartAgents={{zvars.start_agents}}
+{% else %}
+StartAgents=3
+{% endif -%}
+
+##### Active checks related
+
+### Option: ServerActive
+#	List of comma delimited IP:port (or hostname:port) pairs of Zabbix servers for active checks.
+#	If port is not specified, default port is used.
+#	IPv6 addresses must be enclosed in square brackets if port for that host is specified.
+#	If port is not specified, square brackets for IPv6 addresses are optional.
+#	If this parameter is not specified, active checks are disabled.
+#	Example: ServerActive=127.0.0.1:20051,zabbix.domain,[::1]:30051,::1,[12fc::1]
+#
+# Mandatory: no
+# Default:
+# ServerActive=
+
+{% if zvars.server_active is defined -%}
+ServerActive={{zvars.server_active}}
+{% endif -%}
+
+### Option: Hostname
+#	Unique, case sensitive hostname.
+#	Required for active checks and must match hostname as configured on the server.
+#	Value is acquired from HostnameItem if undefined.
+#
+# Mandatory: no
+# Default:
+# Hostname=
+
+{% if zvars.hostname is defined -%}
+Hostname={{zvars.hostname}}
+{% else %}
+Hostname={{ansible_hostname}}
+{% endif -%}
+
+### Option: RefreshActiveChecks
+#	How often list of active checks is refreshed, in seconds.
+#
+# Mandatory: no
+# Range: 60-3600
+# Default:
+# RefreshActiveChecks=120
+
+{% if zvars.refresh_active_checks is defined -%}
+RefreshActiveChecks={{zvars.refresh_active_checks}}
+{% endif -%}
+
+### Option: Timeout
+#	Spend no more than Timeout seconds on processing
+#
+# Mandatory: no
+# Range: 1-30
+# Default:
+# Timeout=3
+
+{% if zvars.timeout is defined -%}
+Timeout={{zvars.timeout}}
+{% else %}
+Timeout=3
+{% endif -%}
+
+### Option: AllowRoot
+#	Allow the agent to run as 'root'. If disabled and the agent is started by 'root', the agent
+#	will try to switch to the user specified by the User configuration option instead.
+#	Has no effect if started under a regular user.
+#	0 - do not allow
+#	1 - allow
+#
+# Mandatory: no
+# Default:
+# AllowRoot=0
+
+{% if zvars.allow_root is defined -%}
+AllowRoot={{zvars.allow_root}}
+{% else %}
+AllowRoot=0
+{% endif -%}
+
+### Option: User
+#	Drop privileges to a specific, existing user on the system.
+#	Only has effect if run as 'root' and AllowRoot is disabled.
+#
+# Mandatory: no
+# Default:
+# User=zabbix
+
+{% if zvars.user is defined -%}
+User={{zvars.user}}
+{% else %}
+User=zabbix
+{% endif -%}
+
+### Option: Include
+#	You may include individual files or all files in a directory in the configuration file.
+#	Installing Zabbix will create include directory in /usr/local/etc, unless modified during the compile time.
+#
+# Mandatory: no
+# Default:
+# Include=
+
+{% if zvars.include is defined -%}
+Include={{zvars.include}}
+{% else %}
+Include=/etc/zabbix/zabbix_agentd.d/*.conf
+{% endif -%}

@@ -1,0 +1,5 @@
+---
+save_local: "{{global.save_local|default('enabled')}}"
+
+network_folder: "/etc/sysconfig/network-scripts"
+network_folder_local: "config/{{ansible_hostname}}/etc/sysconfig/network-scripts"

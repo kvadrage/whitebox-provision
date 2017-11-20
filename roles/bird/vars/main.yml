@@ -1,0 +1,18 @@
+filters:
+  leafs:
+    # import_ospf: |
+    #     if (source = RTS_OSPF) && (net ~ [ 1.1.1.0/24+, 10.0.0.0/16+ ]) then {
+    #             if ( ospf_metric1 < 1000) then {
+    #                     accept;
+    #             } else reject;
+    #     }
+    #     else reject;
+    # export_ospf: |
+    #     if (source = RTS_DEVICE) && ( net ~ [ 1.1.1.0/24+ ] ) then {
+    #             ospf_metric1 = 1000;
+    #             accept;
+    #     }
+    #     else reject;
+    import_bgp_from_servers: |
+        if net ~ [ 10.116.68.134/32, 10.116.68.135/32, 10.116.68.136/32, 10.116.68.137/32 ] then accept;
+        reject;

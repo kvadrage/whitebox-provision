@@ -1,0 +1,45 @@
+{% set node = node[ansible_hostname] %}
+{% set ospfvars = node.OSPF %}
+{% set intvars = node.OSPF.interfaces %}
+!
+! ospfd.conf template for {{ansible_hostname}}
+! Created by Ansible
+!
+hostname {{ansible_hostname}}
+!
+{% if intvars is defined %}
+{%  for iface in intvars %}
+interface {{iface.name}}
+{%   if iface.type is defined and iface.type == "pointopoint" %}
+ ip ospf network point-to-point
+{%   endif %}
+!
+{%  endfor %}
+{% endif %}
+interface lo
+!
+{% if ospfvars is defined %}
+router ospf
+{% if node.router_id is defined %}
+  ospf router-id {{node.router_id}}
+{% endif %}
+{%  if ospfvars.interfaces is defined %}
+  passive-interface default
+{%    for iface in ospfvars.interfaces %}
+  no passive-interface {{ iface.name }}
+{%    endfor %}
+{%  endif %}
+{%  if ospfvars.networks is defined %}
+{%    for network in ospfvars.networks %}
+  network {{ network["net"] }} area {{ network["area"] }}
+{%    endfor %}
+{%  endif %}
+{%  if ospfvars.redistribute is defined %}
+{%    for type in ospfvars.redistribute %}
+  redistribute {{ type.keys()[0] }} {{ type.get(type.keys()[0], "") }}
+{%    endfor %}
+{%  endif %}
+{% endif %}
+!
+line vty
+!

@@ -1,0 +1,27 @@
+---
+
+- name: create rendered flat-file for interface
+  template: src=ifcfg-iface.j2 dest="{{network_folder}}/ifcfg-{{item}}"
+  with_items: "{{ node[ansible_hostname].interfaces }}"
+  notify: restart network
+  tags:
+    - ifaces_setup
+
+- name: create local network folder
+  file: path={{network_folder_local}} state=directory recurse=yes
+  delegate_to: localhost
+  become: false
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - ifaces_setup
+    - local
+
+- name: create rendered flat-file for interface locally
+  template: src=ifcfg-iface.j2 dest="{{network_folder_local}}/ifcfg-{{item}}"
+  delegate_to: localhost
+  become: false
+  with_items: "{{ node[ansible_hostname].interfaces }}"
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - ifaces_setup
+    - local

@@ -1,0 +1,26 @@
+---
+- name: create local bird folder
+  file: path={{bird_folder_local}} state=directory recurse=yes
+  delegate_to: localhost
+  become: false
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - bird_setup
+    - local
+
+- name: render bird configuration locally
+  template: src=bird.conf.j2 dest={{bird_conf_local}}
+  delegate_to: localhost
+  become: false
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - bird_setup
+    - local
+
+- name: render bird configuration
+  template: src=bird.conf.j2 dest={{bird_conf}} mode=0644
+  notify:
+    - enable bird
+    - restart bird
+  tags:
+    - bird_setup

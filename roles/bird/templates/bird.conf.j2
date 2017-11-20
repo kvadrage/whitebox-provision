@@ -1,0 +1,168 @@
+{% set node = node[ansible_hostname] %}
+{% set bgpvars = node.BGP %}
+{% set ospfvars = node.OSPF %}
+{% set intvars = node.interfaces %}
+# bird.conf template for {{ansible_hostname}}
+# Created by Ansible
+#
+log "/var/log/bird.log" all;
+
+{% if node.router_id is defined %}
+router id {{node.router_id | ipaddr}};
+{% endif %}
+
+# filters begin
+{% if filters is defined %}
+{%  for group in filters %}
+{%   if group in group_names %}
+{%    for f in filters[group] %}
+filter {{f}} {
+{{ filters[group][f] }}
+}
+{%    endfor%}
+{%   endif %}
+{%  endfor %}
+{% endif %}
+# filters end
+
+# BFD begin
+protocol bfd {
+{% for iface in intvars %}
+  {% if intvars[iface].bfd is defined %}
+    {% set bfdvars = intvars[iface].bfd %}
+  interface "{{iface}}" {
+    {% if bfdvars.min_rx is defined %}
+    min rx interval {{bfdvars.min_rx}} ms;
+    {% else %}
+    min rx interval 100 ms;
+    {% endif %}
+    {% if bfdvars.min_tx is defined %}
+    min tx interval {{bfdvars.min_tx}} ms;
+    {% else %}
+    min tx interval 100 ms;
+    {% endif %}
+    {% if bfdvars.idle_tx is defined %}
+    idle tx interval {{bfdvars.idle_tx}} ms;
+    {% else %}
+    idle tx interval 500 ms;
+    {% endif %}
+    };
+  {% endif %}
+{% endfor %}
+{% if bgpvars is defined and bgpvars.neighbors is defined %}
+  {% for neigh in bgpvars.neighbors %}
+    {% if neigh.bfd is defined %}
+  neighbor {{neigh.ipv4}};
+      {% if neigh.bfd != "" %}
+  neighbor {{neigh.ipv4}} dev "{{neigh.bfd}}";
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+}
+# BFD end
+
+protocol direct {
+    interface "-eth*", "swp*", "lo"; # Restrict network interfaces it works with
+}
+
+protocol kernel {
+        learn on; # Learn all alien routes from the kernel
+        # persist; # Don't remove routes on bird shutdown
+        scan time 20; # Scan kernel routing table every 20 seconds
+        import none; # Default is import all
+        export all; # Default is export none
+        # kernel table 254; # Kernel table to synchronize with (default: ain)
+{% if bgpvars is defined and bgpvars.merge_paths is defined %}
+        merge paths on;
+{% endif %}
+}
+
+protocol device {
+        scan time 10;
+}
+
+{% if bgpvars is defined and bgpvars.neighbors is defined %}
+{%  for neigh_name in bgpvars.neighbors %}
+{% set neigh = bgpvars.neighbors[neigh_name] %}
+protocol bgp {{neigh_name}} {
+{%   if neigh.import is defined %}
+        import filter {{neigh.import}};
+{%   elif bgpvars.import is defined and bgpvars.import != "all" %}
+        import filter {{bgpvars.import}};
+{%   else %}
+        import all;
+{%   endif %}
+{%   if neigh.export is defined %}
+        export filter {{neigh.export}};
+{%   elif bgpvars.export is defined and bgpvars.export != "all" %}
+        export filter {{bgpvars.export}};
+{%   else %}
+        export all;
+{%   endif %}
+        local as {{bgpvars.asn}};
+        neighbor {{neigh.ipv4 | ipv4}} as {{neigh.asn}};
+{%   if neigh.next_hop_self is defined %}
+        next hop self;
+{%   endif %}
+{%   if neigh.bfd is defined %}
+        bfd on;
+{%   endif %}
+{%   if neigh.check_link is defined %}
+        check link on;
+{%   endif %}
+# timers tuned for fast convergence/recovery in DC fabric
+        hold time 9;
+        keepalive time 3;
+        graceful restart;
+        error wait time 5, 15;
+        start delay time 1;
+        error forget time 30;
+        connect retry time 10;
+}
+{%  endfor %}
+{% endif %}
+
+{% if ospfvars is defined %}
+protocol ospf {{ospfvars.name|default("")}} {
+        debug { {{bird_dedug|default("states, routes, filters, interfaces, events")}} };
+        tick 2; rfc1583compat yes;
+{%  if ospfvars.import is defined and ospfvars.import != "all" %}
+        import filter {{ospfvars.import}};
+{%  else %}
+        import all;
+{%  endif %}
+{%  if ospfvars.export is defined and ospfvars.export != "all" %}
+        export filter {{ospfvars.export}};
+{%  else %}
+        export all;
+{%  endif %}
+{%  if ospfvars.areas is defined %}
+{%   for ospfarea in ospfvars.areas %}
+        area {{ospfarea.area}} {
+{%    for stubnet in ospfarea.stubnets %}
+                stubnet {{stubnet.net | ipv4}} {
+{%     if stubnet.summary is defined %}
+                        summary;
+{%     endif %}
+{%     if stubnet.cost is defined %}
+                        cost {{stubnet.cost}}; # to_servers
+{%     endif %}
+                };
+{%    endfor %}
+{%    for iface in ospfarea.interfaces %}
+                interface "{{iface.name}}" {
+{%     if iface.type is defined %}
+                        type {{iface.type}};
+{%     endif %}
+{%     if iface.check_link is defined %}
+                        check link on;
+{%     endif %}
+                };
+{%    endfor %}
+        };
+}
+{%   endfor %}
+{% endif %}
+{% endif %}
