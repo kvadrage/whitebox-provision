@@ -1,6 +1,6 @@
 {% set node = node[ansible_hostname] %}
-{% set intvars = node.interfaces[item] %}
-{% if intvars.type is defined and intvars.type == "loopback" %}
+{% set intvars = node.interfaces.common[item] %}
+{% if item | match("^lo*") %}
 DEVICE=lo
 NAME=loopback
 {% else %}
@@ -8,13 +8,13 @@ DEVICE={{item}}
 NAME={{item}}
 TYPE=Ethernet
 {% endif %}
-{% if intvars.ip is defined %}
-{%  if intvars.ip == "dhcp" %}
+{% if intvars.dhcp is defined %}
 BOOTPROTO=dhcp
 {%  else %}
 BOOTPROTO=static
-IPADDR={{intvars.ip | ipaddr('address')}}
-NETMASK={{intvars.ip | ipaddr('netmask')}}
+{%  if intvars.ipv4_addresses is defined %}
+IPADDR={{intvars.ipv4_addresses[0] | ipaddr('address')}}
+NETMASK={{intvars.ipv4_addresses[0] | ipaddr('netmask')}}
 {%  endif %}
 {% endif %}
 ONBOOT=yes

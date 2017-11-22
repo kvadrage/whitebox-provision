@@ -2,8 +2,9 @@
 
 - name: create rendered flat-file for interface
   template: src=ifcfg-iface.j2 dest="{{network_folder}}/ifcfg-{{item}}"
-  with_items: "{{ node[ansible_hostname].interfaces }}"
+  with_items: "{{ node[ansible_hostname].interfaces.common }}"
   notify: restart network
+  when: ansible_hostname in node and node[ansible_hostname].interfaces.common is defined
   tags:
     - ifaces_setup
 
@@ -20,7 +21,7 @@
   template: src=ifcfg-iface.j2 dest="{{network_folder_local}}/ifcfg-{{item}}"
   delegate_to: localhost
   become: false
-  with_items: "{{ node[ansible_hostname].interfaces }}"
+  with_items: "{{ node[ansible_hostname].interfaces.common }}"
   when: save_local is defined and save_local == "enable"
   tags:
     - ifaces_setup

@@ -1,5 +1,4 @@
 filters:
-  leafs:
     # import_ospf: |
     #     if (source = RTS_OSPF) && (net ~ [ 1.1.1.0/24+, 10.0.0.0/16+ ]) then {
     #             if ( ospf_metric1 < 1000) then {

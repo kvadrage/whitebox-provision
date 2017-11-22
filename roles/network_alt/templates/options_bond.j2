@@ -1,12 +1,18 @@
 {% set intvars = ifaces_bonds[item] %}
+{% set bond_modes = {"802.3ad": 4} %}
 TYPE=bond
 ONBOOT=yes
+BOOTPROTO=static
 NM_CONTROLLED=no
 {% if intvars.mode is defined %}
-BONDMODE="{{ intvars.mode }}"
+BONDMODE={{ bond_modes.get(intvars.mode, 4) }}
+{% else %}
+BONDMODE=4
 {% endif %}
 {% if intvars.options is defined %}
 BONDOPTIONS="{{ intvars.options }}"
+{% else %}
+BONDOPTIONS="miimon=100 lacp_rate=1"
 {% endif %}
 {% if intvars.members is defined %}
 HOST="{{ intvars.members | join(" ") }}"

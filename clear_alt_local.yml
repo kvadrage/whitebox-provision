@@ -1,0 +1,37 @@
+---
+- hosts: localhost
+  user: admin
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: shutdown ifaces
+      command: ifdown {{item}}
+      when: item != "eth0"
+      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
+                  node[ansible_hostname].interfaces.bonds|default({}),
+                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
+    - name: clear ifaces
+      file:
+        path: "/etc/net/ifaces/{{item}}/"
+        state: absent
+      when: item != "eth0"
+      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
+                  node[ansible_hostname].interfaces.bonds|default({}),
+                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
+      notify: restart network
+
+    - name: clear bird config
+      copy: content="" dest=/etc/bird.conf
+
+    - name: initialize bird config
+      blockinfile:
+        dest: /etc/bird.conf
+        block: |
+          protocol kernel {
+          }
+      notify: stop bird
+  handlers:
+    - name: restart network
+      service: name=network state=restarted
+    - name: stop bird
+      service: name=bird state=stopped

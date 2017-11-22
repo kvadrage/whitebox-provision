@@ -1,4 +1,4 @@
-{% set intvars = ifaces_eth[item] %}
+{% set intvars = ifaces_common[item] %}
 {% set hostint = item | regex_replace("^(.+)\.\d+$", "\\1") %}
 {% set subvlan = item | regex_replace("^.+\.(\d+)$", "\\1") %}
 {% if item == "lo" %}
