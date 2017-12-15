@@ -1,6 +1,6 @@
 {% set node = node[ansible_hostname] %}
 {% set intvars = ifaces_all[item] %}
-{% set vrfs = node.VRFs %}
+{% set vrfs = node.vrfs %}
 
 {% if item == "lo" %}
 # redefine FIB search rules
@@ -9,10 +9,16 @@ ip rule del pref 0
 # create VRFs
 {%   if vrfs is defined %}
 {%     for vrf in vrfs %}
-## {{vrf}}
-ip link add {{vrf}} type vrf table {{vrfs[vrf]}}
-ip link set dev {{vrf}} up
-ip route add unreachable default vrf {{vrf}}
+## {{vrf.name}}
+ip link add {{vrf.name}} type vrf table {{vrf.table}}
+ip addr flush dev {{vrf.name}}
+{% if vrf.ipv4_addresses is defined %}
+{% for ip in vrf.ipv4_addresses %}
+ip addr add {{ip}} dev {{vrf.name}}
+{% endfor %}
+{% endif %}
+ip link set dev {{vrf.name}} up
+ip route add unreachable default vrf {{vrf.name}}
 {%     endfor %}
 {%   endif %}
 {% else %}

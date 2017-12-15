@@ -103,6 +103,13 @@
   with_items: "{{ifaces_all}}"
   register: iface_iplink_rendered_result
 
+- name: create rendered flat-file <iface>/ethtool
+  template: src=ethtool.j2 dest="{{ifaces_folder}}/{{item}}/ethtool"
+  tags:
+    - ifaces_setup
+  with_items: "{{ifaces_all}}"
+  register: iface_ethtool_rendered_result
+
 - name: create rendered flat-file <iface>/ipv4address
   template: src=ipv4address.j2 dest="{{ifaces_folder}}/{{item}}/ipv4address"
   tags:
@@ -170,6 +177,7 @@
   set_fact:
     config_changed: "{{iface_folder_removed_result.changed or
                     iface_iplink_rendered_result.changed or
+                    iface_ethtool_rendered_result.changed or
                     iface_ipv4route_rendered_result.changed or
                     iface_folder_created_result.changed or
                     iface_ifup_pre_rendered_result.changed or

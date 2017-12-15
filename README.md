@@ -1,4 +1,4 @@
-# altdemo-provision
+# pprb2net-provision
 ## Routing-on-host (ROH) demo with ALT Linux Switches and CentOS servers
 Ansible playbook to configure end-to-end L3 fabric with ROH, based on Mellanox Spectrum Switches, running ALT Linux with [Bird routing daemon](http://bird.network.cz), and servers running CentOS and [Quagga routing daemon](http://www.nongnu.org/quagga/).
 ## Overview

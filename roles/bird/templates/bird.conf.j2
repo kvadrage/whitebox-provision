@@ -1,7 +1,8 @@
 {% set node = node[ansible_hostname] %}
-{% set bgpvars = node.BGP %}
-{% set ospfvars = node.OSPF %}
-{% set intvars = node.interfaces %}
+{% set bgpvars = node.bgp %}
+{% set ospfvars = node.ospf %}
+{% set intvars = node.interfaces.common %}
+{% set vrfs = node.vrf %}
 # bird.conf template for {{ansible_hostname}}
 # Created by Ansible
 #
@@ -11,15 +12,22 @@ log "/var/log/bird.log" all;
 router id {{node.router_id | ipaddr}};
 {% endif %}
 
-# filters begin
+{% if vrfs is defined %}
+# Defining routing tables (VRFs)
+{%   for vrf in vrfs %}
+table {{vrf.name}};
+{%   endfor %}
+{% endif %}
+
 {% if filters is defined %}
+# filters begin
 {%    for f in filters %}
 filter {{f}} {
 {{ filters[f] }}
 }
 {%    endfor%}
-{% endif %}
 # filters end
+{% endif %}
 
 # BFD begin
 protocol bfd {
@@ -59,10 +67,23 @@ protocol bfd {
 }
 # BFD end
 
+# Direct protocol for global routing table
 protocol direct {
-    interface "-eth*", "swp*", "lo"; # Restrict network interfaces it works with
+    interface "-eth0"{% for iface in intvars %}{% if not intvars[iface].vrf is defined -%}, "{{iface}}"{% endif -%}{% endfor -%};
 }
 
+{% if vrfs is defined %}
+# Direct protocol for each VRF routing table
+{%   for vrf in vrfs %}
+# {{vrf.name}}
+protocol direct {
+    interface "{{vrf.name}}"{% for iface in intvars %}{% if intvars[iface].vrf is defined and intvars[iface].vrf == vrf.name -%}, "{{iface}}"{% endif -%}{% endfor -%};
+    table {{vrf.name}};
+}
+{%   endfor %}
+{% endif %}
+
+# default routing table
 protocol kernel {
         learn on; # Learn all alien routes from the kernel
         # persist; # Don't remove routes on bird shutdown
@@ -75,6 +96,25 @@ protocol kernel {
 {% endif %}
 }
 
+{% if vrfs is defined %}
+# User-defined routing tables (VRFs)
+{%   for vrf in vrfs %}
+# {{vrf.name}}
+protocol kernel {
+        table {{vrf.name}};
+        kernel table {{vrf.table}};
+        learn on; # Learn all alien routes from the kernel
+        # persist; # Don't remove routes on bird shutdown
+        scan time 20; # Scan kernel routing table every 20 seconds
+        import all; # Default is import all
+        export all; # Default is export none
+{%      if bgpvars is defined and bgpvars.merge_paths is defined %}
+        merge paths on;
+{%      endif %}
+}
+{%   endfor %}
+{% endif %}
+
 protocol device {
         scan time 10;
 }
@@ -82,6 +122,9 @@ protocol device {
 {% if bgpvars is defined and bgpvars.neighbors is defined %}
 {%  for neigh in bgpvars.neighbors %}
 protocol bgp {{neigh.name}} {
+{%   if neigh.vrf is defined %}
+        table {{neigh.vrf}};
+{%   endif %}
 {%   if neigh.import is defined %}
         import filter {{neigh.import}};
 {%   elif bgpvars.import is defined and bgpvars.import != "all" %}
@@ -97,7 +140,7 @@ protocol bgp {{neigh.name}} {
         export all;
 {%   endif %}
         local as {{bgpvars.asn}};
-        neighbor {{neigh.ipv4 | ipv4}} as {{neigh.asn}};
+        neighbor {{neigh.ipv4 | ipaddr('address') }} as {{neigh.asn}};
 {%   if neigh.next_hop_self is defined %}
         next hop self;
 {%   endif %}
@@ -112,7 +155,7 @@ protocol bgp {{neigh.name}} {
         keepalive time 3;
         graceful restart;
         error wait time 5, 15;
-        start delay time 1;
+        connect delay time 1;
         error forget time 30;
         connect retry time 10;
 }

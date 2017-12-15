@@ -19,3 +19,5 @@ prod
 [servers_centos]
 server01
 server02
+server03
+server04

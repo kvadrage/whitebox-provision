@@ -12,6 +12,9 @@ filters:
     #             accept;
     #     }
     #     else reject;
-    import_bgp_from_servers: |
-        if net ~ [ 10.116.68.134/32, 10.116.68.135/32, 10.116.68.136/32, 10.116.68.137/32 ] then accept;
+    import_bgp_from_servers_edz: |
+        if net ~ [ 10.116.0.0/16+ ] then accept;
+        reject;
+    import_bgp_from_servers_epz: |
+        if net ~ [ 10.116.0.0/16+ ] then accept;
         reject;
