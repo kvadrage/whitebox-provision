@@ -11,16 +11,6 @@
   command: tzupdate
   notify: verify timezone
 
-#Poll the PTM service for the current state and details of the connections
-- name: Check PTM status
-  command: ptmctl -d
-  register: ptmctl_output
-  notify: Print PTM table
-
-#Print out the results (Note in the command above you could use JSON output by adding -j)
-- name: Print PTM table
-  debug: var=ptmctl_output.stdout.split('\n')
-
 #Pull the lldp neighbor table
 - name: Check lldp neighbors
   command: lldpctl
@@ -52,7 +42,4 @@
   changed_when: False
 
 - name: restart Zabbix Agent
-  service: name=zabbix-agent@mgmt enabled=no
-  service: name=zabbix-agent enabled=yes
   service: name=zabbix-agent state=restarted
-  when: node[ansible_hostname].interfaces.eth0.vrfmgmt is not defined

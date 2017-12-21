@@ -24,6 +24,7 @@ ip route add unreachable default vrf {{vrf.name}}
 {% else %}
 {%   if intvars.vrf is defined %}
 # bind to VRF '{{intvars.vrf}}'
+ip link set dev {{item}} nomaster
 ip link set dev {{item}} master {{intvars.vrf}}
 {%     if intvars.ipv4_routes is defined %}
 # add static routes into VRF '{{intvars.vrf}}'

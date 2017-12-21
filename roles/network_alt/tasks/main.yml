@@ -1,4 +1,9 @@
 ---
+- name: fail if node is undefined
+  fail:
+    msg: "{{ansible_hostname}} is not defined properly in vars"
+  when: node is not defined or ansible_hostname not in node|default({})
+
 - name: set up routing
   lineinfile:
     dest: "{{sysctl_file}}"
@@ -6,12 +11,14 @@
     line: "{{item.line}}"
   with_items:
     - { regexp: "^net.ipv4.ip_forward", line: "net.ipv4.ip_forward = 1"}
+    - { regexp: "^net.ipv6.conf.all.forwarding", line: "net.ipv6.conf.all.forwarding = 1"}
+    - { regexp: "^net.ipv4.conf.default.ignore_routes_with_linkdown", line: "net.ipv4.conf.default.ignore_routes_with_linkdown = 1"}
     - { regexp: "^net.ipv4.conf.default.rp_filter", line: "net.ipv4.conf.default.rp_filter = 0"}
     - { regexp: "^net.ipv4.tcp_syncookies", line: "net.ipv4.tcp_syncookies = 0"}
     - { regexp: "^net.ipv4.tcp_l3mdev_accept", line: "net.ipv4.tcp_l3mdev_accept = 1"}
     - { regexp: "^net.ipv4.udp_l3mdev_accept", line: "net.ipv4.udp_l3mdev_accept = 1"}
   tags:
-    - setup_routing
+    - routing_setup
 
 - name: display ifaces folder
   debug:
@@ -50,6 +57,44 @@
   tags:
     - ifaces_setup
 
+- name: collect existing vrfs
+  shell: ip vrf | tail -n +3 | cut -d" " -f1
+  register: vrfs_output
+  when: node[ansible_hostname].vrfs is defined
+  changed_when: False
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+- name: setting vrfs to remove facts
+  set_fact:
+    remove_vrfs: "{{ vrfs_output.stdout_lines | difference(node[ansible_hostname].vrfs|map(attribute='name')|list) }}"
+  when: node[ansible_hostname].vrfs is defined
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+- name: display existing vrfs
+  debug:
+    var: vrfs_output.stdout_lines
+  when: node[ansible_hostname].vrfs is defined
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+- name: display vrfs to remove
+  debug:
+    var: remove_vrfs
+  when: node[ansible_hostname].vrfs is defined
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+- name: remove existing vrfs that are not defined in facts
+  shell: "ip link delete {{item}}"
+  with_items: "{{remove_vrfs}}"
+  when: node[ansible_hostname].vrfs is defined
+  register: vrfs_removed_result
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+
 - name: collect existing iface folders
   find:
     paths: "{{ifaces_folder}}"
@@ -78,7 +123,6 @@
     var: remove_ifaces
   tags:
     - ifaces_setup
-
 - name: remove existing iface folders that are not defined in facts
   file:
     path: "{{ifaces_folder}}/{{item}}/"
@@ -176,6 +220,7 @@
 - name: set configuration changed fact
   set_fact:
     config_changed: "{{iface_folder_removed_result.changed or
+                    vrfs_removed_result.changed or
                     iface_iplink_rendered_result.changed or
                     iface_ethtool_rendered_result.changed or
                     iface_ipv4route_rendered_result.changed or

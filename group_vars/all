@@ -15,13 +15,13 @@ global:
 node:
   leaf01:
     router_id: "10.116.68.130"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.130/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.130/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.130/32"]
+        ipv4_addresses: ["10.116.20.130/32"]
     interfaces:
       common:
         # eth0:
@@ -38,11 +38,12 @@ node:
           speed: 25000
           mtu: 9216
           ipv4_addresses: ["10.116.10.181/30"]
-          bfd:
+          bfd: True
+          bfd_options:
             # min_rx: 100
             # min_tx: 100
             # idle_tx: 500
-          vrf: vrf_edz
+          vrf: emz
 
         # to server03 eth11
         swp5s1:
@@ -54,7 +55,7 @@ node:
             # min_rx: 100
             # min_tx: 100
             # idle_tx: 500
-          vrf: vrf_epz
+          vrf: epz
 
         # to spine01 swp1
         swp1:
@@ -66,12 +67,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.142/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.142/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to spine02 swp1
@@ -84,17 +85,17 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.158/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.158/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
     bgp:
       asn: 65101
-      merge_paths:
+      merge_paths: True
       neighbors:
         # - name: to_spine01
         #   ipv4: "10.116.68.141"
@@ -103,8 +104,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_spine01_edz
-          vrf: vrf_edz
+        - name: to_spine01_emz
+          vrf: emz
           ipv4: "10.116.10.141"
           asn: 65201
           next_hop_self:
@@ -112,7 +113,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_spine01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.141"
           asn: 65201
           next_hop_self:
@@ -126,8 +127,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_spine02_edz
-          vrf: vrf_edz
+        - name: to_spine02_emz
+          vrf: emz
           ipv4: "10.116.10.157"
           asn: 65201
           next_hop_self:
@@ -135,7 +136,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_spine02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.157"
           asn: 65201
           next_hop_self:
@@ -143,16 +144,16 @@ node:
           graceful_restart:
           bfd: swp2.20
         - name: to_server01
-          vrf: vrf_edz
+          vrf: emz
           ipv4: "10.116.10.182"
           asn: 6500123
           next_hop_self:
           check_link:
           graceful_restart:
           bfd: swp5s0
-          import: import_bgp_from_servers_edz
+          import: import_bgp_from_servers_emz
         - name: to_server03
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.198"
           asn: 6500125
           next_hop_self:
@@ -164,13 +165,13 @@ node:
       export: all
 
   leaf02:
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.131/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.131/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.131/32"]
+        ipv4_addresses: ["10.116.20.131/32"]
     router_id: "10.116.68.131"
     interfaces:
       common:
@@ -188,7 +189,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.10.185/30"]
           bfd:
-          vrf: vrf_edz
+          vrf: emz
 
         # to server03 eth12
         swp5s1:
@@ -197,7 +198,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.20.201/30"]
           bfd:
-          vrf: vrf_epz
+          vrf: epz
 
         # to spine01 swp2
         swp1:
@@ -209,12 +210,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.146/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.146/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to spine02 swp2
@@ -227,12 +228,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.162/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.162/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
     bgp:
@@ -246,8 +247,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_spine01_edz
-          vrf: vrf_edz
+        - name: to_spine01_emz
+          vrf: emz
           ipv4: "10.116.10.145"
           asn: 65201
           next_hop_self:
@@ -255,7 +256,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_spine01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.145"
           asn: 65201
           next_hop_self:
@@ -269,8 +270,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_spine02_edz
-          vrf: vrf_edz
+        - name: to_spine02_emz
+          vrf: emz
           ipv4: "10.116.10.161"
           asn: 65201
           next_hop_self:
@@ -278,7 +279,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_spine02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.161"
           asn: 65201
           next_hop_self:
@@ -286,16 +287,16 @@ node:
           graceful_restart:
           bfd: swp2.20
         - name: to_server01
-          vrf: vrf_edz
+          vrf: emz
           ipv4: "10.116.10.186"
           asn: 6500123
           next_hop_self:
           check_link:
           graceful_restart:
           bfd: swp5s0
-          import: import_bgp_from_servers_edz
+          import: import_bgp_from_servers_emz
         - name: to_server03
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.202"
           asn: 6500125
           next_hop_self:
@@ -308,13 +309,13 @@ node:
 
   leaf03:
     router_id: "10.116.68.132"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.132/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.132/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.132/32"]
+        ipv4_addresses: ["10.116.20.132/32"]
     interfaces:
       common:
         # eth0:
@@ -331,7 +332,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.10.189/30"]
           bfd:
-          vrf: vrf_edz
+          vrf: emz
 
         # to server04 eth11
         swp5s1:
@@ -340,7 +341,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.20.205/30"]
           bfd:
-          vrf: vrf_epz
+          vrf: epz
 
         # to spine01 swp3
         swp1:
@@ -352,12 +353,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.150/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.150/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to spine02 swp3
@@ -370,12 +371,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.166/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.166/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
     bgp:
@@ -389,8 +390,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_spine01_edz
-          vrf: vrf_edz
+        - name: to_spine01_emz
+          vrf: emz
           ipv4: "10.116.10.149"
           asn: 65201
           next_hop_self:
@@ -398,7 +399,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_spine01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.149"
           asn: 65201
           next_hop_self:
@@ -412,8 +413,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_spine02_edz
-          vrf: vrf_edz
+        - name: to_spine02_emz
+          vrf: emz
           ipv4: "10.116.10.165"
           asn: 65201
           next_hop_self:
@@ -421,7 +422,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_spine02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.165"
           asn: 65201
           next_hop_self:
@@ -429,16 +430,16 @@ node:
           graceful_restart:
           bfd: swp2.20
         - name: to_server02
-          vrf: vrf_edz
+          vrf: emz
           ipv4: "10.116.10.190"
           asn: 6500124
           next_hop_self:
           check_link:
           graceful_restart:
           bfd: swp5s0
-          import: import_bgp_from_servers_edz
+          import: import_bgp_from_servers_emz
         - name: to_server04
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.206"
           asn: 6500126
           next_hop_self:
@@ -451,13 +452,13 @@ node:
 
   leaf04:
     router_id: "10.116.68.133"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.133/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.133/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.133/32"]
+        ipv4_addresses: ["10.116.20.133/32"]
     interfaces:
       common:
         # eth0:
@@ -474,7 +475,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.10.193/30"]
           bfd:
-          vrf: vrf_edz
+          vrf: emz
 
         # to server04 eth12
         swp5s1:
@@ -483,7 +484,7 @@ node:
           mtu: 9216
           ipv4_addresses: ["10.116.20.209/30"]
           bfd:
-          vrf: vrf_epz
+          vrf: epz
 
         # to spine01 swp4
         swp1:
@@ -495,12 +496,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.154/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.154/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to spine02 swp4
@@ -513,12 +514,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.170/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.170/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
     bgp:
@@ -532,8 +533,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_spine01_edz
-          vrf: vrf_edz
+        - name: to_spine01_emz
+          vrf: emz
           ipv4: "10.116.10.153"
           asn: 65201
           next_hop_self:
@@ -541,7 +542,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_spine01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.153"
           asn: 65201
           next_hop_self:
@@ -555,8 +556,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_spine02_edz
-          vrf: vrf_edz
+        - name: to_spine02_emz
+          vrf: emz
           ipv4: "10.116.10.169"
           asn: 65201
           next_hop_self:
@@ -564,7 +565,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_spine02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.169"
           asn: 65201
           next_hop_self:
@@ -572,16 +573,16 @@ node:
           graceful_restart:
           bfd: swp2.20
         - name: to_server02
-          vrf: vrf_edz
+          vrf: emz
           ipv4: "10.116.10.194"
           asn: 6500124
           next_hop_self:
           check_link:
           graceful_restart:
           bfd: swp5s0
-          import: import_bgp_from_servers_edz
+          import: import_bgp_from_servers_emz
         - name: to_server04
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.210"
           asn: 6500126
           next_hop_self:
@@ -594,13 +595,13 @@ node:
 
   spine01:
     router_id: "10.116.68.128"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.128/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.128/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.128/32"]
+        ipv4_addresses: ["10.116.20.128/32"]
     interfaces:
       common:
         # eth0:
@@ -620,12 +621,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.141/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.141/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf02 swp1
@@ -638,12 +639,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.145/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.145/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf03 swp1
@@ -656,12 +657,12 @@ node:
 
         swp3.10:
           ipv4_addresses: ["10.116.10.149/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp3.20:
           ipv4_addresses: ["10.116.20.149/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf04 swp1
@@ -674,12 +675,12 @@ node:
 
         swp4.10:
           ipv4_addresses: ["10.116.10.153/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp4.20:
           ipv4_addresses: ["10.116.20.153/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to  prod
@@ -692,12 +693,12 @@ node:
 
         swp5.10:
           ipv4_addresses: ["10.116.10.250/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp5.20:
           ipv4_addresses: ["10.116.20.250/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
     bgp:
@@ -711,8 +712,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_leaf01_edz
-          vrf: vrf_edz
+        - name: to_leaf01_emz
+          vrf: emz
           ipv4: "10.116.10.142"
           asn: 65101
           next_hop_self:
@@ -720,7 +721,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_leaf01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.142"
           asn: 65101
           next_hop_self:
@@ -734,8 +735,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_leaf02_edz
-          vrf: vrf_edz
+        - name: to_leaf02_emz
+          vrf: emz
           ipv4: "10.116.10.146"
           asn: 65102
           next_hop_self:
@@ -743,7 +744,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_leaf02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.146"
           asn: 65102
           next_hop_self:
@@ -757,8 +758,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp3
-        - name: to_leaf03_edz
-          vrf: vrf_edz
+        - name: to_leaf03_emz
+          vrf: emz
           ipv4: "10.116.10.150"
           asn: 65103
           next_hop_self:
@@ -766,7 +767,7 @@ node:
           graceful_restart:
           bfd: swp3.10
         - name: to_leaf03_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.150"
           asn: 65103
           next_hop_self:
@@ -780,8 +781,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp4
-        - name: to_leaf04_edz
-          vrf: vrf_edz
+        - name: to_leaf04_emz
+          vrf: emz
           ipv4: "10.116.10.154"
           asn: 65104
           next_hop_self:
@@ -789,7 +790,7 @@ node:
           graceful_restart:
           bfd: swp4.10
         - name: to_leaf04_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.154"
           asn: 65104
           next_hop_self:
@@ -803,8 +804,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp5
-        - name: to_prod_edz
-          vrf: vrf_edz
+        - name: to_prod_emz
+          vrf: emz
           ipv4: "10.116.10.249"
           asn: 64888
           next_hop_self:
@@ -812,7 +813,7 @@ node:
           graceful_restart:
           bfd: swp5.10
         - name: to_prod_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.249"
           asn: 64888
           next_hop_self:
@@ -824,13 +825,13 @@ node:
 
   spine02:
     router_id: "10.116.68.129"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.129/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.129/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.129/32"]
+        ipv4_addresses: ["10.116.20.129/32"]
     interfaces:
       common:
         # eth0:
@@ -850,12 +851,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.157/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.157/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf02 swp14
@@ -868,12 +869,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.161/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.161/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf03 swp14
@@ -886,12 +887,12 @@ node:
 
         swp3.10:
           ipv4_addresses: ["10.116.10.165/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp3.20:
           ipv4_addresses: ["10.116.20.165/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to leaf04 swp14
@@ -904,12 +905,12 @@ node:
 
         swp4.10:
           ipv4_addresses: ["10.116.10.169/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp4.20:
           ipv4_addresses: ["10.116.20.169/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to prod
@@ -922,12 +923,12 @@ node:
 
         swp5.10:
           ipv4_addresses: ["10.116.10.254/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp5.20:
           ipv4_addresses: ["10.116.20.254/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
 
@@ -942,8 +943,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_leaf01_edz
-          vrf: vrf_edz
+        - name: to_leaf01_emz
+          vrf: emz
           ipv4: "10.116.10.158"
           asn: 65101
           next_hop_self:
@@ -951,7 +952,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_leaf01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.158"
           asn: 65101
           next_hop_self:
@@ -965,8 +966,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_leaf02_edz
-          vrf: vrf_edz
+        - name: to_leaf02_emz
+          vrf: emz
           ipv4: "10.116.10.162"
           asn: 65102
           next_hop_self:
@@ -974,7 +975,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_leaf02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.162"
           asn: 65102
           next_hop_self:
@@ -988,8 +989,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp3
-        - name: to_leaf03_edz
-          vrf: vrf_edz
+        - name: to_leaf03_emz
+          vrf: emz
           ipv4: "10.116.10.166"
           asn: 65103
           next_hop_self:
@@ -997,7 +998,7 @@ node:
           graceful_restart:
           bfd: swp3.10
         - name: to_leaf03_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.166"
           asn: 65103
           next_hop_self:
@@ -1011,8 +1012,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp4
-        - name: to_leaf04_edz
-          vrf: vrf_edz
+        - name: to_leaf04_emz
+          vrf: emz
           ipv4: "10.116.10.170"
           asn: 65104
           next_hop_self:
@@ -1020,7 +1021,7 @@ node:
           graceful_restart:
           bfd: swp4.10
         - name: to_leaf04_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.170"
           asn: 65104
           next_hop_self:
@@ -1034,8 +1035,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp5
-        - name: to_prod_edz
-          vrf: vrf_edz
+        - name: to_prod_emz
+          vrf: emz
           ipv4: "10.116.10.253"
           asn: 64888
           next_hop_self:
@@ -1043,7 +1044,7 @@ node:
           graceful_restart:
           bfd: swp5.10
         - name: to_prod_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.253"
           asn: 64888
           next_hop_self:
@@ -1055,13 +1056,13 @@ node:
 
   prod:
     router_id: "10.116.68.135"
-    vrf:
-      - name: vrf_edz
+    vrfs:
+      - name: emz
         table: 10
-        # ipv4_addresses: ["10.116.10.135/32"]
-      - name: vrf_epz
+        ipv4_addresses: ["10.116.10.135/32"]
+      - name: epz
         table: 20
-        # ipv4_addresses: ["10.116.20.135/32"]
+        ipv4_addresses: ["10.116.20.135/32"]
     interfaces:
       common:
         # eth0:
@@ -1081,12 +1082,12 @@ node:
 
         swp1.10:
           ipv4_addresses: ["10.116.10.249/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp1.20:
           ipv4_addresses: ["10.116.20.249/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # to spine02 swp5
@@ -1099,12 +1100,12 @@ node:
 
         swp2.10:
           ipv4_addresses: ["10.116.10.253/30"]
-          vrf: vrf_edz
+          vrf: emz
           bfd:
 
         swp2.20:
           ipv4_addresses: ["10.116.20.253/30"]
-          vrf: vrf_epz
+          vrf: epz
           bfd:
 
         # reserve
@@ -1126,8 +1127,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp1
-        - name: to_spine01_edz
-          vrf: vrf_edz
+        - name: to_spine01_emz
+          vrf: emz
           ipv4: "10.116.10.250"
           asn: 65201
           next_hop_self:
@@ -1135,7 +1136,7 @@ node:
           graceful_restart:
           bfd: swp1.10
         - name: to_spine01_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.250"
           asn: 65201
           next_hop_self:
@@ -1149,8 +1150,8 @@ node:
         #   check_link:
         #   graceful_restart:
         #   bfd: swp2
-        - name: to_spine02_edz
-          vrf: vrf_edz
+        - name: to_spine02_emz
+          vrf: emz
           ipv4: "10.116.10.254"
           asn: 65201
           next_hop_self:
@@ -1158,7 +1159,7 @@ node:
           graceful_restart:
           bfd: swp2.10
         - name: to_spine02_epz
-          vrf: vrf_epz
+          vrf: epz
           ipv4: "10.116.20.254"
           asn: 65201
           next_hop_self:
