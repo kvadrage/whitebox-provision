@@ -1,9 +1,4 @@
 ---
-- name: fail if node is undefined
-  fail:
-    msg: "{{ansible_hostname}} is not defined properly in vars"
-  when: node is not defined or ansible_hostname not in node|default({})
-
 - name: set up routing
   lineinfile:
     dest: "{{sysctl_file}}"
@@ -20,6 +15,13 @@
   tags:
     - routing_setup
 
+- name: check if node is undefined
+  fail:
+    msg: "{{ansible_hostname}} is not defined properly in vars"
+  when: node is not defined or ansible_hostname not in node|default({})
+  tags:
+    - ifaces_setup
+
 - name: display ifaces folder
   debug:
     msg: "ifaces_folder: {{ifaces_folder}}"
@@ -29,34 +31,50 @@
 - name: create ifaces vars
   set_fact:
     ignore_ifaces: "{{global.ignore_ifaces | default([])}}"
-    ifaces_all: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
-                node[ansible_hostname].interfaces.bonds|default({}),
-                node[ansible_hostname].interfaces.bridges|default({}))) }}"
+    ifaces_all: "{{ ({} | combine(
+                node[ansible_hostname].interfaces.loopback|default({}),
+                node[ansible_hostname].interfaces.common|default({}),
+                node[ansible_hostname].interfaces.bond|default({}),
+                node[ansible_hostname].interfaces.bridge|default({}))) }}"
+    ifaces_loopback: "{{node[ansible_hostname].interfaces.loopback|default({})}}"
     ifaces_common: "{{node[ansible_hostname].interfaces.common|default({})}}"
-    ifaces_bonds: "{{node[ansible_hostname].interfaces.bonds|default({})}}"
-    ifaces_bridges: "{{node[ansible_hostname].interfaces.bridges|default({})}}"
+    ifaces_bond: "{{node[ansible_hostname].interfaces.bond|default({})}}"
+    ifaces_bridge: "{{node[ansible_hostname].interfaces.bridge|default({})}}"
   when: ansible_hostname in node and node[ansible_hostname].interfaces is defined
   tags:
     - ifaces_setup
-- name: default ifaces vars if ansible_hostname is not in vars
-  set_fact:
-    ignore_ifaces: "{{global.ignore_ifaces | default([])}}"
-    ifaces_all: "{{ {} }}"
-    ifaces_common: "{{ {} }}"
-    ifaces_bonds: "{{ {} }}"
-    ifaces_bridges: "{{ {} }}"
-  when: ansible_hostname not in node
-  tags:
-    - ifaces_setup
+# - name: default ifaces vars if ansible_hostname is not in vars
+#   set_fact:
+#     ignore_ifaces: "{{global.ignore_ifaces | default([])}}"
+#     ifaces_all: "{{ {} }}"
+#     ifaces_common: "{{ {} }}"
+#     ifaces_bond: "{{ {} }}"
+#     ifaces_bridge: "{{ {} }}"
+#   when: ansible_hostname not in node
+#   tags:
+#     - ifaces_setup
 - debug:
     msg:
       - "ignore_ifaces: {{ignore_ifaces}}"
+      - "ifaces_loopback: {{ifaces_loopback.keys()}}"
       - "ifaces_common: {{ifaces_common.keys()}}"
-      - "ifaces_bonds: {{ifaces_bonds.keys()}}"
-      - "ifaces_bridges: {{ifaces_bridges.keys()}}"
+      - "ifaces_bond: {{ifaces_bond.keys()}}"
+      - "ifaces_bridge: {{ifaces_bridge.keys()}}"
   tags:
     - ifaces_setup
 
+- name: setting node vrfs facts
+  set_fact:
+    node_vrfs: "{{ node[ansible_hostname].vrfs|default({})|map(attribute='name')|list }}"
+  tags:
+    - ifaces_setup
+    - vrfs_setup
+- name: adding node vrfs to ignore_ifaces
+  set_fact:
+    ignore_ifaces: "{{ ignore_ifaces | union(node_vrfs) }}"
+  tags:
+    - ifaces_setup
+    - vrfs_setup
 - name: collect existing vrfs
   shell: ip vrf | tail -n +3 | cut -d" " -f1
   register: vrfs_output
@@ -67,7 +85,7 @@
     - vrfs_setup
 - name: setting vrfs to remove facts
   set_fact:
-    remove_vrfs: "{{ vrfs_output.stdout_lines | difference(node[ansible_hostname].vrfs|map(attribute='name')|list) }}"
+    remove_vrfs: "{{ vrfs_output.stdout_lines | difference(node_vrfs) }}"
   when: node[ansible_hostname].vrfs is defined
   tags:
     - ifaces_setup
@@ -130,7 +148,6 @@
   tags:
     - ifaces_setup
   with_items: "{{remove_ifaces}}"
-  when: ansible_hostname in node
   register: iface_folder_removed_result
 
 - name: create per-iface folders
@@ -138,6 +155,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_folder_created_result
 
 - name: create rendered flat-file <iface>/iplink
@@ -145,6 +163,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_iplink_rendered_result
 
 - name: create rendered flat-file <iface>/ethtool
@@ -152,6 +171,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ethtool_rendered_result
 
 - name: create rendered flat-file <iface>/ipv4address
@@ -159,6 +179,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ipv4address_rendered_result
 
 - name: create rendered flat-file <iface>/ipv4route
@@ -166,6 +187,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ipv4route_rendered_result
 
 - name: create rendered flat-file <iface>/ifup-pre
@@ -173,6 +195,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ifup_pre_rendered_result
 
 - name: create rendered flat-file <iface>/ifup-post
@@ -180,6 +203,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ifup_post_rendered_result
 
 - name: create rendered flat-file <iface>/ifdown-pre
@@ -187,6 +211,7 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ifdown_pre_rendered_result
 
 - name: create rendered flat-file <iface>/ifdown-post
@@ -194,27 +219,39 @@
   tags:
     - ifaces_setup
   with_items: "{{ifaces_all}}"
+  when: item not in ignore_ifaces
   register: iface_ifdown_post_rendered_result
+
+- name: create rendered flat-file <iface>/options for loopback ifaces
+  template: src=options_loopback.j2 dest={{ifaces_folder}}/{{item}}/options
+  tags:
+    - ifaces_setup
+  with_items: "{{ifaces_loopback}}"
+  when: item not in ignore_ifaces
+  register: iface_loopback_rendered_result
 
 - name: create rendered flat-file <iface>/options for common ifaces
   template: src=options_common.j2 dest={{ifaces_folder}}/{{item}}/options
   tags:
     - ifaces_setup
   with_items: "{{ifaces_common}}"
+  when: item not in ignore_ifaces
   register: iface_common_rendered_result
 
 - name: create rendered flat-file <iface>/options for bonds
   template: src=options_bond.j2 dest={{ifaces_folder}}/{{item}}/options
   tags:
     - ifaces_setup
-  with_items: "{{ifaces_bonds}}"
+  with_items: "{{ifaces_bond}}"
+  when: item not in ignore_ifaces
   register: iface_bonds_rendered_result
 
 - name: create rendered flat-file <iface>/options for bridges
   template: src=options_bridge.j2 dest={{ifaces_folder}}/{{item}}/options
   tags:
     - ifaces_setup
-  with_items: "{{ifaces_bridges}}"
+  with_items: "{{ifaces_bridge}}"
+  when: item not in ignore_ifaces
   register: iface_bridges_rendered_result
 
 - name: set configuration changed fact
@@ -230,6 +267,7 @@
                     iface_ifdown_pre_rendered_result.changed or
                     iface_ifdown_post_rendered_result.changed or
                     iface_ipv4address_rendered_result.changed or
+                    iface_loopback_rendered_result.changed or
                     iface_common_rendered_result.changed or
                     iface_bonds_rendered_result.changed or
                     iface_bridges_rendered_result.changed}}"

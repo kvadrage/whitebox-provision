@@ -1,11 +1,7 @@
 {% set intvars = ifaces_common[item] %}
 {% set hostint = item | regex_replace("^(.+)\.\d+$", "\\1") %}
 {% set subvlan = item | regex_replace("^.+\.(\d+)$", "\\1") %}
-{% if item == "lo" %}
-TYPE=lo
-DISABLED=no
-ONBOOT=yes
-{% elif item | match("[A-Za-z0-9]+\.[0-9]+") %}
+{% if item | match("[A-Za-z0-9]+\.[0-9]+") %}
 TYPE=vlan
 DISABLED=no
 ONBOOT=yes

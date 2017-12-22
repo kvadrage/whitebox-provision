@@ -12,8 +12,9 @@ ip rule del pref 0
 ## {{vrf.name}}
 ip link add {{vrf.name}} type vrf table {{vrf.table}}
 ip addr flush dev {{vrf.name}}
-{% if vrf.ipv4_addresses is defined %}
-{% for ip in vrf.ipv4_addresses %}
+{% if vrf.name in ifaces_loopback %}
+{% set iface = ifaces_loopback[vrf.name] %}
+{% for ip in iface.ipv4_addresses|default([]) %}
 ip addr add {{ip}} dev {{vrf.name}}
 {% endfor %}
 {% endif %}

@@ -1,4 +1,26 @@
 ---
+- name: check if node is undefined
+  fail:
+    msg: "{{ansible_hostname}} is not defined properly in vars"
+  when: node is not defined or ansible_hostname not in node|default({})
+  tags:
+    - bird_setup
+
+- name: create ifaces vars for bird
+  set_fact:
+    ifaces_all: "{{ ({} | combine(
+                node[ansible_hostname].interfaces.loopback|default({}),
+                node[ansible_hostname].interfaces.common|default({}),
+                node[ansible_hostname].interfaces.bond|default({}),
+                node[ansible_hostname].interfaces.bridge|default({}))) }}"
+    ifaces_loopback: "{{node[ansible_hostname].interfaces.loopback|default({})}}"
+    ifaces_common: "{{node[ansible_hostname].interfaces.common|default({})}}"
+    ifaces_bond: "{{node[ansible_hostname].interfaces.bond|default({})}}"
+    ifaces_bridge: "{{node[ansible_hostname].interfaces.bridge|default({})}}"
+  when: node[ansible_hostname].interfaces is defined
+  tags:
+    - bird_setup
+
 - name: create local bird folder
   file: path={{bird_folder_local}} state=directory recurse=yes
   delegate_to: localhost
@@ -18,8 +40,12 @@
     - local
 
 - name: render bird configuration
-  template: src=bird.conf.j2 dest={{bird_conf}} mode=0644
-  when: ansible_hostname in node
+  template:
+    src: bird.conf.j2
+    dest: "{{bird_conf}}"
+    mode: 0644
+    backup: yes
+    validate: "bird -c %s -p"
   notify:
     - enable bird
     - restart bird

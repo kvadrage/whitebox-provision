@@ -3,12 +3,12 @@
 {% set node = node[ansible_hostname] %}
 {% set bgpvars = node.bgp %}
 {% set ospfvars = node.ospf %}
-{% set intvars = node.interfaces.common %}
+{% set intvars = ifaces_all|default({}) %}
 {% set vrfs = node.vrfs %}
 # bird.conf template for {{ansible_hostname}}
 # Created by Ansible
 #
-log "/var/log/bird.log" all;
+log "{{bird_logfile}}" all;
 
 {% if node.router_id is defined %}
 router id {{node.router_id | ipaddr }};
@@ -34,8 +34,8 @@ filter {{f}} {
 # BFD begin
 protocol bfd {
 {% for iface in intvars %}
-  {% if intvars[iface].bfd is defined %}
-    {% set bfdvars = intvars[iface].bfd %}
+  {% if intvars[iface].bfd is defined and intvars[iface].bfd %}
+    {% set bfdvars = intvars[iface].bfd_options|default({}) %}
     interface "{{iface}}" {
     {% if bfdvars.min_rx is defined %}
       min rx interval {{bfdvars.min_rx}} ms;
@@ -58,7 +58,8 @@ protocol bfd {
 {% if bgpvars is defined and bgpvars.neighbors is defined %}
   {% for neigh in bgpvars.neighbors %}
     {% if neigh.bfd is defined %}
-      {% if neigh.bfd != "" %}
+      {% set bfdiface = neigh.bfd %}
+      {% if bfdiface != "" and bfdiface in intvars and intvars[bfdiface].bfd is defined and intvars[bfdiface].bfd %}
     neighbor {{neigh.ipv4 | ipaddr('address') }} dev "{{neigh.bfd}}";
       {% else %}
     neighbor {{neigh.ipv4 | ipaddr('address') }};
@@ -80,7 +81,7 @@ protocol direct {
 {%   for vrf in vrfs %}
 # {{vrf.name}}
 protocol direct {
-    interface "{{vrf.name}}"{% for iface in intvars %}{% if intvars[iface].vrf is defined and intvars[iface].vrf == vrf.name %}, "{{iface}}"{% endif %}{% endfor %};
+    interface "{{vrf.name}}"{% for iface in intvars %}{% if iface != vrf.name and intvars[iface].vrf is defined and intvars[iface].vrf == vrf.name %}, "{{iface}}"{% endif %}{% endfor -%};
     table {{vrf.name}};
 }
 {%   endfor %}
@@ -122,9 +123,20 @@ protocol device {
     scan time 10;
 }
 
+template bgp fabric {
+# timers tuned for fast convergence/recovery in DC fabric
+    hold time 9;
+    keepalive time 3;
+    graceful restart;
+    error wait time 5, 15;
+    connect delay time 1;
+    error forget time 30;
+    connect retry time 10;
+}
+
 {% if bgpvars is defined and bgpvars.neighbors is defined %}
 {%  for neigh in bgpvars.neighbors %}
-protocol bgp {{neigh.name}} {
+protocol bgp {{neigh.name}} from fabric {
 {%   if neigh.vrf is defined %}
     table {{neigh.vrf}};
 {%   endif %}
@@ -153,14 +165,6 @@ protocol bgp {{neigh.name}} {
 {%   if neigh.check_link is defined %}
     check link on;
 {%   endif %}
-# timers tuned for fast convergence/recovery in DC fabric
-    hold time 9;
-    keepalive time 3;
-    graceful restart;
-    error wait time 5, 15;
-    connect delay time 1;
-    error forget time 30;
-    connect retry time 10;
 }
 {%  endfor %}
 {% endif %}

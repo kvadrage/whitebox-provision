@@ -28,14 +28,15 @@
          ],
          "asn":65101,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
-                     "10.116.68.130/32",
-                     "127.0.0.1/32"
-                  ],
-                  "bfd":null
-               },
+                     "127.0.0.1/32",
+                     "10.116.68.130/32"
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -43,21 +44,21 @@
                   "ipv4_addresses":[
                      "10.116.68.142/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.142/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.142/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -66,21 +67,21 @@
                   "ipv4_addresses":[
                      "10.116.68.158/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.158/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.158/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s0":{
                   "autoneg":true,
@@ -90,7 +91,7 @@
                      "10.116.10.181/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s1":{
                   "autoneg":true,
@@ -100,7 +101,7 @@
                      "10.116.20.197/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -189,14 +190,15 @@
          ],
          "asn":65102,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
-                     "10.116.68.131/32",
-                     "127.0.0.1/32"
-                  ],
-                  "bfd":null
-               },
+                     "127.0.0.1/32",
+                     "10.116.68.131/32"
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -204,21 +206,21 @@
                   "ipv4_addresses":[
                      "10.116.68.146/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.146/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.146/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -227,21 +229,21 @@
                   "ipv4_addresses":[
                      "10.116.68.162/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.162/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.162/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s0":{
                   "autoneg":true,
@@ -251,7 +253,7 @@
                      "10.116.10.185/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s1":{
                   "autoneg":true,
@@ -261,7 +263,7 @@
                      "10.116.20.201/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -350,14 +352,15 @@
          ],
          "asn":65103,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
-                     "10.116.68.132/32",
-                     "127.0.0.1/32"
-                  ],
-                  "bfd":null
-               },
+                     "127.0.0.1/32",
+                     "10.116.68.132/32"
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -365,21 +368,21 @@
                   "ipv4_addresses":[
                      "10.116.68.150/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.150/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.150/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -388,21 +391,21 @@
                   "ipv4_addresses":[
                      "10.116.68.166/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.166/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.166/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s0":{
                   "autoneg":true,
@@ -412,7 +415,7 @@
                      "10.116.10.189/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s1":{
                   "autoneg":true,
@@ -422,7 +425,7 @@
                      "10.116.20.205/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -511,14 +514,15 @@
          ],
          "asn":65104,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
-                     "127.0.0.1/32",
-                     "10.116.68.133/32"
-                  ],
-                  "bfd":null
-               },
+                     "10.116.68.133/32",
+                     "127.0.0.1/32"
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -526,21 +530,21 @@
                   "ipv4_addresses":[
                      "10.116.68.154/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.154/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.154/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -549,21 +553,21 @@
                   "ipv4_addresses":[
                      "10.116.68.170/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.170/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.170/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s0":{
                   "autoneg":true,
@@ -573,7 +577,7 @@
                      "10.116.10.193/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5s1":{
                   "autoneg":true,
@@ -583,7 +587,7 @@
                      "10.116.20.209/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -672,14 +676,15 @@
          ],
          "asn":64888,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
                      "127.0.0.1/32",
                      "10.116.68.135/32"
-                  ],
-                  "bfd":null
-               },
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -687,21 +692,21 @@
                   "ipv4_addresses":[
                      "10.116.68.249/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.249/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.249/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -710,21 +715,21 @@
                   "ipv4_addresses":[
                      "10.116.68.253/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.253/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.253/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -779,18 +784,23 @@
       },
       "server01":{
          "router_id":"10.116.10.6",
-         "vrfs":[
-
-         ],
          "asn":6500123,
          "interfaces":{
+            "loopback":{
+               "lo:0":{
+                  "ipv4_addresses":[
+                     "10.116.10.6/32"
+                  ]
+               }
+            },
             "common":{
                "eth11":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.10.182/30"
                   ],
-                  "bfd":{
+                  "bfd":true,
+                  "bfd_options":{
                      "min_rx":200,
                      "min_tx":200,
                      "idle_tx":600
@@ -801,13 +811,7 @@
                   "ipv4_addresses":[
                      "10.116.10.186/30"
                   ],
-                  "bfd":null
-               },
-               "lo:0":{
-                  "ipv4_addresses":[
-                     "10.116.10.6/32"
-                  ],
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -840,31 +844,29 @@
       },
       "server02":{
          "router_id":"10.116.10.7",
-         "vrfs":[
-
-         ],
          "asn":6500124,
          "interfaces":{
+            "loopback":{
+               "lo:0":{
+                  "ipv4_addresses":[
+                     "10.116.10.7/32"
+                  ]
+               }
+            },
             "common":{
                "eth11":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.10.190/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "eth12":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.10.194/30"
                   ],
-                  "bfd":null
-               },
-               "lo:0":{
-                  "ipv4_addresses":[
-                     "10.116.10.7/32"
-                  ],
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -897,31 +899,29 @@
       },
       "server03":{
          "router_id":"10.116.20.8",
-         "vrfs":[
-
-         ],
          "asn":6500125,
          "interfaces":{
+            "loopback":{
+               "lo:0":{
+                  "ipv4_addresses":[
+                     "10.116.20.8/32"
+                  ]
+               }
+            },
             "common":{
                "eth11":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.20.198/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "eth12":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.20.202/30"
                   ],
-                  "bfd":null
-               },
-               "lo:0":{
-                  "ipv4_addresses":[
-                     "10.116.20.8/32"
-                  ],
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -954,31 +954,29 @@
       },
       "server04":{
          "router_id":"10.116.20.9",
-         "vrfs":[
-
-         ],
          "asn":6500126,
          "interfaces":{
+            "loopback":{
+               "lo:0":{
+                  "ipv4_addresses":[
+                     "10.116.20.9/32"
+                  ]
+               }
+            },
             "common":{
                "eth11":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.20.206/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "eth12":{
                   "mtu":9000,
                   "ipv4_addresses":[
                      "10.116.20.210/30"
                   ],
-                  "bfd":null
-               },
-               "lo:0":{
-                  "ipv4_addresses":[
-                     "10.116.20.9/32"
-                  ],
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -1023,14 +1021,15 @@
          ],
          "asn":65201,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
                      "10.116.68.128/32",
                      "127.0.0.1/32"
-                  ],
-                  "bfd":null
-               },
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -1038,21 +1037,21 @@
                   "ipv4_addresses":[
                      "10.116.68.141/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.141/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.141/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -1061,21 +1060,21 @@
                   "ipv4_addresses":[
                      "10.116.68.145/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.145/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.145/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp3":{
                   "autoneg":false,
@@ -1084,21 +1083,21 @@
                   "ipv4_addresses":[
                      "10.116.68.149/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp3.10":{
                   "ipv4_addresses":[
                      "10.116.10.149/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp3.20":{
                   "ipv4_addresses":[
                      "10.116.20.149/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp4":{
                   "autoneg":false,
@@ -1107,21 +1106,21 @@
                   "ipv4_addresses":[
                      "10.116.68.153/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp4.10":{
                   "ipv4_addresses":[
                      "10.116.10.153/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp4.20":{
                   "ipv4_addresses":[
                      "10.116.20.153/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5":{
                   "autoneg":false,
@@ -1130,21 +1129,21 @@
                   "ipv4_addresses":[
                      "10.116.68.250/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp5.10":{
                   "ipv4_addresses":[
                      "10.116.10.250/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5.20":{
                   "ipv4_addresses":[
                      "10.116.20.250/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
@@ -1271,14 +1270,15 @@
          ],
          "asn":65201,
          "interfaces":{
-            "common":{
+            "loopback":{
                "lo":{
                   "ipv4_addresses":[
-                     "10.116.68.129/32",
-                     "127.0.0.1/32"
-                  ],
-                  "bfd":null
-               },
+                     "127.0.0.1/32",
+                     "10.116.68.129/32"
+                  ]
+               }
+            },
+            "common":{
                "swp1":{
                   "autoneg":false,
                   "speed":100000,
@@ -1286,21 +1286,21 @@
                   "ipv4_addresses":[
                      "10.116.68.157/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.10":{
                   "ipv4_addresses":[
                      "10.116.10.157/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp1.20":{
                   "ipv4_addresses":[
                      "10.116.20.157/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2":{
                   "autoneg":false,
@@ -1309,21 +1309,21 @@
                   "ipv4_addresses":[
                      "10.116.68.161/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.10":{
                   "ipv4_addresses":[
                      "10.116.10.161/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp2.20":{
                   "ipv4_addresses":[
                      "10.116.20.161/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp3":{
                   "autoneg":false,
@@ -1331,21 +1331,21 @@
                   "ipv4_addresses":[
                      "10.116.68.165/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp3.10":{
                   "ipv4_addresses":[
                      "10.116.10.165/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp3.20":{
                   "ipv4_addresses":[
                      "10.116.20.165/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp4":{
                   "autoneg":false,
@@ -1354,21 +1354,21 @@
                   "ipv4_addresses":[
                      "10.116.68.169/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp4.10":{
                   "ipv4_addresses":[
                      "10.116.10.169/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp4.20":{
                   "ipv4_addresses":[
                      "10.116.20.169/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5":{
                   "autoneg":false,
@@ -1377,21 +1377,21 @@
                   "ipv4_addresses":[
                      "10.116.68.254/30"
                   ],
-                  "bfd":null
+                  "bfd":false
                },
                "swp5.10":{
                   "ipv4_addresses":[
                      "10.116.10.254/30"
                   ],
                   "vrf":"edz",
-                  "bfd":null
+                  "bfd":false
                },
                "swp5.20":{
                   "ipv4_addresses":[
                      "10.116.20.254/30"
                   ],
                   "vrf":"epz",
-                  "bfd":null
+                  "bfd":false
                }
             }
          },
