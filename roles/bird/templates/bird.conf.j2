@@ -1,8 +1,8 @@
 #jinja2:lstrip_blocks: True
 
 {% set node = node[ansible_hostname] %}
-{% set bgpvars = node.bgp %}
-{% set ospfvars = node.ospf %}
+{% set bgpvars = node.bgp|default({}) %}
+{% set ospfvars = node.ospf|default({}) %}
 {% set intvars = ifaces_all|default({}) %}
 {% set vrfs = node.vrfs %}
 # bird.conf template for {{ansible_hostname}}
@@ -37,17 +37,17 @@ protocol bfd {
   {% if intvars[iface].bfd is defined and intvars[iface].bfd %}
     {% set bfdvars = intvars[iface].bfd_options|default({}) %}
     interface "{{iface}}" {
-    {% if bfdvars.min_rx is defined %}
+    {% if bfdvars.min_rx is defined and bfdvars.min_rx %}
       min rx interval {{bfdvars.min_rx}} ms;
     {% else %}
       min rx interval 100 ms;
     {% endif %}
-    {% if bfdvars.min_tx is defined %}
+    {% if bfdvars.min_tx is defined and bfdvars.min_tx %}
       min tx interval {{bfdvars.min_tx}} ms;
     {% else %}
       min tx interval 100 ms;
     {% endif %}
-    {% if bfdvars.idle_tx is defined %}
+    {% if bfdvars.idle_tx is defined and bfdvars.idle_tx %}
       idle tx interval {{bfdvars.idle_tx}} ms;
     {% else %}
       idle tx interval 500 ms;
@@ -95,7 +95,7 @@ protocol kernel {
     import none; # Default is import all
     export all; # Default is export none
     # kernel table 254; # Kernel table to synchronize with (default: ain)
-{% if bgpvars is defined and bgpvars.merge_paths is defined %}
+{% if bgpvars.merge_paths is defined and bgpvars.merge_paths %}
     merge paths on;
 {% endif %}
 }
@@ -112,7 +112,7 @@ protocol kernel {
     scan time 20; # Scan kernel routing table every 20 seconds
     import all; # Default is import all
     export all; # Default is export none
-{%      if bgpvars is defined and bgpvars.merge_paths is defined %}
+{%      if bgpvars.merge_paths is defined and bgpvars.merge_paths %}
     merge paths on;
 {%      endif %}
 }
@@ -134,7 +134,7 @@ template bgp fabric {
     connect retry time 10;
 }
 
-{% if bgpvars is defined and bgpvars.neighbors is defined %}
+{% if bgpvars.neighbors is defined and bgpvars.neighbors %}
 {%  for neigh in bgpvars.neighbors %}
 protocol bgp {{neigh.name}} from fabric {
 {%   if neigh.vrf is defined %}
@@ -156,20 +156,20 @@ protocol bgp {{neigh.name}} from fabric {
 {%   endif %}
     local as {{bgpvars.asn}};
     neighbor {{neigh.ipv4 | ipaddr('address') }} as {{neigh.asn}};
-{%   if neigh.next_hop_self is defined %}
+{%   if neigh.next_hop_self is defined and neigh.next_hop_self %}
     next hop self;
 {%   endif %}
 {%   if neigh.bfd is defined %}
     bfd on;
 {%   endif %}
-{%   if neigh.check_link is defined %}
+{%   if neigh.check_link is defined and neigh.check_link %}
     check link on;
 {%   endif %}
 }
 {%  endfor %}
 {% endif %}
 
-{% if ospfvars is defined %}
+{% if ospfvars is defined and ospfvars %}
 protocol ospf {{ospfvars.name|default("")}} {
     debug { {{bird_dedug|default("states, routes, filters, interfaces, events")}} };
     tick 2; rfc1583compat yes;
@@ -201,7 +201,7 @@ protocol ospf {{ospfvars.name|default("")}} {
 {%     if iface.type is defined %}
         type {{iface.type}};
 {%     endif %}
-{%     if iface.check_link is defined %}
+{%     if iface.check_link is defined and iface.check_link %}
         check link on;
 {%     endif %}
       };

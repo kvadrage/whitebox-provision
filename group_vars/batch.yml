@@ -1,0 +1,13 @@
+batch:
+  vrfs:
+    - prod: 101
+    - xxx: 102
+    - vrf1: 1
+    - vrf2: 2
+    - vrf3: 3
+    - vrf4: 4
+    - vrf5: 5
+    - vrf6: 6
+    - vrf7: 7
+    - vrf8: 8
+    - vrf9: 9
