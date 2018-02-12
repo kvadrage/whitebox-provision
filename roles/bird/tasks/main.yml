@@ -4,7 +4,7 @@
     msg: "{{ansible_hostname}} is not defined properly in vars"
   when: node is not defined or ansible_hostname not in node|default({})
   tags:
-    - bird_setup
+    - bird
 
 - name: create ifaces vars for bird
   set_fact:
@@ -19,7 +19,7 @@
     ifaces_bridge: "{{node[ansible_hostname].interfaces.bridge|default({})}}"
   when: node[ansible_hostname].interfaces is defined
   tags:
-    - bird_setup
+    - bird
 
 - name: create local bird folder
   file: path={{bird_folder_local}} state=directory recurse=yes
@@ -27,27 +27,49 @@
   become: false
   when: save_local is defined and save_local == "enable"
   tags:
-    - bird_setup
+    - bird
     - local
 
-- name: render bird configuration locally
-  template: src=bird.conf.j2 dest={{bird_conf_local}}
+- name: render bird4 configuration locally
+  template: src=bird4.conf.j2 dest={{bird4_conf_local}}
   delegate_to: localhost
   become: false
   when: save_local is defined and save_local == "enable"
   tags:
-    - bird_setup
+    - bird
     - local
 
-- name: render bird configuration
+- name: render bird6 configuration locally
+  template: src=bird6.conf.j2 dest={{bird6_conf_local}}
+  delegate_to: localhost
+  become: false
+  when: save_local is defined and save_local == "enable"
+  tags:
+    - bird
+    - local
+
+- name: render bird4 configuration
   template:
-    src: bird.conf.j2
-    dest: "{{bird_conf}}"
+    src: bird4.conf.j2
+    dest: "{{bird4_conf}}"
     mode: 0644
     backup: yes
-    validate: "bird -c %s -p"
+    validate: "bird4 -c %s -p"
   notify:
     - enable bird
     - restart bird
   tags:
-    - bird_setup
+    - bird
+
+- name: render bird6 configuration
+  template:
+    src: bird6.conf.j2
+    dest: "{{bird6_conf}}"
+    mode: 0644
+    backup: yes
+    validate: "bird6 -c %s -p"
+  notify:
+    - enable bird
+    - restart bird
+  tags:
+    - bird

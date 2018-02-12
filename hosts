@@ -1,7 +1,6 @@
 [switches_alt:children]
 leafs
 spines
-#ext
 
 [leafs]
 leaf01
@@ -12,9 +11,8 @@ leaf04
 [spines]
 spine01
 spine02
-
-[ext]
-#prod
+spine03
+spine04
 
 [servers_centos]
 #server01

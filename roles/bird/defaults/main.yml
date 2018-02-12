@@ -2,8 +2,10 @@
 save_local: "{{global.save_local|default('enabled')}}"
 
 bird_folder_local: "config/{{ansible_hostname}}/etc"
-bird_conf_local: "{{bird_folder_local}}/bird4.conf"
-bird_conf: "/etc/bird4.conf"
+bird4_conf_local: "{{bird_folder_local}}/bird4.conf"
+bird6_conf_local: "{{bird_folder_local}}/bird6.conf"
+bird4_conf: "/etc/bird/bird4.conf"
+bird6_conf: "/etc/bird/bird6.conf"
 
 bird_logfile: "/var/log/bird.log"
 bird_debug: "states, routes, filters, interfaces, events"

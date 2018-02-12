@@ -1,0 +1,143 @@
+#jinja2:lstrip_blocks: True
+# Generated with Ansible
+{% set node = node[ansible_hostname] %}
+{% set intvars = ifaces_all %}
+{% set bondvars = ifaces_bond %}
+{% set loopvars = ifaces_loopback %}
+{% set vrfs = node.vrfs %}
+
+# sysctl tweaks
+## enable 5-tuple hashing for ECMP
+echo 1 > /proc/sys/net/ipv4/fib_multipath_hash_policy
+
+## enable linkdown and addr down
+echo 1 > /proc/sys/net/ipv6/conf/all/keep_addr_on_down
+echo 1 > /proc/sys/net/ipv4/conf/default/ignore_routes_with_linkdown
+
+## enable services binding to VRFs
+echo 1 > /proc/sys/net/ipv4/tcp_l3mdev_accept
+echo 1 > /proc/sys/net/ipv4/udp_l3mdev_accept
+
+## reset all network configuration
+swport reset all eth0,vagrant
+sleep 1
+
+# VRFs
+## redefine FIB search rules
+ip rule add pref 32765 table local
+ip rule del pref 0
+## create VRFs
+{% if vrfs is defined %}
+{%   for vrf in vrfs %}
+## {{vrf.name}}
+ip link add {{vrf.name}} type vrf table {{vrf.table}}
+ip link set dev {{vrf.name}} up
+ip route add unreachable default vrf {{vrf.name}}
+{#
+{%     if vrf.name in ifaces_loopback %}
+{%       set iface = ifaces_loopback[vrf.name] %}
+{%       for ip in iface.ipv4_addresses|default([]) %}
+ip addr add {{ip}} dev {{vrf.name}}
+{%       endfor %}
+{%     endif %}
+{%     if intvars.ipv4_routes is defined %}
+### add static routes into VRF '{{intvars.vrf}}'
+{%       for route in intvars.ipv4_routes %}
+ip route del unreachable default vrf {{intvars.vrf}}
+ip route add {{ route }} vrf {{intvars.vrf}}
+{%       endfor %}
+{%     endif %}
+#}
+{%   endfor %}
+{% endif %}
+
+# bonds
+{% for bond in bondvars|sort %}
+## {{iface}}
+ip link add name {{bond}} type bond mode 802.3ad
+{%  if iface.members %}
+{%    for member in ifaces_bond[iface].members %}
+ip link set dev {{member}} master {{bond}}
+{%    endfor %}
+{%  endif %}
+{% endfor %}
+
+# bridges
+
+# loopbacks
+{% for ifname in loopvars|sort  %}
+{%  set iface = loopvars[ifname] %}
+## {{ifname}}
+{%  if iface.ipv4_addresses is defined %}
+{%    for addr in iface.ipv4_addresses %}
+ip addr add {{ addr | ipv4 }} dev {{ifname}}
+{%    endfor %}
+{%  endif %}
+{%  if iface.ipv6_addresses is defined %}
+{%    for addr in iface.ipv6_addresses %}
+ip -6 addr add {{ addr | ipv6 }} dev {{ifname}}
+{%    endfor %}
+{%  endif %}
+{%  if iface.ipv4_routes is defined %}
+{%    for route in iface.ipv4_routes %}
+{%      if iface.vrf is defined %}
+ip route add vrf {{iface.vrf}} {{ route }}
+{%      else %}
+ip route add {{ route }}
+{%      endif %}
+{%    endfor %}
+{%  endif %}
+{%  if iface.ipv6_routes is defined %}
+{%    for route in iface.ipv6_routes %}
+{%      if iface.vrf is defined %}
+ip -6 route add vrf {{iface.vrf}} {{ route }}
+{%      else %}
+ip -6 route add {{ route }}
+{%      endif %}
+{%    endfor %}
+{%  endif %}
+{% endfor %}
+
+# regular interfaces
+{% for ifname in intvars|sort  %}
+{%  set iface = intvars[ifname] %}
+## {{ifname}}
+{%  if ifname | match("[A-Za-z0-9]+\.[0-9]+") %}
+{%    set master = ifname.split(".")[0] %}
+{%    set vid = ifname.split(".")[1] %}
+ip link add link {{master}} name {{ifname}} type vlan id {{vid}}
+{%  endif %}
+{%  if iface.mtu is defined %}
+ip link set dev {{ifname}} mtu {{iface.mtu}}
+{%  else %}
+ip link set dev {{ifname}} mtu 9216
+{%  endif %}
+{%  if iface.speed is defined %}
+{%    if iface.autoneg is defined and not iface.autoneg %}
+{%      set autoneg = "off" %}
+{%    else %}
+{%      set autoneg = "on" %}
+{%    endif %}
+ethtool -s {{ifname}} speed {{iface.speed}} autoneg {{autoneg}}
+{%  endif %}
+{%  if iface.vrf is defined %}
+ip link set dev {{ifname}} master {{iface.vrf}}
+{%  endif %}
+{%  if iface.ipv4_addresses is defined %}
+{%    for addr in iface.ipv4_addresses %}
+ip addr add {{ addr | ipv4 }} dev {{ifname}}
+{%    endfor %}
+{%  endif %}
+{%  if iface.ipv6_addresses is defined %}
+{%    for addr in iface.ipv6_addresses %}
+ip -6 addr add {{ addr | ipv6 }} dev {{ifname}}
+{%    endfor %}
+{%  endif %}
+
+{% endfor %}
+
+# bring up interfaces
+ip link set dev lo up
+{% for ifname in intvars|sort %}
+ip link set dev {{ifname}} up
+{% endfor %}

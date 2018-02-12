@@ -1,0 +1,3 @@
+---
+save_local: "{{global.save_local|default('enabled')}}"
+rc_network: "/etc/rc.d/rc.network"

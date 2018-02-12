@@ -1,11 +1,10 @@
 #jinja2:lstrip_blocks: True
-
 {% set node = node[ansible_hostname] %}
 {% set bgpvars = node.bgp|default({}) %}
 {% set ospfvars = node.ospf|default({}) %}
 {% set intvars = ifaces_all|default({}) %}
 {% set vrfs = node.vrfs %}
-# bird.conf template for {{ansible_hostname}}
+# bird4.conf template for {{ansible_hostname}}
 # Created by Ansible
 #
 log "{{bird_logfile}}" all;
@@ -40,17 +39,22 @@ protocol bfd {
     {% if bfdvars.min_rx is defined and bfdvars.min_rx %}
       min rx interval {{bfdvars.min_rx}} ms;
     {% else %}
-      min rx interval 100 ms;
+      min rx interval 250 ms;
     {% endif %}
     {% if bfdvars.min_tx is defined and bfdvars.min_tx %}
       min tx interval {{bfdvars.min_tx}} ms;
     {% else %}
-      min tx interval 100 ms;
+      min tx interval 250 ms;
     {% endif %}
     {% if bfdvars.idle_tx is defined and bfdvars.idle_tx %}
       idle tx interval {{bfdvars.idle_tx}} ms;
     {% else %}
       idle tx interval 500 ms;
+    {% endif %}
+    {% if bfdvars.multiplier is defined and bfdvars.multiplier %}
+      multiplier {{bfdvars.multiplier}};
+    {% else %}
+      multiplier 3;
     {% endif %}
     };
   {% endif %}
@@ -125,18 +129,41 @@ protocol device {
 
 template bgp fabric {
 # timers tuned for fast convergence/recovery in DC fabric
-    hold time 9;
-    keepalive time 3;
+    hold time 21;
+    keepalive time 7;
     graceful restart;
     error wait time 5, 15;
     connect delay time 1;
     error forget time 30;
     connect retry time 10;
+#    password "password";
+    check link on;
+}
+
+template bgp ext {
+    hold time 21;
+    keepalive time 7;
+    graceful restart;
+    error wait time 5, 15;
+    connect delay time 1;
+    error forget time 30;
+    connect retry time 10;
+#    password "password";
+    check link on;
 }
 
 {% if bgpvars.neighbors is defined and bgpvars.neighbors %}
-{%  for neigh in bgpvars.neighbors %}
-protocol bgp {{neigh.name}} from fabric {
+{%   for neigh in bgpvars.neighbors %}
+{%     if neigh.template is defined %}
+{%       if neigh.template %}
+{%         set bgp_from = "from " + neigh.template %}
+{%       else %}
+{%         set bgp_from = "" %}
+{%       endif %}
+{%   else %}
+{%     set bgp_from = "from fabric" %}
+{%   endif %}
+protocol bgp {{neigh.name}} {{bgp_from}} {
 {%   if neigh.vrf is defined %}
     table {{neigh.vrf}};
 {%   endif %}
@@ -156,15 +183,19 @@ protocol bgp {{neigh.name}} from fabric {
 {%   endif %}
     local as {{bgpvars.asn}};
     neighbor {{neigh.ipv4 | ipaddr('address') }} as {{neigh.asn}};
+{#
 {%   if neigh.next_hop_self is defined and neigh.next_hop_self %}
     next hop self;
 {%   endif %}
+#}
 {%   if neigh.bfd is defined %}
     bfd on;
 {%   endif %}
+{#
 {%   if neigh.check_link is defined and neigh.check_link %}
     check link on;
 {%   endif %}
+#}
 }
 {%  endfor %}
 {% endif %}

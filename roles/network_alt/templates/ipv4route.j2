@@ -1,6 +1,0 @@
-{% set intvars = ifaces_all[item] %}
-{% if intvars.ipv4_routes is defined and not intvars.vrf is defined %}
-{% for route in intvars.ipv4_routes %}
-{{ route }}
-{% endfor %}
-{% endif %}

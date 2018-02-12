@@ -11,14 +11,13 @@
   become: yes
   become_method: sudo
   roles:
-    - network_alt
+    - network_alt_rcnet
     - bird
-    - services_alt
 
-- hosts: servers_centos
-  user: admin
-  become: yes
-  become_method: sudo
-  roles:
-    - network_centos
-    - bird
+# - hosts: servers_centos
+#   user: admin
+#   become: yes
+#   become_method: sudo
+#   roles:
+#     - network_centos
+#     - bird

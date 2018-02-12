@@ -21,11 +21,11 @@
       notify: restart network
 
     - name: clear bird config
-      copy: content="" dest=/etc/bird.conf
+      copy: content="" dest="{{bird_conf}}"
 
     - name: initialize bird config
       blockinfile:
-        dest: /etc/bird.conf
+        dest: ""{{bird_conf}}""
         block: |
           protocol kernel {
           }

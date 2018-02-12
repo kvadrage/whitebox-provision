@@ -1,0 +1,41 @@
+---
+- name: check if node is undefined
+  fail:
+    msg: "{{ansible_hostname}} is not defined properly in vars"
+  when: node is not defined or ansible_hostname not in node|default({})
+  tags:
+    - ifaces_setup
+
+
+- name: create ifaces vars
+  set_fact:
+    ignore_ifaces: "{{global.ignore_ifaces | default([])}}"
+    ifaces_all: "{{ ({} | combine(
+                node[ansible_hostname].interfaces.common|default({}),
+                node[ansible_hostname].interfaces.bond|default({}),
+                node[ansible_hostname].interfaces.bridge|default({}))) }}"
+    ifaces_loopback: "{{node[ansible_hostname].interfaces.loopback|default({})}}"
+    ifaces_common: "{{node[ansible_hostname].interfaces.common|default({})}}"
+    ifaces_bond: "{{node[ansible_hostname].interfaces.bond|default({})}}"
+    ifaces_bridge: "{{node[ansible_hostname].interfaces.bridge|default({})}}"
+    vrfs: "{{ node[ansible_hostname].vrfs|default({})|map(attribute='name')|list }}"
+  when: ansible_hostname in node and node[ansible_hostname].interfaces is defined
+  tags:
+    - network
+
+- debug:
+    msg:
+      - "ignore_ifaces: {{ignore_ifaces}}"
+      - "ifaces_loopback: {{ifaces_loopback.keys()}}"
+      - "ifaces_common: {{ifaces_common.keys()}}"
+      - "ifaces_bond: {{ifaces_bond.keys()}}"
+      - "ifaces_bridge: {{ifaces_bridge.keys()}}"
+      - "vrfs: {{vrfs}}"
+  tags:
+    - network
+
+- name: rendering rc.network
+  template: src=rc.network.j2 dest={{rc_network}}
+  notify: restart network
+  tags:
+    - network

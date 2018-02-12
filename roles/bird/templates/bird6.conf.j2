@@ -1,0 +1,19 @@
+#jinja2:lstrip_blocks: True
+{% set node = node[ansible_hostname] %}
+{% set bgpvars = node.bgp|default({}) %}
+{% set ospfvars = node.ospf|default({}) %}
+{% set intvars = ifaces_all|default({}) %}
+{% set vrfs = node.vrfs %}
+# bird6.conf template for {{ansible_hostname}}
+# Created by Ansible
+#
+log "{{bird_logfile}}" all;
+
+{% if node.router_id is defined %}
+router id {{node.router_id | ipaddr }};
+{% else %}
+router id 1.1.1.1;
+{% endif %}
+
+protocol kernel {
+}

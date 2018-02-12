@@ -1,8 +1,0 @@
-{% set intvars = ifaces_all[item] %}
-{% if intvars.speed is defined %}
-{% if intvars.autoneg is defined and not intvars.autoneg %}
-speed {{intvars.speed}} autoneg off
-{% else %}
-speed {{intvars.speed}} autoneg on
-{% endif %}
-{% endif %}

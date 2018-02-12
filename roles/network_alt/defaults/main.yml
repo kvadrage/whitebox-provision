@@ -1,6 +1,0 @@
----
-save_local: "{{global.save_local|default('enabled')}}"
-
-sysctl_file: /etc/net/sysctl.conf
-ifaces_folder: "/etc/net/ifaces"
-ifaces_folder_local: "config/{{ansible_hostname}}/etc/net/ifaces"
