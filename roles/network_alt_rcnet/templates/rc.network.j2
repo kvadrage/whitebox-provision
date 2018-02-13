@@ -18,6 +18,11 @@ echo 1 > /proc/sys/net/ipv4/conf/default/ignore_routes_with_linkdown
 echo 1 > /proc/sys/net/ipv4/tcp_l3mdev_accept
 echo 1 > /proc/sys/net/ipv4/udp_l3mdev_accept
 
+# tune TCP in kernel
+echo 0 > /proc/sys/net/ipv4/tcp_syncookies
+echo 5000 > /proc/sys/net/ipv4/tcp_max_syn_backlog
+echo 4096 > /proc/sys/net/core/somaxconn
+
 ## reset all network configuration
 swport reset all eth0,vagrant
 sleep 1
