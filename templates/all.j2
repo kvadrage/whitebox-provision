@@ -1,0 +1,1425 @@
+{% set vrfs = batch.vrfs %}
+{% set vrfs_range = range(vrfs.start, vrfs.stop+1) %}
+global:
+  save_local: "disable"
+  ignore_ifaces: ["eth0", "vagrant"]
+
+  services:
+    clock:
+      #   #List of time zones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      timezone: "Europe/Moscow"
+      # ntp:
+      #   servers: ["10.35.81.200"]
+      #   #Interface to use eth0(default)
+      #   listen: "eth0"
+
+
+node:
+################################## leaf01 ####################################
+  leaf01:
+    router_id: "10.255.0.1"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.1/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.1/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to server01 eth11
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.1/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server03 eth11
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.1/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.18/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.18/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.22/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.22/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.26/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.26/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.30/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.30/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+    bgp:
+      asn: 650201
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.17"
+          asn: 650301
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.17"
+          asn: 650301
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.21"
+          asn: 650302
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.21"
+          asn: 650302
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.25"
+          asn: 650303
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.25"
+          asn: 650303
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.29"
+          asn: 650304
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.29"
+          asn: 650304
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # server01
+        - name: to_server01
+          vrf: vrf1
+          ipv4: "10.252.1.2"
+          asn: 650101
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server03
+        - name: to_server03
+          vrf: vrf2
+          ipv4: "10.252.2.2"
+          asn: 650103
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf02 ####################################
+  leaf02:
+    router_id: "10.255.0.2"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.2/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.2/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to server01 eth12
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.5/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server03 eth12
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.5/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp2
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.34/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.34/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine02 swp2
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.38/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.38/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine03 swp2
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.42/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.42/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine04 swp2
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.46/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.46/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+    bgp:
+      asn: 650202
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.33"
+          asn: 650301
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.33"
+          asn: 650301
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.37"
+          asn: 650302
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.37"
+          asn: 650302
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.41"
+          asn: 650303
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.41"
+          asn: 650303
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.45"
+          asn: 650304
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.45"
+          asn: 650304
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # server01
+        - name: to_server01
+          vrf: vrf1
+          ipv4: "10.252.1.6"
+          asn: 650101
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server03
+        - name: to_server03
+          vrf: vrf2
+          ipv4: "10.252.2.6"
+          asn: 650103
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf03 ####################################
+  leaf03:
+    router_id: "10.255.0.3"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.3/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.3/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to server02 eth11
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.9/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server04 eth11
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.9/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp3
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.50/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.50/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine02 swp3
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.54/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.54/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine03 swp3
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.58/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.58/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine04 swp3
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.62/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.62/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+    bgp:
+      asn: 650203
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.49"
+          asn: 650301
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.49"
+          asn: 650301
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.53"
+          asn: 650302
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.53"
+          asn: 650302
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.57"
+          asn: 650303
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.57"
+          asn: 650303
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.61"
+          asn: 650304
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.61"
+          asn: 650304
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # server02
+        - name: to_server02
+          vrf: vrf1
+          ipv4: "10.252.1.10"
+          asn: 650102
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server04
+        - name: to_server04
+          vrf: vrf2
+          ipv4: "10.252.2.10"
+          asn: 650104
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf04 ####################################
+  leaf04:
+    router_id: "10.255.0.4"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.4/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.4/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to server02 eth12
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.13/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server04 eth12
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.13/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp4
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.66/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.66/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine02 swp4
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.70/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.70/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine03 swp4
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.74/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.74/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to spine04 swp4
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.78/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.78/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+    bgp:
+      asn: 650204
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.65"
+          asn: 650301
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.65"
+          asn: 650301
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.69"
+          asn: 650302
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.69"
+          asn: 650302
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.73"
+          asn: 650303
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.73"
+          asn: 650303
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.77"
+          asn: 650304
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_spine04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.77"
+          asn: 650304
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # server02
+        - name: to_server02
+          vrf: vrf1
+          ipv4: "10.252.1.14"
+          asn: 650102
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server04
+        - name: to_server04
+          vrf: vrf2
+          ipv4: "10.252.2.14"
+          asn: 650104
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## spine01 ####################################
+  spine01:
+    router_id: "10.255.0.11"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.11/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.11/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to leaf01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.17/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.17/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.33/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.33/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.49/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.49/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.65/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.65/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to cisco 0/4/0/0
+        swp5:
+          ipv4_addresses: ["10.252.0.81/30"]
+          bfd: True
+
+        # to huawei 1/0/30
+        swp6:
+          ipv4_addresses: ["10.252.0.85/30"]
+          bfd: True
+
+    bgp:
+      asn: 650301
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.18"
+          asn: 650201
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.18"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.34"
+          asn: 650202
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.34"
+          asn: 650202
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.50"
+          asn: 650203
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.50"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf04
+        - name: to_leaf04
+          ipv4: "10.252.0.66"
+          asn: 650204
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.66"
+          asn: 650204
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # cisco
+        - name: to_cisco
+          ipv4: "10.252.1.82"
+          asn: 65333
+          bfd: swp5
+          template: ext
+        # huawei
+        - name: to_huawei
+          ipv4: "10.252.1.86"
+          asn: 64888
+          bfd: swp6
+          template: ext
+      import: all
+      export: all
+
+################################## spine02 ####################################
+  spine02:
+    router_id: "10.255.0.12"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.12/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.12/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to leaf01 swp2
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.21/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.21/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf02 swp2
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.37/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.37/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf03 swp2
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.53/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.53/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf04 swp2
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.69/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.69/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        swp5:
+
+        swp6:
+
+
+    bgp:
+      asn: 650302
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.22"
+          asn: 650201
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.22"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.38"
+          asn: 650202
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.38"
+          asn: 650202
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.54"
+          asn: 650203
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.54"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf04
+        - name: to_leaf04
+          ipv4: "10.252.0.70"
+          asn: 650204
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.70"
+          asn: 650204
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+      import: all
+      export: all
+
+################################## spine03 ####################################
+  spine03:
+    router_id: "10.255.0.13"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.13/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.13/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to leaf01 swp3
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.25/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.25/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf02 swp3
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.41/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.41/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf03 swp3
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.57/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.57/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf04 swp3
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.73/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.73/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        swp5:
+
+        swp6:
+
+    bgp:
+      asn: 650303
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.26"
+          asn: 650201
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.26"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.42"
+          asn: 650202
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.42"
+          asn: 650202
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.58"
+          asn: 650203
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.58"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf04
+        - name: to_leaf04
+          ipv4: "10.252.0.74"
+          asn: 650204
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.74"
+          asn: 650204
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+      import: all
+      export: all
+
+################################## spine04 ####################################
+  spine04:
+    router_id: "10.255.0.14"
+    vrfs:
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+      - name: {{ vrf }}
+        table: {{ n }}
+{% endfor %}
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.14/32"]
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        {{vrf}}:
+          ipv4_addresses: ["10.255.{{n}}.14/32"]
+          vrf: {{vrf}}
+{% endfor %}
+      common:
+        # to leaf01 swp4
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.29/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp1.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.29/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf02 swp4
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.45/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp2.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.45/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf03 swp4
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.61/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp3.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.61/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to leaf04 swp4
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.77/30"]
+          bfd: True
+
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        swp4.{{ vrfs.offset + n }}:
+          ipv4_addresses: ["10.252.{{n}}.77/30"]
+          vrf: {{vrf}}
+          bfd: True
+{% endfor %}
+
+        # to cisco 0/4/0/0
+        swp5:
+          ipv4_addresses: ["10.252.0.89/30"]
+          bfd: True
+
+        # to huawei 1/0/30
+        swp6:
+          ipv4_addresses: ["10.252.0.93/30"]
+          bfd: True
+
+    bgp:
+      asn: 650304
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.30"
+          asn: 650201
+          bfd: swp1
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf01_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.30"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.46"
+          asn: 650202
+          bfd: swp2
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf02_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.46"
+          asn: 650202
+          bfd: swp2.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.62"
+          asn: 650203
+          bfd: swp3
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf03_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.62"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset + n }}
+{% endfor %}
+        # leaf04
+        - name: to_leaf04
+          ipv4: "10.252.0.78"
+          asn: 650204
+          bfd: swp4
+{% for n in vrfs_range %}
+{% set vrf = vrfs.prefix + n|string%}
+        - name: to_leaf04_{{vrf}}
+          vrf: {{vrf}}
+          ipv4: "10.252.{{n}}.78"
+          asn: 650204
+          bfd: swp4.{{ vrfs.offset + n }}
+{% endfor %}
+        # cisco
+        - name: to_cisco
+          ipv4: "10.252.1.94"
+          asn: 65333
+          bfd: swp5
+          template: ext
+        # huawei
+        - name: to_huawei
+          ipv4: "10.252.1.90"
+          asn: 64888
+          bfd: swp6
+          template: ext
+      import: all
+      export: all
+
+################################## server01 ####################################
+  server01:
+    router_id: "10.255.0.31"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.1/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.1.2/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.1.6/30"]
+          bfd: True
+    bgp:
+      asn: 650101
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.1.1"
+          asn: 650201
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.1.5"
+          asn: 650202
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server02 ####################################
+  server02:
+    router_id: "10.255.0.32"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.2/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.1.10/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.1.14/30"]
+          bfd: True
+    bgp:
+      asn: 650102
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.1.9"
+          asn: 650203
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.1.13"
+          asn: 650204
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server03 ####################################
+  server03:
+    router_id: "10.255.0.33"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.2.3/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.2.2/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.2.6/30"]
+          bfd: True
+    bgp:
+      asn: 650103
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.2.1"
+          asn: 650201
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.2.5"
+          asn: 650202
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server04 ####################################
+  server04:
+    router_id: "10.255.0.34"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.2.4/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.2.10/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.2.14/30"]
+          bfd: True
+    bgp:
+      asn: 650104
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.2.9"
+          asn: 650203
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.2.13"
+          asn: 650204
+          bfd: eth12
+      import: all
+      export: all

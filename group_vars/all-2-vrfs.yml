@@ -1,0 +1,1543 @@
+global:
+  save_local: "disable"
+  ignore_ifaces: ["eth0", "vagrant"]
+
+  services:
+    clock:
+      #   #List of time zones: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+      timezone: "Europe/Moscow"
+      # ntp:
+      #   servers: ["10.35.81.200"]
+      #   #Interface to use eth0(default)
+      #   listen: "eth0"
+
+
+node:
+################################## leaf01 ####################################
+  leaf01:
+    router_id: "10.255.0.1"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.1/32"]
+        vrf1:
+          ipv4_addresses: ["10.255.1.1/32"]
+          vrf: vrf1
+        vrf2:
+          ipv4_addresses: ["10.255.2.1/32"]
+          vrf: vrf2
+      common:
+        # to server01 eth11
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.1/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server03 eth11
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.1/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.18/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.18/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.18/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.22/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.22/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.22/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.26/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.26/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.26/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.30/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.30/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.30/30"]
+          vrf: vrf2
+          bfd: True
+
+    bgp:
+      asn: 650201
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.17"
+          asn: 650301
+          bfd: swp1
+        - name: to_spine01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.17"
+          asn: 650301
+          bfd: swp1.101
+        - name: to_spine01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.17"
+          asn: 650301
+          bfd: swp1.102
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.21"
+          asn: 650302
+          bfd: swp1
+        - name: to_spine02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.21"
+          asn: 650302
+          bfd: swp1.101
+        - name: to_spine02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.21"
+          asn: 650302
+          bfd: swp1.102
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.25"
+          asn: 650303
+          bfd: swp1
+        - name: to_spine03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.25"
+          asn: 650303
+          bfd: swp1.101
+        - name: to_spine03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.25"
+          asn: 650303
+          bfd: swp1.102
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.29"
+          asn: 650304
+          bfd: swp1
+        - name: to_spine04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.29"
+          asn: 650304
+          bfd: swp1.101
+        - name: to_spine04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.29"
+          asn: 650304
+          bfd: swp1.102
+        # server01
+        - name: to_server01
+          vrf: vrf1
+          ipv4: "10.252.1.2"
+          asn: 650101
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server03
+        - name: to_server03
+          vrf: vrf2
+          ipv4: "10.252.2.2"
+          asn: 650103
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf02 ####################################
+  leaf02:
+    router_id: "10.255.0.2"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.2/32"]
+        vrf1:
+          ipv4_addresses: ["10.255.1.2/32"]
+          vrf: vrf1
+        vrf2:
+          ipv4_addresses: ["10.255.2.2/32"]
+          vrf: vrf2
+      common:
+        # to server01 eth12
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.5/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server03 eth12
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.5/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp2
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.34/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.34/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.34/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.38/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.38/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.38/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.42/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.42/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.42/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.46/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.46/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.46/30"]
+          vrf: vrf2
+          bfd: True
+
+    bgp:
+      asn: 650202
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.33"
+          asn: 650301
+          bfd: swp1
+        - name: to_spine01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.33"
+          asn: 650301
+          bfd: swp1.101
+        - name: to_spine01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.33"
+          asn: 650301
+          bfd: swp1.102
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.37"
+          asn: 650302
+          bfd: swp1
+        - name: to_spine02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.37"
+          asn: 650302
+          bfd: swp1.101
+        - name: to_spine02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.37"
+          asn: 650302
+          bfd: swp1.102
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.41"
+          asn: 650303
+          bfd: swp1
+        - name: to_spine03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.41"
+          asn: 650303
+          bfd: swp1.101
+        - name: to_spine03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.41"
+          asn: 650303
+          bfd: swp1.102
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.45"
+          asn: 650304
+          bfd: swp1
+        - name: to_spine04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.45"
+          asn: 650304
+          bfd: swp1.101
+        - name: to_spine04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.45"
+          asn: 650304
+          bfd: swp1.102
+        # server01
+        - name: to_server01
+          vrf: vrf1
+          ipv4: "10.252.1.6"
+          asn: 650101
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server03
+        - name: to_server03
+          vrf: vrf2
+          ipv4: "10.252.2.6"
+          asn: 650103
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf03 ####################################
+  leaf03:
+    router_id: "10.255.0.3"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.3/32"]
+        vrf1:
+          ipv4_addresses: ["10.255.1.3/32"]
+          vrf: vrf1
+        vrf2:
+          ipv4_addresses: ["10.255.2.3/32"]
+          vrf: vrf2
+      common:
+        # to server02 eth11
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.9/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server04 eth11
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.9/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.50/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.50/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.50/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.54/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.54/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.54/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.58/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.58/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.58/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.62/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.62/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.62/30"]
+          vrf: vrf2
+          bfd: True
+
+    bgp:
+      asn: 650203
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.49"
+          asn: 650301
+          bfd: swp1
+        - name: to_spine01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.49"
+          asn: 650301
+          bfd: swp1.101
+        - name: to_spine01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.49"
+          asn: 650301
+          bfd: swp1.102
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.53"
+          asn: 650302
+          bfd: swp1
+        - name: to_spine02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.53"
+          asn: 650302
+          bfd: swp1.101
+        - name: to_spine02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.53"
+          asn: 650302
+          bfd: swp1.102
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.57"
+          asn: 650303
+          bfd: swp1
+        - name: to_spine03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.57"
+          asn: 650303
+          bfd: swp1.101
+        - name: to_spine03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.57"
+          asn: 650303
+          bfd: swp1.102
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.61"
+          asn: 650304
+          bfd: swp1
+        - name: to_spine04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.61"
+          asn: 650304
+          bfd: swp1.101
+        - name: to_spine04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.61"
+          asn: 650304
+          bfd: swp1.102
+        # server02
+        - name: to_server02
+          vrf: vrf1
+          ipv4: "10.252.1.10"
+          asn: 650102
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server04
+        - name: to_server04
+          vrf: vrf2
+          ipv4: "10.252.2.10"
+          asn: 650104
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## leaf04 ####################################
+  leaf04:
+    router_id: "10.255.0.4"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.4/32"]
+        vrf1:
+          ipv4_addresses: ["10.255.1.4/32"]
+          vrf: vrf1
+        vrf2:
+          ipv4_addresses: ["10.255.2.4/32"]
+          vrf: vrf2
+      common:
+        # to server02 eth12
+        swp5s0:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.1.13/30"]
+          vrf: vrf1
+          bfd: True
+
+        # to server04 eth12
+        swp5s1:
+          autoneg: True
+          speed: 25000
+          ipv4_addresses: ["10.252.2.13/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.66/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.66/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.66/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.70/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.70/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.70/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.74/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.74/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.74/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to spine04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          mtu: 9216
+          ipv4_addresses: ["10.252.0.78/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.78/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.78/30"]
+          vrf: vrf2
+          bfd: True
+
+    bgp:
+      asn: 650204
+      merge_paths: True
+      neighbors:
+        # spine01
+        - name: to_spine01
+          ipv4: "10.252.0.65"
+          asn: 650301
+          bfd: swp1
+        - name: to_spine01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.65"
+          asn: 650301
+          bfd: swp1.101
+        - name: to_spine01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.65"
+          asn: 650301
+          bfd: swp1.102
+        # spine02
+        - name: to_spine02
+          ipv4: "10.252.0.69"
+          asn: 650302
+          bfd: swp1
+        - name: to_spine02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.69"
+          asn: 650302
+          bfd: swp1.101
+        - name: to_spine02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.69"
+          asn: 650302
+          bfd: swp1.102
+        # spine03
+        - name: to_spine03
+          ipv4: "10.252.0.73"
+          asn: 650303
+          bfd: swp1
+        - name: to_spine03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.73"
+          asn: 650303
+          bfd: swp1.101
+        - name: to_spine03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.73"
+          asn: 650303
+          bfd: swp1.102
+        # spine04
+        - name: to_spine04
+          ipv4: "10.252.0.77"
+          asn: 650304
+          bfd: swp1
+        - name: to_spine04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.77"
+          asn: 650304
+          bfd: swp1.101
+        - name: to_spine04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.77"
+          asn: 650304
+          bfd: swp1.102
+        # server02
+        - name: to_server02
+          vrf: vrf1
+          ipv4: "10.252.1.14"
+          asn: 650102
+          bfd: swp5s0
+          import: import_bgp_from_servers
+        # server04
+        - name: to_server04
+          vrf: vrf2
+          ipv4: "10.252.2.14"
+          asn: 650104
+          bfd: swp5s1
+          import: import_bgp_from_servers
+      import: all
+      export: all
+
+################################## spine01 ####################################
+  spine01:
+    router_id: "10.255.0.11"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.11/32"]
+        edz:
+          ipv4_addresses: ["10.255.1.11/32"]
+          vrf: vrf1
+        epz:
+          ipv4_addresses: ["10.255.2.11/32"]
+          vrf: vrf2
+      common:
+        # to leaf01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.17/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.17/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.17/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.33/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.33/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.33/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.49/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.49/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.49/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.65/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.65/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.65/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to cisco 0/4/0/0
+        swp5:
+          ipv4_addresses: ["10.252.0.81/30"]
+          bfd: True
+
+        # to huawei 1/0/30
+        swp6:
+          ipv4_addresses: ["10.252.0.85/30"]
+          bfd: True
+
+    bgp:
+      asn: 650301
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.18"
+          asn: 650201
+          bfd: swp1
+        - name: to_leaf01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.18"
+          asn: 650201
+          bfd: swp1.101
+        - name: to_leaf01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.18"
+          asn: 650201
+          bfd: swp1.102
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.34"
+          asn: 650202
+          bfd: swp2
+        - name: to_leaf02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.34"
+          asn: 650202
+          bfd: swp2.101
+        - name: to_leaf02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.34"
+          asn: 650202
+          bfd: swp2.102
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.50"
+          asn: 650203
+          bfd: swp3
+        - name: to_leaf03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.50"
+          asn: 650203
+          bfd: swp3.101
+        - name: to_leaf03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.50"
+          asn: 650203
+          bfd: swp3.102
+        # leaf03
+        - name: to_leaf04
+          ipv4: "10.252.0.66"
+          asn: 650204
+          bfd: swp4
+        - name: to_leaf04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.66"
+          asn: 650204
+          bfd: swp4.101
+        - name: to_leaf04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.66"
+          asn: 650204
+          bfd: swp4.102
+        # cisco
+        - name: to_cisco
+          ipv4: "10.252.1.82"
+          asn: 65333
+          bfd: swp5
+          template: ext
+        # huawei
+        - name: to_huawei
+          ipv4: "10.252.1.86"
+          asn: 64888
+          bfd: swp6
+          template: ext
+      import: all
+      export: all
+
+################################## spine02 ####################################
+  spine02:
+    router_id: "10.255.0.12"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.12/32"]
+        edz:
+          ipv4_addresses: ["10.255.1.12/32"]
+          vrf: vrf1
+        epz:
+          ipv4_addresses: ["10.255.2.12/32"]
+          vrf: vrf2
+      common:
+        # to leaf01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.21/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.21/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.21/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.37/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.37/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.37/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.53/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.53/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.53/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.69/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.69/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.69/30"]
+          vrf: vrf2
+          bfd: True
+
+        swp5:
+
+        swp6:
+
+
+    bgp:
+      asn: 650302
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.22"
+          asn: 650201
+          bfd: swp1
+        - name: to_leaf01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.22"
+          asn: 650201
+          bfd: swp1.101
+        - name: to_leaf01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.22"
+          asn: 650201
+          bfd: swp1.102
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.38"
+          asn: 650202
+          bfd: swp2
+        - name: to_leaf02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.38"
+          asn: 650202
+          bfd: swp2.101
+        - name: to_leaf02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.38"
+          asn: 650202
+          bfd: swp2.102
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.54"
+          asn: 650203
+          bfd: swp3
+        - name: to_leaf03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.54"
+          asn: 650203
+          bfd: swp3.101
+        - name: to_leaf03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.54"
+          asn: 650203
+          bfd: swp3.102
+        # leaf03
+        - name: to_leaf04
+          ipv4: "10.252.0.70"
+          asn: 650204
+          bfd: swp4
+        - name: to_leaf04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.70"
+          asn: 650204
+          bfd: swp4.101
+        - name: to_leaf04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.70"
+          asn: 650204
+          bfd: swp4.102
+      import: all
+      export: all
+
+################################## spine03 ####################################
+  spine03:
+    router_id: "10.255.0.13"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.13/32"]
+        edz:
+          ipv4_addresses: ["10.255.1.13/32"]
+          vrf: vrf1
+        epz:
+          ipv4_addresses: ["10.255.2.13/32"]
+          vrf: vrf2
+      common:
+        # to leaf01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.25/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.25/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.25/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.41/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.41/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.41/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.57/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.57/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.57/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.73/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.73/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.73/30"]
+          vrf: vrf2
+          bfd: True
+
+        swp5:
+
+        swp6:
+
+    bgp:
+      asn: 650303
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.26"
+          asn: 650201
+          bfd: swp1
+        - name: to_leaf01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.26"
+          asn: 650201
+          bfd: swp1.101
+        - name: to_leaf01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.26"
+          asn: 650201
+          bfd: swp1.102
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.42"
+          asn: 650202
+          bfd: swp2
+        - name: to_leaf02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.42"
+          asn: 650202
+          bfd: swp2.101
+        - name: to_leaf02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.42"
+          asn: 650202
+          bfd: swp2.102
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.58"
+          asn: 650203
+          bfd: swp3
+        - name: to_leaf03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.58"
+          asn: 650203
+          bfd: swp3.101
+        - name: to_leaf03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.58"
+          asn: 650203
+          bfd: swp3.102
+        # leaf03
+        - name: to_leaf04
+          ipv4: "10.252.0.74"
+          asn: 650204
+          bfd: swp4
+        - name: to_leaf04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.74"
+          asn: 650204
+          bfd: swp4.101
+        - name: to_leaf04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.74"
+          asn: 650204
+          bfd: swp4.102
+      import: all
+      export: all
+
+################################## spine04 ####################################
+  spine04:
+    router_id: "10.255.0.14"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.14/32"]
+        edz:
+          ipv4_addresses: ["10.255.1.14/32"]
+          vrf: vrf1
+        epz:
+          ipv4_addresses: ["10.255.2.14/32"]
+          vrf: vrf2
+      common:
+        # to leaf01 swp1
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.29/30"]
+          bfd: True
+
+        swp1.101:
+          ipv4_addresses: ["10.252.1.29/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp1.102:
+          ipv4_addresses: ["10.252.2.29/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf02 swp1
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.45/30"]
+          bfd: True
+
+        swp2.101:
+          ipv4_addresses: ["10.252.1.45/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp2.102:
+          ipv4_addresses: ["10.252.2.45/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf03 swp1
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.61/30"]
+          bfd: True
+
+        swp3.101:
+          ipv4_addresses: ["10.252.1.61/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp3.102:
+          ipv4_addresses: ["10.252.2.61/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to leaf04 swp1
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.0.77/30"]
+          bfd: True
+
+        swp4.101:
+          ipv4_addresses: ["10.252.1.77/30"]
+          vrf: vrf1
+          bfd: True
+
+        swp4.102:
+          ipv4_addresses: ["10.252.2.77/30"]
+          vrf: vrf2
+          bfd: True
+
+        # to cisco 0/4/0/1
+        swp5:
+          ipv4_addresses: ["10.252.0.89/30"]
+          bfd: True
+
+        # to huawei 1/0/31
+        swp6:
+          ipv4_addresses: ["10.252.0.93/30"]
+          bfd: True
+
+    bgp:
+      asn: 650304
+      merge_paths: True
+      neighbors:
+        # leaf01
+        - name: to_leaf01
+          ipv4: "10.252.0.30"
+          asn: 650201
+          bfd: swp1
+        - name: to_leaf01_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.30"
+          asn: 650201
+          bfd: swp1.101
+        - name: to_leaf01_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.30"
+          asn: 650201
+          bfd: swp1.102
+        # leaf02
+        - name: to_leaf02
+          ipv4: "10.252.0.46"
+          asn: 650202
+          bfd: swp2
+        - name: to_leaf02_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.46"
+          asn: 650202
+          bfd: swp2.101
+        - name: to_leaf02_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.46"
+          asn: 650202
+          bfd: swp2.102
+        # leaf03
+        - name: to_leaf03
+          ipv4: "10.252.0.62"
+          asn: 650203
+          bfd: swp3
+        - name: to_leaf03_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.62"
+          asn: 650203
+          bfd: swp3.101
+        - name: to_leaf03_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.62"
+          asn: 650203
+          bfd: swp3.102
+        # leaf03
+        - name: to_leaf04
+          ipv4: "10.252.0.78"
+          asn: 650204
+          bfd: swp4
+        - name: to_leaf04_vrf1
+          vrf: vrf1
+          ipv4: "10.252.1.78"
+          asn: 650204
+          bfd: swp4.101
+        - name: to_leaf04_vrf2
+          vrf: vrf2
+          ipv4: "10.252.2.78"
+          asn: 650204
+          bfd: swp4.102
+        # cisco
+        - name: to_cisco
+          ipv4: "10.252.1.94"
+          asn: 65333
+          bfd: swp5
+          template: ext
+        # huawei
+        - name: to_huawei
+          ipv4: "10.252.1.90"
+          asn: 64888
+          bfd: swp6
+          template: ext
+      import: all
+      export: all
+
+################################## server01 ####################################
+  server01:
+    router_id: "10.255.0.31"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.1/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.1.2/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.1.6/30"]
+          bfd: True
+    bgp:
+      asn: 650101
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.1.1"
+          asn: 650201
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.1.5"
+          asn: 650202
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server02 ####################################
+  server02:
+    router_id: "10.255.0.32"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.2/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.1.10/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.1.14/30"]
+          bfd: True
+    bgp:
+      asn: 650102
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.1.9"
+          asn: 650203
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.1.13"
+          asn: 650204
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server03 ####################################
+  server03:
+    router_id: "10.255.0.33"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.2.3/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.2.2/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.2.6/30"]
+          bfd: True
+    bgp:
+      asn: 650103
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.2.1"
+          asn: 650201
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.2.5"
+          asn: 650202
+          bfd: eth12
+      import: all
+      export: all
+
+################################## server04 ####################################
+  server04:
+    router_id: "10.255.0.34"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.2.4/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.2.10/30"]
+          bfd: True
+        eth12:
+          ipv4_addresses: ["10.252.2.14/30"]
+          bfd: True
+    bgp:
+      asn: 650104
+      merge_paths: True
+      neighbors:
+        - name: to_leafA
+          ipv4: "10.252.2.9"
+          asn: 650203
+          bfd: eth11
+        - name: to_leafB
+          ipv4: "10.252.2.13"
+          asn: 650204
+          bfd: eth12
+      import: all
+      export: all

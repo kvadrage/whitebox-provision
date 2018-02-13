@@ -4,39 +4,34 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: shutdown ifaces
-      command: ifdown {{item}}
-      when: item != "eth0"
-      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
-                  node[ansible_hostname].interfaces.bonds|default({}),
-                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
-    - name: clear ifaces
-      file:
-        path: "/etc/net/ifaces/{{item}}/"
-        state: absent
-      when: item != "eth0"
-      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
-                  node[ansible_hostname].interfaces.bonds|default({}),
-                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
+
+    - name: clear rc.network
+      copy: content="" dest="/etc/rc.d/rc.network"
+
+    - name: reset networking
+      blockinfile:
+        dest: /etc/rc.d/rc.network
+        block: |
+          swport reset all eth0,vagrant
       notify: restart network
 
     - name: clear bird config
-      copy: content="" dest="{{bird_conf}}"
+      copy: content="" dest="/etc/bird/bird4.conf"
 
-    - name: initialize bird config
+    - name: initialize bird4 config
       blockinfile:
-        dest: ""{{bird_conf}}""
+        dest: "/etc/bird/bird4.conf"
         block: |
           protocol kernel {
           }
-      notify: stop bird
+      notify: restart bird
   handlers:
     - name: restart network
       service: name=network state=restarted
-    - name: stop bird
-      service: name=bird state=stopped
+    - name: restart bird
+      service: name=bird state=restarted
 
-- hosts: servers_centos
+- hosts: servers_ubuntu
   user: admin
   become: yes
   become_method: sudo
@@ -47,10 +42,8 @@
       with_items: "{{node[ansible_hostname].interfaces.common|default({})}}"
     - name: clear ifaces
       file:
-        path: "/etc/sysconfig/network-scripts/ifcfg-{{item}}"
+        path: "/etc/networking/interfaces.d/uplinks"
         state: absent
-      when: item != "eth0"
-      with_items: "{{node[ansible_hostname].interfaces.common|default({})}}"
       notify: restart network
 
     - name: clear bird config
@@ -62,22 +55,9 @@
         block: |
           protocol kernel {
           }
-      notify: stop bird
+      notify: restart bird
   handlers:
     - name: restart network
       service: name=network state=restarted
-    - name: stop bird
-      service: name=bird state=stopped
-  #   - name: clear zebra config
-  #     copy: content="" dest=/etc/quagga/zebra.conf
-  #     notify: stop zebra
-  #   - name: clear ospfd config
-  #     copy: content="" dest=/etc/quagga/ospfd.conf
-  #     notify: stop ospfd
-  # handlers:
-  #   - name: restart network
-  #     service: name=network state=restarted
-  #   - name: stop zebra
-  #     service: name=zebra state=stopped
-  #   - name: stop ospfd
-  #     service: name=ospfd state=stopped
+    - name: restart bird
+      service: name=bird state=restarted
