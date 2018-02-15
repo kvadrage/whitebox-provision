@@ -13610,13 +13610,13 @@ node:
           bfd: swp4.164
         # cisco
         - name: to_cisco
-          ipv4: "10.252.1.82"
+          ipv4: "10.252.0.82"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
-          ipv4: "10.252.1.86"
+          ipv4: "10.252.0.86"
           asn: 64888
           bfd: swp6
           template: ext
@@ -21717,13 +21717,13 @@ node:
           bfd: swp4.164
         # cisco
         - name: to_cisco
-          ipv4: "10.252.1.94"
+          ipv4: "10.252.0.94"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
-          ipv4: "10.252.1.90"
+          ipv4: "10.252.0.90"
           asn: 64888
           bfd: swp6
           template: ext
