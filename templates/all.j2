@@ -174,15 +174,15 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.2"
           asn: 650101
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server03
         - name: to_server03
           vrf: vrf2
           ipv4: "10.252.2.2"
           asn: 650103
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -345,15 +345,15 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.6"
           asn: 650101
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server03
         - name: to_server03
           vrf: vrf2
           ipv4: "10.252.2.6"
           asn: 650103
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -516,15 +516,15 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.10"
           asn: 650102
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server04
         - name: to_server04
           vrf: vrf2
           ipv4: "10.252.2.10"
           asn: 650104
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -687,15 +687,15 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.14"
           asn: 650102
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server04
         - name: to_server04
           vrf: vrf2
           ipv4: "10.252.2.14"
           asn: 650104
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 

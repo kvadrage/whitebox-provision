@@ -1423,1317 +1423,1317 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1
         - name: to_spine01_vrf1
           vrf: vrf1
           ipv4: "10.252.1.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.101
         - name: to_spine01_vrf2
           vrf: vrf2
           ipv4: "10.252.2.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.102
         - name: to_spine01_vrf3
           vrf: vrf3
           ipv4: "10.252.3.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.103
         - name: to_spine01_vrf4
           vrf: vrf4
           ipv4: "10.252.4.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.104
         - name: to_spine01_vrf5
           vrf: vrf5
           ipv4: "10.252.5.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.105
         - name: to_spine01_vrf6
           vrf: vrf6
           ipv4: "10.252.6.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.106
         - name: to_spine01_vrf7
           vrf: vrf7
           ipv4: "10.252.7.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.107
         - name: to_spine01_vrf8
           vrf: vrf8
           ipv4: "10.252.8.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.108
         - name: to_spine01_vrf9
           vrf: vrf9
           ipv4: "10.252.9.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.109
         - name: to_spine01_vrf10
           vrf: vrf10
           ipv4: "10.252.10.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.110
         - name: to_spine01_vrf11
           vrf: vrf11
           ipv4: "10.252.11.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.111
         - name: to_spine01_vrf12
           vrf: vrf12
           ipv4: "10.252.12.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.112
         - name: to_spine01_vrf13
           vrf: vrf13
           ipv4: "10.252.13.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.113
         - name: to_spine01_vrf14
           vrf: vrf14
           ipv4: "10.252.14.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.114
         - name: to_spine01_vrf15
           vrf: vrf15
           ipv4: "10.252.15.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.115
         - name: to_spine01_vrf16
           vrf: vrf16
           ipv4: "10.252.16.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.116
         - name: to_spine01_vrf17
           vrf: vrf17
           ipv4: "10.252.17.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.117
         - name: to_spine01_vrf18
           vrf: vrf18
           ipv4: "10.252.18.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.118
         - name: to_spine01_vrf19
           vrf: vrf19
           ipv4: "10.252.19.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.119
         - name: to_spine01_vrf20
           vrf: vrf20
           ipv4: "10.252.20.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.120
         - name: to_spine01_vrf21
           vrf: vrf21
           ipv4: "10.252.21.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.121
         - name: to_spine01_vrf22
           vrf: vrf22
           ipv4: "10.252.22.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.122
         - name: to_spine01_vrf23
           vrf: vrf23
           ipv4: "10.252.23.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.123
         - name: to_spine01_vrf24
           vrf: vrf24
           ipv4: "10.252.24.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.124
         - name: to_spine01_vrf25
           vrf: vrf25
           ipv4: "10.252.25.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.125
         - name: to_spine01_vrf26
           vrf: vrf26
           ipv4: "10.252.26.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.126
         - name: to_spine01_vrf27
           vrf: vrf27
           ipv4: "10.252.27.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.127
         - name: to_spine01_vrf28
           vrf: vrf28
           ipv4: "10.252.28.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.128
         - name: to_spine01_vrf29
           vrf: vrf29
           ipv4: "10.252.29.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.129
         - name: to_spine01_vrf30
           vrf: vrf30
           ipv4: "10.252.30.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.130
         - name: to_spine01_vrf31
           vrf: vrf31
           ipv4: "10.252.31.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.131
         - name: to_spine01_vrf32
           vrf: vrf32
           ipv4: "10.252.32.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.132
         - name: to_spine01_vrf33
           vrf: vrf33
           ipv4: "10.252.33.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.133
         - name: to_spine01_vrf34
           vrf: vrf34
           ipv4: "10.252.34.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.134
         - name: to_spine01_vrf35
           vrf: vrf35
           ipv4: "10.252.35.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.135
         - name: to_spine01_vrf36
           vrf: vrf36
           ipv4: "10.252.36.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.136
         - name: to_spine01_vrf37
           vrf: vrf37
           ipv4: "10.252.37.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.137
         - name: to_spine01_vrf38
           vrf: vrf38
           ipv4: "10.252.38.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.138
         - name: to_spine01_vrf39
           vrf: vrf39
           ipv4: "10.252.39.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.139
         - name: to_spine01_vrf40
           vrf: vrf40
           ipv4: "10.252.40.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.140
         - name: to_spine01_vrf41
           vrf: vrf41
           ipv4: "10.252.41.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.141
         - name: to_spine01_vrf42
           vrf: vrf42
           ipv4: "10.252.42.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.142
         - name: to_spine01_vrf43
           vrf: vrf43
           ipv4: "10.252.43.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.143
         - name: to_spine01_vrf44
           vrf: vrf44
           ipv4: "10.252.44.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.144
         - name: to_spine01_vrf45
           vrf: vrf45
           ipv4: "10.252.45.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.145
         - name: to_spine01_vrf46
           vrf: vrf46
           ipv4: "10.252.46.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.146
         - name: to_spine01_vrf47
           vrf: vrf47
           ipv4: "10.252.47.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.147
         - name: to_spine01_vrf48
           vrf: vrf48
           ipv4: "10.252.48.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.148
         - name: to_spine01_vrf49
           vrf: vrf49
           ipv4: "10.252.49.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.149
         - name: to_spine01_vrf50
           vrf: vrf50
           ipv4: "10.252.50.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.150
         - name: to_spine01_vrf51
           vrf: vrf51
           ipv4: "10.252.51.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.151
         - name: to_spine01_vrf52
           vrf: vrf52
           ipv4: "10.252.52.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.152
         - name: to_spine01_vrf53
           vrf: vrf53
           ipv4: "10.252.53.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.153
         - name: to_spine01_vrf54
           vrf: vrf54
           ipv4: "10.252.54.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.154
         - name: to_spine01_vrf55
           vrf: vrf55
           ipv4: "10.252.55.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.155
         - name: to_spine01_vrf56
           vrf: vrf56
           ipv4: "10.252.56.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.156
         - name: to_spine01_vrf57
           vrf: vrf57
           ipv4: "10.252.57.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.157
         - name: to_spine01_vrf58
           vrf: vrf58
           ipv4: "10.252.58.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.158
         - name: to_spine01_vrf59
           vrf: vrf59
           ipv4: "10.252.59.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.159
         - name: to_spine01_vrf60
           vrf: vrf60
           ipv4: "10.252.60.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.160
         - name: to_spine01_vrf61
           vrf: vrf61
           ipv4: "10.252.61.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.161
         - name: to_spine01_vrf62
           vrf: vrf62
           ipv4: "10.252.62.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.162
         - name: to_spine01_vrf63
           vrf: vrf63
           ipv4: "10.252.63.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.163
         - name: to_spine01_vrf64
           vrf: vrf64
           ipv4: "10.252.64.17"
-          asn: 650301
+          asn: 650300
           bfd: swp1.164
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2
         - name: to_spine02_vrf1
           vrf: vrf1
           ipv4: "10.252.1.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.101
         - name: to_spine02_vrf2
           vrf: vrf2
           ipv4: "10.252.2.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.102
         - name: to_spine02_vrf3
           vrf: vrf3
           ipv4: "10.252.3.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.103
         - name: to_spine02_vrf4
           vrf: vrf4
           ipv4: "10.252.4.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.104
         - name: to_spine02_vrf5
           vrf: vrf5
           ipv4: "10.252.5.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.105
         - name: to_spine02_vrf6
           vrf: vrf6
           ipv4: "10.252.6.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.106
         - name: to_spine02_vrf7
           vrf: vrf7
           ipv4: "10.252.7.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.107
         - name: to_spine02_vrf8
           vrf: vrf8
           ipv4: "10.252.8.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.108
         - name: to_spine02_vrf9
           vrf: vrf9
           ipv4: "10.252.9.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.109
         - name: to_spine02_vrf10
           vrf: vrf10
           ipv4: "10.252.10.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.110
         - name: to_spine02_vrf11
           vrf: vrf11
           ipv4: "10.252.11.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.111
         - name: to_spine02_vrf12
           vrf: vrf12
           ipv4: "10.252.12.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.112
         - name: to_spine02_vrf13
           vrf: vrf13
           ipv4: "10.252.13.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.113
         - name: to_spine02_vrf14
           vrf: vrf14
           ipv4: "10.252.14.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.114
         - name: to_spine02_vrf15
           vrf: vrf15
           ipv4: "10.252.15.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.115
         - name: to_spine02_vrf16
           vrf: vrf16
           ipv4: "10.252.16.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.116
         - name: to_spine02_vrf17
           vrf: vrf17
           ipv4: "10.252.17.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.117
         - name: to_spine02_vrf18
           vrf: vrf18
           ipv4: "10.252.18.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.118
         - name: to_spine02_vrf19
           vrf: vrf19
           ipv4: "10.252.19.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.119
         - name: to_spine02_vrf20
           vrf: vrf20
           ipv4: "10.252.20.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.120
         - name: to_spine02_vrf21
           vrf: vrf21
           ipv4: "10.252.21.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.121
         - name: to_spine02_vrf22
           vrf: vrf22
           ipv4: "10.252.22.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.122
         - name: to_spine02_vrf23
           vrf: vrf23
           ipv4: "10.252.23.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.123
         - name: to_spine02_vrf24
           vrf: vrf24
           ipv4: "10.252.24.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.124
         - name: to_spine02_vrf25
           vrf: vrf25
           ipv4: "10.252.25.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.125
         - name: to_spine02_vrf26
           vrf: vrf26
           ipv4: "10.252.26.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.126
         - name: to_spine02_vrf27
           vrf: vrf27
           ipv4: "10.252.27.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.127
         - name: to_spine02_vrf28
           vrf: vrf28
           ipv4: "10.252.28.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.128
         - name: to_spine02_vrf29
           vrf: vrf29
           ipv4: "10.252.29.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.129
         - name: to_spine02_vrf30
           vrf: vrf30
           ipv4: "10.252.30.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.130
         - name: to_spine02_vrf31
           vrf: vrf31
           ipv4: "10.252.31.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.131
         - name: to_spine02_vrf32
           vrf: vrf32
           ipv4: "10.252.32.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.132
         - name: to_spine02_vrf33
           vrf: vrf33
           ipv4: "10.252.33.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.133
         - name: to_spine02_vrf34
           vrf: vrf34
           ipv4: "10.252.34.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.134
         - name: to_spine02_vrf35
           vrf: vrf35
           ipv4: "10.252.35.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.135
         - name: to_spine02_vrf36
           vrf: vrf36
           ipv4: "10.252.36.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.136
         - name: to_spine02_vrf37
           vrf: vrf37
           ipv4: "10.252.37.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.137
         - name: to_spine02_vrf38
           vrf: vrf38
           ipv4: "10.252.38.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.138
         - name: to_spine02_vrf39
           vrf: vrf39
           ipv4: "10.252.39.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.139
         - name: to_spine02_vrf40
           vrf: vrf40
           ipv4: "10.252.40.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.140
         - name: to_spine02_vrf41
           vrf: vrf41
           ipv4: "10.252.41.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.141
         - name: to_spine02_vrf42
           vrf: vrf42
           ipv4: "10.252.42.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.142
         - name: to_spine02_vrf43
           vrf: vrf43
           ipv4: "10.252.43.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.143
         - name: to_spine02_vrf44
           vrf: vrf44
           ipv4: "10.252.44.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.144
         - name: to_spine02_vrf45
           vrf: vrf45
           ipv4: "10.252.45.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.145
         - name: to_spine02_vrf46
           vrf: vrf46
           ipv4: "10.252.46.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.146
         - name: to_spine02_vrf47
           vrf: vrf47
           ipv4: "10.252.47.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.147
         - name: to_spine02_vrf48
           vrf: vrf48
           ipv4: "10.252.48.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.148
         - name: to_spine02_vrf49
           vrf: vrf49
           ipv4: "10.252.49.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.149
         - name: to_spine02_vrf50
           vrf: vrf50
           ipv4: "10.252.50.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.150
         - name: to_spine02_vrf51
           vrf: vrf51
           ipv4: "10.252.51.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.151
         - name: to_spine02_vrf52
           vrf: vrf52
           ipv4: "10.252.52.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.152
         - name: to_spine02_vrf53
           vrf: vrf53
           ipv4: "10.252.53.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.153
         - name: to_spine02_vrf54
           vrf: vrf54
           ipv4: "10.252.54.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.154
         - name: to_spine02_vrf55
           vrf: vrf55
           ipv4: "10.252.55.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.155
         - name: to_spine02_vrf56
           vrf: vrf56
           ipv4: "10.252.56.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.156
         - name: to_spine02_vrf57
           vrf: vrf57
           ipv4: "10.252.57.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.157
         - name: to_spine02_vrf58
           vrf: vrf58
           ipv4: "10.252.58.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.158
         - name: to_spine02_vrf59
           vrf: vrf59
           ipv4: "10.252.59.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.159
         - name: to_spine02_vrf60
           vrf: vrf60
           ipv4: "10.252.60.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.160
         - name: to_spine02_vrf61
           vrf: vrf61
           ipv4: "10.252.61.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.161
         - name: to_spine02_vrf62
           vrf: vrf62
           ipv4: "10.252.62.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.162
         - name: to_spine02_vrf63
           vrf: vrf63
           ipv4: "10.252.63.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.163
         - name: to_spine02_vrf64
           vrf: vrf64
           ipv4: "10.252.64.21"
-          asn: 650302
+          asn: 650300
           bfd: swp2.164
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3
         - name: to_spine03_vrf1
           vrf: vrf1
           ipv4: "10.252.1.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.101
         - name: to_spine03_vrf2
           vrf: vrf2
           ipv4: "10.252.2.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.102
         - name: to_spine03_vrf3
           vrf: vrf3
           ipv4: "10.252.3.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.103
         - name: to_spine03_vrf4
           vrf: vrf4
           ipv4: "10.252.4.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.104
         - name: to_spine03_vrf5
           vrf: vrf5
           ipv4: "10.252.5.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.105
         - name: to_spine03_vrf6
           vrf: vrf6
           ipv4: "10.252.6.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.106
         - name: to_spine03_vrf7
           vrf: vrf7
           ipv4: "10.252.7.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.107
         - name: to_spine03_vrf8
           vrf: vrf8
           ipv4: "10.252.8.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.108
         - name: to_spine03_vrf9
           vrf: vrf9
           ipv4: "10.252.9.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.109
         - name: to_spine03_vrf10
           vrf: vrf10
           ipv4: "10.252.10.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.110
         - name: to_spine03_vrf11
           vrf: vrf11
           ipv4: "10.252.11.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.111
         - name: to_spine03_vrf12
           vrf: vrf12
           ipv4: "10.252.12.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.112
         - name: to_spine03_vrf13
           vrf: vrf13
           ipv4: "10.252.13.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.113
         - name: to_spine03_vrf14
           vrf: vrf14
           ipv4: "10.252.14.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.114
         - name: to_spine03_vrf15
           vrf: vrf15
           ipv4: "10.252.15.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.115
         - name: to_spine03_vrf16
           vrf: vrf16
           ipv4: "10.252.16.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.116
         - name: to_spine03_vrf17
           vrf: vrf17
           ipv4: "10.252.17.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.117
         - name: to_spine03_vrf18
           vrf: vrf18
           ipv4: "10.252.18.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.118
         - name: to_spine03_vrf19
           vrf: vrf19
           ipv4: "10.252.19.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.119
         - name: to_spine03_vrf20
           vrf: vrf20
           ipv4: "10.252.20.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.120
         - name: to_spine03_vrf21
           vrf: vrf21
           ipv4: "10.252.21.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.121
         - name: to_spine03_vrf22
           vrf: vrf22
           ipv4: "10.252.22.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.122
         - name: to_spine03_vrf23
           vrf: vrf23
           ipv4: "10.252.23.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.123
         - name: to_spine03_vrf24
           vrf: vrf24
           ipv4: "10.252.24.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.124
         - name: to_spine03_vrf25
           vrf: vrf25
           ipv4: "10.252.25.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.125
         - name: to_spine03_vrf26
           vrf: vrf26
           ipv4: "10.252.26.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.126
         - name: to_spine03_vrf27
           vrf: vrf27
           ipv4: "10.252.27.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.127
         - name: to_spine03_vrf28
           vrf: vrf28
           ipv4: "10.252.28.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.128
         - name: to_spine03_vrf29
           vrf: vrf29
           ipv4: "10.252.29.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.129
         - name: to_spine03_vrf30
           vrf: vrf30
           ipv4: "10.252.30.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.130
         - name: to_spine03_vrf31
           vrf: vrf31
           ipv4: "10.252.31.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.131
         - name: to_spine03_vrf32
           vrf: vrf32
           ipv4: "10.252.32.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.132
         - name: to_spine03_vrf33
           vrf: vrf33
           ipv4: "10.252.33.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.133
         - name: to_spine03_vrf34
           vrf: vrf34
           ipv4: "10.252.34.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.134
         - name: to_spine03_vrf35
           vrf: vrf35
           ipv4: "10.252.35.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.135
         - name: to_spine03_vrf36
           vrf: vrf36
           ipv4: "10.252.36.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.136
         - name: to_spine03_vrf37
           vrf: vrf37
           ipv4: "10.252.37.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.137
         - name: to_spine03_vrf38
           vrf: vrf38
           ipv4: "10.252.38.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.138
         - name: to_spine03_vrf39
           vrf: vrf39
           ipv4: "10.252.39.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.139
         - name: to_spine03_vrf40
           vrf: vrf40
           ipv4: "10.252.40.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.140
         - name: to_spine03_vrf41
           vrf: vrf41
           ipv4: "10.252.41.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.141
         - name: to_spine03_vrf42
           vrf: vrf42
           ipv4: "10.252.42.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.142
         - name: to_spine03_vrf43
           vrf: vrf43
           ipv4: "10.252.43.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.143
         - name: to_spine03_vrf44
           vrf: vrf44
           ipv4: "10.252.44.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.144
         - name: to_spine03_vrf45
           vrf: vrf45
           ipv4: "10.252.45.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.145
         - name: to_spine03_vrf46
           vrf: vrf46
           ipv4: "10.252.46.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.146
         - name: to_spine03_vrf47
           vrf: vrf47
           ipv4: "10.252.47.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.147
         - name: to_spine03_vrf48
           vrf: vrf48
           ipv4: "10.252.48.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.148
         - name: to_spine03_vrf49
           vrf: vrf49
           ipv4: "10.252.49.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.149
         - name: to_spine03_vrf50
           vrf: vrf50
           ipv4: "10.252.50.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.150
         - name: to_spine03_vrf51
           vrf: vrf51
           ipv4: "10.252.51.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.151
         - name: to_spine03_vrf52
           vrf: vrf52
           ipv4: "10.252.52.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.152
         - name: to_spine03_vrf53
           vrf: vrf53
           ipv4: "10.252.53.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.153
         - name: to_spine03_vrf54
           vrf: vrf54
           ipv4: "10.252.54.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.154
         - name: to_spine03_vrf55
           vrf: vrf55
           ipv4: "10.252.55.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.155
         - name: to_spine03_vrf56
           vrf: vrf56
           ipv4: "10.252.56.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.156
         - name: to_spine03_vrf57
           vrf: vrf57
           ipv4: "10.252.57.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.157
         - name: to_spine03_vrf58
           vrf: vrf58
           ipv4: "10.252.58.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.158
         - name: to_spine03_vrf59
           vrf: vrf59
           ipv4: "10.252.59.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.159
         - name: to_spine03_vrf60
           vrf: vrf60
           ipv4: "10.252.60.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.160
         - name: to_spine03_vrf61
           vrf: vrf61
           ipv4: "10.252.61.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.161
         - name: to_spine03_vrf62
           vrf: vrf62
           ipv4: "10.252.62.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.162
         - name: to_spine03_vrf63
           vrf: vrf63
           ipv4: "10.252.63.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.163
         - name: to_spine03_vrf64
           vrf: vrf64
           ipv4: "10.252.64.25"
-          asn: 650303
+          asn: 650300
           bfd: swp3.164
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4
         - name: to_spine04_vrf1
           vrf: vrf1
           ipv4: "10.252.1.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.101
         - name: to_spine04_vrf2
           vrf: vrf2
           ipv4: "10.252.2.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.102
         - name: to_spine04_vrf3
           vrf: vrf3
           ipv4: "10.252.3.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.103
         - name: to_spine04_vrf4
           vrf: vrf4
           ipv4: "10.252.4.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.104
         - name: to_spine04_vrf5
           vrf: vrf5
           ipv4: "10.252.5.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.105
         - name: to_spine04_vrf6
           vrf: vrf6
           ipv4: "10.252.6.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.106
         - name: to_spine04_vrf7
           vrf: vrf7
           ipv4: "10.252.7.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.107
         - name: to_spine04_vrf8
           vrf: vrf8
           ipv4: "10.252.8.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.108
         - name: to_spine04_vrf9
           vrf: vrf9
           ipv4: "10.252.9.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.109
         - name: to_spine04_vrf10
           vrf: vrf10
           ipv4: "10.252.10.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.110
         - name: to_spine04_vrf11
           vrf: vrf11
           ipv4: "10.252.11.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.111
         - name: to_spine04_vrf12
           vrf: vrf12
           ipv4: "10.252.12.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.112
         - name: to_spine04_vrf13
           vrf: vrf13
           ipv4: "10.252.13.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.113
         - name: to_spine04_vrf14
           vrf: vrf14
           ipv4: "10.252.14.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.114
         - name: to_spine04_vrf15
           vrf: vrf15
           ipv4: "10.252.15.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.115
         - name: to_spine04_vrf16
           vrf: vrf16
           ipv4: "10.252.16.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.116
         - name: to_spine04_vrf17
           vrf: vrf17
           ipv4: "10.252.17.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.117
         - name: to_spine04_vrf18
           vrf: vrf18
           ipv4: "10.252.18.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.118
         - name: to_spine04_vrf19
           vrf: vrf19
           ipv4: "10.252.19.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.119
         - name: to_spine04_vrf20
           vrf: vrf20
           ipv4: "10.252.20.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.120
         - name: to_spine04_vrf21
           vrf: vrf21
           ipv4: "10.252.21.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.121
         - name: to_spine04_vrf22
           vrf: vrf22
           ipv4: "10.252.22.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.122
         - name: to_spine04_vrf23
           vrf: vrf23
           ipv4: "10.252.23.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.123
         - name: to_spine04_vrf24
           vrf: vrf24
           ipv4: "10.252.24.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.124
         - name: to_spine04_vrf25
           vrf: vrf25
           ipv4: "10.252.25.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.125
         - name: to_spine04_vrf26
           vrf: vrf26
           ipv4: "10.252.26.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.126
         - name: to_spine04_vrf27
           vrf: vrf27
           ipv4: "10.252.27.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.127
         - name: to_spine04_vrf28
           vrf: vrf28
           ipv4: "10.252.28.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.128
         - name: to_spine04_vrf29
           vrf: vrf29
           ipv4: "10.252.29.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.129
         - name: to_spine04_vrf30
           vrf: vrf30
           ipv4: "10.252.30.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.130
         - name: to_spine04_vrf31
           vrf: vrf31
           ipv4: "10.252.31.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.131
         - name: to_spine04_vrf32
           vrf: vrf32
           ipv4: "10.252.32.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.132
         - name: to_spine04_vrf33
           vrf: vrf33
           ipv4: "10.252.33.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.133
         - name: to_spine04_vrf34
           vrf: vrf34
           ipv4: "10.252.34.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.134
         - name: to_spine04_vrf35
           vrf: vrf35
           ipv4: "10.252.35.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.135
         - name: to_spine04_vrf36
           vrf: vrf36
           ipv4: "10.252.36.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.136
         - name: to_spine04_vrf37
           vrf: vrf37
           ipv4: "10.252.37.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.137
         - name: to_spine04_vrf38
           vrf: vrf38
           ipv4: "10.252.38.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.138
         - name: to_spine04_vrf39
           vrf: vrf39
           ipv4: "10.252.39.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.139
         - name: to_spine04_vrf40
           vrf: vrf40
           ipv4: "10.252.40.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.140
         - name: to_spine04_vrf41
           vrf: vrf41
           ipv4: "10.252.41.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.141
         - name: to_spine04_vrf42
           vrf: vrf42
           ipv4: "10.252.42.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.142
         - name: to_spine04_vrf43
           vrf: vrf43
           ipv4: "10.252.43.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.143
         - name: to_spine04_vrf44
           vrf: vrf44
           ipv4: "10.252.44.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.144
         - name: to_spine04_vrf45
           vrf: vrf45
           ipv4: "10.252.45.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.145
         - name: to_spine04_vrf46
           vrf: vrf46
           ipv4: "10.252.46.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.146
         - name: to_spine04_vrf47
           vrf: vrf47
           ipv4: "10.252.47.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.147
         - name: to_spine04_vrf48
           vrf: vrf48
           ipv4: "10.252.48.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.148
         - name: to_spine04_vrf49
           vrf: vrf49
           ipv4: "10.252.49.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.149
         - name: to_spine04_vrf50
           vrf: vrf50
           ipv4: "10.252.50.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.150
         - name: to_spine04_vrf51
           vrf: vrf51
           ipv4: "10.252.51.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.151
         - name: to_spine04_vrf52
           vrf: vrf52
           ipv4: "10.252.52.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.152
         - name: to_spine04_vrf53
           vrf: vrf53
           ipv4: "10.252.53.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.153
         - name: to_spine04_vrf54
           vrf: vrf54
           ipv4: "10.252.54.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.154
         - name: to_spine04_vrf55
           vrf: vrf55
           ipv4: "10.252.55.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.155
         - name: to_spine04_vrf56
           vrf: vrf56
           ipv4: "10.252.56.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.156
         - name: to_spine04_vrf57
           vrf: vrf57
           ipv4: "10.252.57.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.157
         - name: to_spine04_vrf58
           vrf: vrf58
           ipv4: "10.252.58.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.158
         - name: to_spine04_vrf59
           vrf: vrf59
           ipv4: "10.252.59.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.159
         - name: to_spine04_vrf60
           vrf: vrf60
           ipv4: "10.252.60.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.160
         - name: to_spine04_vrf61
           vrf: vrf61
           ipv4: "10.252.61.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.161
         - name: to_spine04_vrf62
           vrf: vrf62
           ipv4: "10.252.62.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.162
         - name: to_spine04_vrf63
           vrf: vrf63
           ipv4: "10.252.63.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.163
         - name: to_spine04_vrf64
           vrf: vrf64
           ipv4: "10.252.64.29"
-          asn: 650304
+          asn: 650300
           bfd: swp4.164
         # server01
         - name: to_server01
           vrf: vrf1
           ipv4: "10.252.1.2"
           asn: 650101
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server03
         - name: to_server03
           vrf: vrf2
           ipv4: "10.252.2.2"
           asn: 650103
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -4147,1317 +4147,1317 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1
         - name: to_spine01_vrf1
           vrf: vrf1
           ipv4: "10.252.1.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.101
         - name: to_spine01_vrf2
           vrf: vrf2
           ipv4: "10.252.2.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.102
         - name: to_spine01_vrf3
           vrf: vrf3
           ipv4: "10.252.3.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.103
         - name: to_spine01_vrf4
           vrf: vrf4
           ipv4: "10.252.4.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.104
         - name: to_spine01_vrf5
           vrf: vrf5
           ipv4: "10.252.5.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.105
         - name: to_spine01_vrf6
           vrf: vrf6
           ipv4: "10.252.6.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.106
         - name: to_spine01_vrf7
           vrf: vrf7
           ipv4: "10.252.7.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.107
         - name: to_spine01_vrf8
           vrf: vrf8
           ipv4: "10.252.8.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.108
         - name: to_spine01_vrf9
           vrf: vrf9
           ipv4: "10.252.9.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.109
         - name: to_spine01_vrf10
           vrf: vrf10
           ipv4: "10.252.10.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.110
         - name: to_spine01_vrf11
           vrf: vrf11
           ipv4: "10.252.11.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.111
         - name: to_spine01_vrf12
           vrf: vrf12
           ipv4: "10.252.12.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.112
         - name: to_spine01_vrf13
           vrf: vrf13
           ipv4: "10.252.13.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.113
         - name: to_spine01_vrf14
           vrf: vrf14
           ipv4: "10.252.14.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.114
         - name: to_spine01_vrf15
           vrf: vrf15
           ipv4: "10.252.15.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.115
         - name: to_spine01_vrf16
           vrf: vrf16
           ipv4: "10.252.16.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.116
         - name: to_spine01_vrf17
           vrf: vrf17
           ipv4: "10.252.17.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.117
         - name: to_spine01_vrf18
           vrf: vrf18
           ipv4: "10.252.18.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.118
         - name: to_spine01_vrf19
           vrf: vrf19
           ipv4: "10.252.19.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.119
         - name: to_spine01_vrf20
           vrf: vrf20
           ipv4: "10.252.20.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.120
         - name: to_spine01_vrf21
           vrf: vrf21
           ipv4: "10.252.21.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.121
         - name: to_spine01_vrf22
           vrf: vrf22
           ipv4: "10.252.22.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.122
         - name: to_spine01_vrf23
           vrf: vrf23
           ipv4: "10.252.23.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.123
         - name: to_spine01_vrf24
           vrf: vrf24
           ipv4: "10.252.24.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.124
         - name: to_spine01_vrf25
           vrf: vrf25
           ipv4: "10.252.25.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.125
         - name: to_spine01_vrf26
           vrf: vrf26
           ipv4: "10.252.26.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.126
         - name: to_spine01_vrf27
           vrf: vrf27
           ipv4: "10.252.27.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.127
         - name: to_spine01_vrf28
           vrf: vrf28
           ipv4: "10.252.28.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.128
         - name: to_spine01_vrf29
           vrf: vrf29
           ipv4: "10.252.29.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.129
         - name: to_spine01_vrf30
           vrf: vrf30
           ipv4: "10.252.30.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.130
         - name: to_spine01_vrf31
           vrf: vrf31
           ipv4: "10.252.31.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.131
         - name: to_spine01_vrf32
           vrf: vrf32
           ipv4: "10.252.32.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.132
         - name: to_spine01_vrf33
           vrf: vrf33
           ipv4: "10.252.33.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.133
         - name: to_spine01_vrf34
           vrf: vrf34
           ipv4: "10.252.34.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.134
         - name: to_spine01_vrf35
           vrf: vrf35
           ipv4: "10.252.35.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.135
         - name: to_spine01_vrf36
           vrf: vrf36
           ipv4: "10.252.36.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.136
         - name: to_spine01_vrf37
           vrf: vrf37
           ipv4: "10.252.37.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.137
         - name: to_spine01_vrf38
           vrf: vrf38
           ipv4: "10.252.38.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.138
         - name: to_spine01_vrf39
           vrf: vrf39
           ipv4: "10.252.39.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.139
         - name: to_spine01_vrf40
           vrf: vrf40
           ipv4: "10.252.40.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.140
         - name: to_spine01_vrf41
           vrf: vrf41
           ipv4: "10.252.41.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.141
         - name: to_spine01_vrf42
           vrf: vrf42
           ipv4: "10.252.42.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.142
         - name: to_spine01_vrf43
           vrf: vrf43
           ipv4: "10.252.43.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.143
         - name: to_spine01_vrf44
           vrf: vrf44
           ipv4: "10.252.44.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.144
         - name: to_spine01_vrf45
           vrf: vrf45
           ipv4: "10.252.45.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.145
         - name: to_spine01_vrf46
           vrf: vrf46
           ipv4: "10.252.46.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.146
         - name: to_spine01_vrf47
           vrf: vrf47
           ipv4: "10.252.47.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.147
         - name: to_spine01_vrf48
           vrf: vrf48
           ipv4: "10.252.48.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.148
         - name: to_spine01_vrf49
           vrf: vrf49
           ipv4: "10.252.49.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.149
         - name: to_spine01_vrf50
           vrf: vrf50
           ipv4: "10.252.50.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.150
         - name: to_spine01_vrf51
           vrf: vrf51
           ipv4: "10.252.51.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.151
         - name: to_spine01_vrf52
           vrf: vrf52
           ipv4: "10.252.52.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.152
         - name: to_spine01_vrf53
           vrf: vrf53
           ipv4: "10.252.53.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.153
         - name: to_spine01_vrf54
           vrf: vrf54
           ipv4: "10.252.54.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.154
         - name: to_spine01_vrf55
           vrf: vrf55
           ipv4: "10.252.55.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.155
         - name: to_spine01_vrf56
           vrf: vrf56
           ipv4: "10.252.56.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.156
         - name: to_spine01_vrf57
           vrf: vrf57
           ipv4: "10.252.57.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.157
         - name: to_spine01_vrf58
           vrf: vrf58
           ipv4: "10.252.58.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.158
         - name: to_spine01_vrf59
           vrf: vrf59
           ipv4: "10.252.59.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.159
         - name: to_spine01_vrf60
           vrf: vrf60
           ipv4: "10.252.60.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.160
         - name: to_spine01_vrf61
           vrf: vrf61
           ipv4: "10.252.61.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.161
         - name: to_spine01_vrf62
           vrf: vrf62
           ipv4: "10.252.62.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.162
         - name: to_spine01_vrf63
           vrf: vrf63
           ipv4: "10.252.63.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.163
         - name: to_spine01_vrf64
           vrf: vrf64
           ipv4: "10.252.64.33"
-          asn: 650301
+          asn: 650300
           bfd: swp1.164
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2
         - name: to_spine02_vrf1
           vrf: vrf1
           ipv4: "10.252.1.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.101
         - name: to_spine02_vrf2
           vrf: vrf2
           ipv4: "10.252.2.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.102
         - name: to_spine02_vrf3
           vrf: vrf3
           ipv4: "10.252.3.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.103
         - name: to_spine02_vrf4
           vrf: vrf4
           ipv4: "10.252.4.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.104
         - name: to_spine02_vrf5
           vrf: vrf5
           ipv4: "10.252.5.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.105
         - name: to_spine02_vrf6
           vrf: vrf6
           ipv4: "10.252.6.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.106
         - name: to_spine02_vrf7
           vrf: vrf7
           ipv4: "10.252.7.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.107
         - name: to_spine02_vrf8
           vrf: vrf8
           ipv4: "10.252.8.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.108
         - name: to_spine02_vrf9
           vrf: vrf9
           ipv4: "10.252.9.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.109
         - name: to_spine02_vrf10
           vrf: vrf10
           ipv4: "10.252.10.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.110
         - name: to_spine02_vrf11
           vrf: vrf11
           ipv4: "10.252.11.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.111
         - name: to_spine02_vrf12
           vrf: vrf12
           ipv4: "10.252.12.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.112
         - name: to_spine02_vrf13
           vrf: vrf13
           ipv4: "10.252.13.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.113
         - name: to_spine02_vrf14
           vrf: vrf14
           ipv4: "10.252.14.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.114
         - name: to_spine02_vrf15
           vrf: vrf15
           ipv4: "10.252.15.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.115
         - name: to_spine02_vrf16
           vrf: vrf16
           ipv4: "10.252.16.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.116
         - name: to_spine02_vrf17
           vrf: vrf17
           ipv4: "10.252.17.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.117
         - name: to_spine02_vrf18
           vrf: vrf18
           ipv4: "10.252.18.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.118
         - name: to_spine02_vrf19
           vrf: vrf19
           ipv4: "10.252.19.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.119
         - name: to_spine02_vrf20
           vrf: vrf20
           ipv4: "10.252.20.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.120
         - name: to_spine02_vrf21
           vrf: vrf21
           ipv4: "10.252.21.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.121
         - name: to_spine02_vrf22
           vrf: vrf22
           ipv4: "10.252.22.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.122
         - name: to_spine02_vrf23
           vrf: vrf23
           ipv4: "10.252.23.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.123
         - name: to_spine02_vrf24
           vrf: vrf24
           ipv4: "10.252.24.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.124
         - name: to_spine02_vrf25
           vrf: vrf25
           ipv4: "10.252.25.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.125
         - name: to_spine02_vrf26
           vrf: vrf26
           ipv4: "10.252.26.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.126
         - name: to_spine02_vrf27
           vrf: vrf27
           ipv4: "10.252.27.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.127
         - name: to_spine02_vrf28
           vrf: vrf28
           ipv4: "10.252.28.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.128
         - name: to_spine02_vrf29
           vrf: vrf29
           ipv4: "10.252.29.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.129
         - name: to_spine02_vrf30
           vrf: vrf30
           ipv4: "10.252.30.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.130
         - name: to_spine02_vrf31
           vrf: vrf31
           ipv4: "10.252.31.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.131
         - name: to_spine02_vrf32
           vrf: vrf32
           ipv4: "10.252.32.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.132
         - name: to_spine02_vrf33
           vrf: vrf33
           ipv4: "10.252.33.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.133
         - name: to_spine02_vrf34
           vrf: vrf34
           ipv4: "10.252.34.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.134
         - name: to_spine02_vrf35
           vrf: vrf35
           ipv4: "10.252.35.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.135
         - name: to_spine02_vrf36
           vrf: vrf36
           ipv4: "10.252.36.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.136
         - name: to_spine02_vrf37
           vrf: vrf37
           ipv4: "10.252.37.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.137
         - name: to_spine02_vrf38
           vrf: vrf38
           ipv4: "10.252.38.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.138
         - name: to_spine02_vrf39
           vrf: vrf39
           ipv4: "10.252.39.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.139
         - name: to_spine02_vrf40
           vrf: vrf40
           ipv4: "10.252.40.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.140
         - name: to_spine02_vrf41
           vrf: vrf41
           ipv4: "10.252.41.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.141
         - name: to_spine02_vrf42
           vrf: vrf42
           ipv4: "10.252.42.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.142
         - name: to_spine02_vrf43
           vrf: vrf43
           ipv4: "10.252.43.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.143
         - name: to_spine02_vrf44
           vrf: vrf44
           ipv4: "10.252.44.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.144
         - name: to_spine02_vrf45
           vrf: vrf45
           ipv4: "10.252.45.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.145
         - name: to_spine02_vrf46
           vrf: vrf46
           ipv4: "10.252.46.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.146
         - name: to_spine02_vrf47
           vrf: vrf47
           ipv4: "10.252.47.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.147
         - name: to_spine02_vrf48
           vrf: vrf48
           ipv4: "10.252.48.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.148
         - name: to_spine02_vrf49
           vrf: vrf49
           ipv4: "10.252.49.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.149
         - name: to_spine02_vrf50
           vrf: vrf50
           ipv4: "10.252.50.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.150
         - name: to_spine02_vrf51
           vrf: vrf51
           ipv4: "10.252.51.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.151
         - name: to_spine02_vrf52
           vrf: vrf52
           ipv4: "10.252.52.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.152
         - name: to_spine02_vrf53
           vrf: vrf53
           ipv4: "10.252.53.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.153
         - name: to_spine02_vrf54
           vrf: vrf54
           ipv4: "10.252.54.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.154
         - name: to_spine02_vrf55
           vrf: vrf55
           ipv4: "10.252.55.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.155
         - name: to_spine02_vrf56
           vrf: vrf56
           ipv4: "10.252.56.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.156
         - name: to_spine02_vrf57
           vrf: vrf57
           ipv4: "10.252.57.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.157
         - name: to_spine02_vrf58
           vrf: vrf58
           ipv4: "10.252.58.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.158
         - name: to_spine02_vrf59
           vrf: vrf59
           ipv4: "10.252.59.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.159
         - name: to_spine02_vrf60
           vrf: vrf60
           ipv4: "10.252.60.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.160
         - name: to_spine02_vrf61
           vrf: vrf61
           ipv4: "10.252.61.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.161
         - name: to_spine02_vrf62
           vrf: vrf62
           ipv4: "10.252.62.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.162
         - name: to_spine02_vrf63
           vrf: vrf63
           ipv4: "10.252.63.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.163
         - name: to_spine02_vrf64
           vrf: vrf64
           ipv4: "10.252.64.37"
-          asn: 650302
+          asn: 650300
           bfd: swp2.164
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3
         - name: to_spine03_vrf1
           vrf: vrf1
           ipv4: "10.252.1.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.101
         - name: to_spine03_vrf2
           vrf: vrf2
           ipv4: "10.252.2.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.102
         - name: to_spine03_vrf3
           vrf: vrf3
           ipv4: "10.252.3.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.103
         - name: to_spine03_vrf4
           vrf: vrf4
           ipv4: "10.252.4.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.104
         - name: to_spine03_vrf5
           vrf: vrf5
           ipv4: "10.252.5.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.105
         - name: to_spine03_vrf6
           vrf: vrf6
           ipv4: "10.252.6.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.106
         - name: to_spine03_vrf7
           vrf: vrf7
           ipv4: "10.252.7.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.107
         - name: to_spine03_vrf8
           vrf: vrf8
           ipv4: "10.252.8.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.108
         - name: to_spine03_vrf9
           vrf: vrf9
           ipv4: "10.252.9.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.109
         - name: to_spine03_vrf10
           vrf: vrf10
           ipv4: "10.252.10.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.110
         - name: to_spine03_vrf11
           vrf: vrf11
           ipv4: "10.252.11.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.111
         - name: to_spine03_vrf12
           vrf: vrf12
           ipv4: "10.252.12.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.112
         - name: to_spine03_vrf13
           vrf: vrf13
           ipv4: "10.252.13.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.113
         - name: to_spine03_vrf14
           vrf: vrf14
           ipv4: "10.252.14.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.114
         - name: to_spine03_vrf15
           vrf: vrf15
           ipv4: "10.252.15.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.115
         - name: to_spine03_vrf16
           vrf: vrf16
           ipv4: "10.252.16.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.116
         - name: to_spine03_vrf17
           vrf: vrf17
           ipv4: "10.252.17.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.117
         - name: to_spine03_vrf18
           vrf: vrf18
           ipv4: "10.252.18.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.118
         - name: to_spine03_vrf19
           vrf: vrf19
           ipv4: "10.252.19.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.119
         - name: to_spine03_vrf20
           vrf: vrf20
           ipv4: "10.252.20.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.120
         - name: to_spine03_vrf21
           vrf: vrf21
           ipv4: "10.252.21.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.121
         - name: to_spine03_vrf22
           vrf: vrf22
           ipv4: "10.252.22.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.122
         - name: to_spine03_vrf23
           vrf: vrf23
           ipv4: "10.252.23.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.123
         - name: to_spine03_vrf24
           vrf: vrf24
           ipv4: "10.252.24.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.124
         - name: to_spine03_vrf25
           vrf: vrf25
           ipv4: "10.252.25.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.125
         - name: to_spine03_vrf26
           vrf: vrf26
           ipv4: "10.252.26.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.126
         - name: to_spine03_vrf27
           vrf: vrf27
           ipv4: "10.252.27.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.127
         - name: to_spine03_vrf28
           vrf: vrf28
           ipv4: "10.252.28.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.128
         - name: to_spine03_vrf29
           vrf: vrf29
           ipv4: "10.252.29.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.129
         - name: to_spine03_vrf30
           vrf: vrf30
           ipv4: "10.252.30.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.130
         - name: to_spine03_vrf31
           vrf: vrf31
           ipv4: "10.252.31.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.131
         - name: to_spine03_vrf32
           vrf: vrf32
           ipv4: "10.252.32.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.132
         - name: to_spine03_vrf33
           vrf: vrf33
           ipv4: "10.252.33.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.133
         - name: to_spine03_vrf34
           vrf: vrf34
           ipv4: "10.252.34.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.134
         - name: to_spine03_vrf35
           vrf: vrf35
           ipv4: "10.252.35.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.135
         - name: to_spine03_vrf36
           vrf: vrf36
           ipv4: "10.252.36.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.136
         - name: to_spine03_vrf37
           vrf: vrf37
           ipv4: "10.252.37.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.137
         - name: to_spine03_vrf38
           vrf: vrf38
           ipv4: "10.252.38.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.138
         - name: to_spine03_vrf39
           vrf: vrf39
           ipv4: "10.252.39.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.139
         - name: to_spine03_vrf40
           vrf: vrf40
           ipv4: "10.252.40.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.140
         - name: to_spine03_vrf41
           vrf: vrf41
           ipv4: "10.252.41.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.141
         - name: to_spine03_vrf42
           vrf: vrf42
           ipv4: "10.252.42.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.142
         - name: to_spine03_vrf43
           vrf: vrf43
           ipv4: "10.252.43.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.143
         - name: to_spine03_vrf44
           vrf: vrf44
           ipv4: "10.252.44.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.144
         - name: to_spine03_vrf45
           vrf: vrf45
           ipv4: "10.252.45.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.145
         - name: to_spine03_vrf46
           vrf: vrf46
           ipv4: "10.252.46.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.146
         - name: to_spine03_vrf47
           vrf: vrf47
           ipv4: "10.252.47.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.147
         - name: to_spine03_vrf48
           vrf: vrf48
           ipv4: "10.252.48.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.148
         - name: to_spine03_vrf49
           vrf: vrf49
           ipv4: "10.252.49.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.149
         - name: to_spine03_vrf50
           vrf: vrf50
           ipv4: "10.252.50.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.150
         - name: to_spine03_vrf51
           vrf: vrf51
           ipv4: "10.252.51.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.151
         - name: to_spine03_vrf52
           vrf: vrf52
           ipv4: "10.252.52.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.152
         - name: to_spine03_vrf53
           vrf: vrf53
           ipv4: "10.252.53.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.153
         - name: to_spine03_vrf54
           vrf: vrf54
           ipv4: "10.252.54.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.154
         - name: to_spine03_vrf55
           vrf: vrf55
           ipv4: "10.252.55.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.155
         - name: to_spine03_vrf56
           vrf: vrf56
           ipv4: "10.252.56.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.156
         - name: to_spine03_vrf57
           vrf: vrf57
           ipv4: "10.252.57.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.157
         - name: to_spine03_vrf58
           vrf: vrf58
           ipv4: "10.252.58.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.158
         - name: to_spine03_vrf59
           vrf: vrf59
           ipv4: "10.252.59.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.159
         - name: to_spine03_vrf60
           vrf: vrf60
           ipv4: "10.252.60.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.160
         - name: to_spine03_vrf61
           vrf: vrf61
           ipv4: "10.252.61.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.161
         - name: to_spine03_vrf62
           vrf: vrf62
           ipv4: "10.252.62.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.162
         - name: to_spine03_vrf63
           vrf: vrf63
           ipv4: "10.252.63.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.163
         - name: to_spine03_vrf64
           vrf: vrf64
           ipv4: "10.252.64.41"
-          asn: 650303
+          asn: 650300
           bfd: swp3.164
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4
         - name: to_spine04_vrf1
           vrf: vrf1
           ipv4: "10.252.1.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.101
         - name: to_spine04_vrf2
           vrf: vrf2
           ipv4: "10.252.2.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.102
         - name: to_spine04_vrf3
           vrf: vrf3
           ipv4: "10.252.3.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.103
         - name: to_spine04_vrf4
           vrf: vrf4
           ipv4: "10.252.4.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.104
         - name: to_spine04_vrf5
           vrf: vrf5
           ipv4: "10.252.5.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.105
         - name: to_spine04_vrf6
           vrf: vrf6
           ipv4: "10.252.6.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.106
         - name: to_spine04_vrf7
           vrf: vrf7
           ipv4: "10.252.7.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.107
         - name: to_spine04_vrf8
           vrf: vrf8
           ipv4: "10.252.8.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.108
         - name: to_spine04_vrf9
           vrf: vrf9
           ipv4: "10.252.9.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.109
         - name: to_spine04_vrf10
           vrf: vrf10
           ipv4: "10.252.10.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.110
         - name: to_spine04_vrf11
           vrf: vrf11
           ipv4: "10.252.11.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.111
         - name: to_spine04_vrf12
           vrf: vrf12
           ipv4: "10.252.12.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.112
         - name: to_spine04_vrf13
           vrf: vrf13
           ipv4: "10.252.13.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.113
         - name: to_spine04_vrf14
           vrf: vrf14
           ipv4: "10.252.14.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.114
         - name: to_spine04_vrf15
           vrf: vrf15
           ipv4: "10.252.15.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.115
         - name: to_spine04_vrf16
           vrf: vrf16
           ipv4: "10.252.16.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.116
         - name: to_spine04_vrf17
           vrf: vrf17
           ipv4: "10.252.17.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.117
         - name: to_spine04_vrf18
           vrf: vrf18
           ipv4: "10.252.18.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.118
         - name: to_spine04_vrf19
           vrf: vrf19
           ipv4: "10.252.19.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.119
         - name: to_spine04_vrf20
           vrf: vrf20
           ipv4: "10.252.20.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.120
         - name: to_spine04_vrf21
           vrf: vrf21
           ipv4: "10.252.21.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.121
         - name: to_spine04_vrf22
           vrf: vrf22
           ipv4: "10.252.22.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.122
         - name: to_spine04_vrf23
           vrf: vrf23
           ipv4: "10.252.23.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.123
         - name: to_spine04_vrf24
           vrf: vrf24
           ipv4: "10.252.24.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.124
         - name: to_spine04_vrf25
           vrf: vrf25
           ipv4: "10.252.25.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.125
         - name: to_spine04_vrf26
           vrf: vrf26
           ipv4: "10.252.26.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.126
         - name: to_spine04_vrf27
           vrf: vrf27
           ipv4: "10.252.27.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.127
         - name: to_spine04_vrf28
           vrf: vrf28
           ipv4: "10.252.28.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.128
         - name: to_spine04_vrf29
           vrf: vrf29
           ipv4: "10.252.29.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.129
         - name: to_spine04_vrf30
           vrf: vrf30
           ipv4: "10.252.30.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.130
         - name: to_spine04_vrf31
           vrf: vrf31
           ipv4: "10.252.31.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.131
         - name: to_spine04_vrf32
           vrf: vrf32
           ipv4: "10.252.32.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.132
         - name: to_spine04_vrf33
           vrf: vrf33
           ipv4: "10.252.33.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.133
         - name: to_spine04_vrf34
           vrf: vrf34
           ipv4: "10.252.34.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.134
         - name: to_spine04_vrf35
           vrf: vrf35
           ipv4: "10.252.35.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.135
         - name: to_spine04_vrf36
           vrf: vrf36
           ipv4: "10.252.36.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.136
         - name: to_spine04_vrf37
           vrf: vrf37
           ipv4: "10.252.37.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.137
         - name: to_spine04_vrf38
           vrf: vrf38
           ipv4: "10.252.38.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.138
         - name: to_spine04_vrf39
           vrf: vrf39
           ipv4: "10.252.39.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.139
         - name: to_spine04_vrf40
           vrf: vrf40
           ipv4: "10.252.40.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.140
         - name: to_spine04_vrf41
           vrf: vrf41
           ipv4: "10.252.41.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.141
         - name: to_spine04_vrf42
           vrf: vrf42
           ipv4: "10.252.42.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.142
         - name: to_spine04_vrf43
           vrf: vrf43
           ipv4: "10.252.43.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.143
         - name: to_spine04_vrf44
           vrf: vrf44
           ipv4: "10.252.44.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.144
         - name: to_spine04_vrf45
           vrf: vrf45
           ipv4: "10.252.45.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.145
         - name: to_spine04_vrf46
           vrf: vrf46
           ipv4: "10.252.46.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.146
         - name: to_spine04_vrf47
           vrf: vrf47
           ipv4: "10.252.47.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.147
         - name: to_spine04_vrf48
           vrf: vrf48
           ipv4: "10.252.48.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.148
         - name: to_spine04_vrf49
           vrf: vrf49
           ipv4: "10.252.49.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.149
         - name: to_spine04_vrf50
           vrf: vrf50
           ipv4: "10.252.50.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.150
         - name: to_spine04_vrf51
           vrf: vrf51
           ipv4: "10.252.51.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.151
         - name: to_spine04_vrf52
           vrf: vrf52
           ipv4: "10.252.52.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.152
         - name: to_spine04_vrf53
           vrf: vrf53
           ipv4: "10.252.53.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.153
         - name: to_spine04_vrf54
           vrf: vrf54
           ipv4: "10.252.54.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.154
         - name: to_spine04_vrf55
           vrf: vrf55
           ipv4: "10.252.55.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.155
         - name: to_spine04_vrf56
           vrf: vrf56
           ipv4: "10.252.56.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.156
         - name: to_spine04_vrf57
           vrf: vrf57
           ipv4: "10.252.57.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.157
         - name: to_spine04_vrf58
           vrf: vrf58
           ipv4: "10.252.58.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.158
         - name: to_spine04_vrf59
           vrf: vrf59
           ipv4: "10.252.59.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.159
         - name: to_spine04_vrf60
           vrf: vrf60
           ipv4: "10.252.60.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.160
         - name: to_spine04_vrf61
           vrf: vrf61
           ipv4: "10.252.61.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.161
         - name: to_spine04_vrf62
           vrf: vrf62
           ipv4: "10.252.62.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.162
         - name: to_spine04_vrf63
           vrf: vrf63
           ipv4: "10.252.63.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.163
         - name: to_spine04_vrf64
           vrf: vrf64
           ipv4: "10.252.64.45"
-          asn: 650304
+          asn: 650300
           bfd: swp4.164
         # server01
         - name: to_server01
           vrf: vrf1
           ipv4: "10.252.1.6"
           asn: 650101
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server03
         - name: to_server03
           vrf: vrf2
           ipv4: "10.252.2.6"
           asn: 650103
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -6871,1317 +6871,1317 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1
         - name: to_spine01_vrf1
           vrf: vrf1
           ipv4: "10.252.1.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.101
         - name: to_spine01_vrf2
           vrf: vrf2
           ipv4: "10.252.2.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.102
         - name: to_spine01_vrf3
           vrf: vrf3
           ipv4: "10.252.3.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.103
         - name: to_spine01_vrf4
           vrf: vrf4
           ipv4: "10.252.4.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.104
         - name: to_spine01_vrf5
           vrf: vrf5
           ipv4: "10.252.5.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.105
         - name: to_spine01_vrf6
           vrf: vrf6
           ipv4: "10.252.6.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.106
         - name: to_spine01_vrf7
           vrf: vrf7
           ipv4: "10.252.7.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.107
         - name: to_spine01_vrf8
           vrf: vrf8
           ipv4: "10.252.8.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.108
         - name: to_spine01_vrf9
           vrf: vrf9
           ipv4: "10.252.9.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.109
         - name: to_spine01_vrf10
           vrf: vrf10
           ipv4: "10.252.10.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.110
         - name: to_spine01_vrf11
           vrf: vrf11
           ipv4: "10.252.11.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.111
         - name: to_spine01_vrf12
           vrf: vrf12
           ipv4: "10.252.12.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.112
         - name: to_spine01_vrf13
           vrf: vrf13
           ipv4: "10.252.13.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.113
         - name: to_spine01_vrf14
           vrf: vrf14
           ipv4: "10.252.14.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.114
         - name: to_spine01_vrf15
           vrf: vrf15
           ipv4: "10.252.15.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.115
         - name: to_spine01_vrf16
           vrf: vrf16
           ipv4: "10.252.16.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.116
         - name: to_spine01_vrf17
           vrf: vrf17
           ipv4: "10.252.17.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.117
         - name: to_spine01_vrf18
           vrf: vrf18
           ipv4: "10.252.18.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.118
         - name: to_spine01_vrf19
           vrf: vrf19
           ipv4: "10.252.19.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.119
         - name: to_spine01_vrf20
           vrf: vrf20
           ipv4: "10.252.20.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.120
         - name: to_spine01_vrf21
           vrf: vrf21
           ipv4: "10.252.21.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.121
         - name: to_spine01_vrf22
           vrf: vrf22
           ipv4: "10.252.22.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.122
         - name: to_spine01_vrf23
           vrf: vrf23
           ipv4: "10.252.23.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.123
         - name: to_spine01_vrf24
           vrf: vrf24
           ipv4: "10.252.24.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.124
         - name: to_spine01_vrf25
           vrf: vrf25
           ipv4: "10.252.25.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.125
         - name: to_spine01_vrf26
           vrf: vrf26
           ipv4: "10.252.26.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.126
         - name: to_spine01_vrf27
           vrf: vrf27
           ipv4: "10.252.27.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.127
         - name: to_spine01_vrf28
           vrf: vrf28
           ipv4: "10.252.28.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.128
         - name: to_spine01_vrf29
           vrf: vrf29
           ipv4: "10.252.29.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.129
         - name: to_spine01_vrf30
           vrf: vrf30
           ipv4: "10.252.30.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.130
         - name: to_spine01_vrf31
           vrf: vrf31
           ipv4: "10.252.31.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.131
         - name: to_spine01_vrf32
           vrf: vrf32
           ipv4: "10.252.32.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.132
         - name: to_spine01_vrf33
           vrf: vrf33
           ipv4: "10.252.33.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.133
         - name: to_spine01_vrf34
           vrf: vrf34
           ipv4: "10.252.34.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.134
         - name: to_spine01_vrf35
           vrf: vrf35
           ipv4: "10.252.35.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.135
         - name: to_spine01_vrf36
           vrf: vrf36
           ipv4: "10.252.36.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.136
         - name: to_spine01_vrf37
           vrf: vrf37
           ipv4: "10.252.37.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.137
         - name: to_spine01_vrf38
           vrf: vrf38
           ipv4: "10.252.38.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.138
         - name: to_spine01_vrf39
           vrf: vrf39
           ipv4: "10.252.39.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.139
         - name: to_spine01_vrf40
           vrf: vrf40
           ipv4: "10.252.40.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.140
         - name: to_spine01_vrf41
           vrf: vrf41
           ipv4: "10.252.41.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.141
         - name: to_spine01_vrf42
           vrf: vrf42
           ipv4: "10.252.42.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.142
         - name: to_spine01_vrf43
           vrf: vrf43
           ipv4: "10.252.43.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.143
         - name: to_spine01_vrf44
           vrf: vrf44
           ipv4: "10.252.44.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.144
         - name: to_spine01_vrf45
           vrf: vrf45
           ipv4: "10.252.45.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.145
         - name: to_spine01_vrf46
           vrf: vrf46
           ipv4: "10.252.46.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.146
         - name: to_spine01_vrf47
           vrf: vrf47
           ipv4: "10.252.47.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.147
         - name: to_spine01_vrf48
           vrf: vrf48
           ipv4: "10.252.48.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.148
         - name: to_spine01_vrf49
           vrf: vrf49
           ipv4: "10.252.49.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.149
         - name: to_spine01_vrf50
           vrf: vrf50
           ipv4: "10.252.50.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.150
         - name: to_spine01_vrf51
           vrf: vrf51
           ipv4: "10.252.51.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.151
         - name: to_spine01_vrf52
           vrf: vrf52
           ipv4: "10.252.52.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.152
         - name: to_spine01_vrf53
           vrf: vrf53
           ipv4: "10.252.53.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.153
         - name: to_spine01_vrf54
           vrf: vrf54
           ipv4: "10.252.54.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.154
         - name: to_spine01_vrf55
           vrf: vrf55
           ipv4: "10.252.55.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.155
         - name: to_spine01_vrf56
           vrf: vrf56
           ipv4: "10.252.56.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.156
         - name: to_spine01_vrf57
           vrf: vrf57
           ipv4: "10.252.57.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.157
         - name: to_spine01_vrf58
           vrf: vrf58
           ipv4: "10.252.58.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.158
         - name: to_spine01_vrf59
           vrf: vrf59
           ipv4: "10.252.59.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.159
         - name: to_spine01_vrf60
           vrf: vrf60
           ipv4: "10.252.60.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.160
         - name: to_spine01_vrf61
           vrf: vrf61
           ipv4: "10.252.61.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.161
         - name: to_spine01_vrf62
           vrf: vrf62
           ipv4: "10.252.62.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.162
         - name: to_spine01_vrf63
           vrf: vrf63
           ipv4: "10.252.63.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.163
         - name: to_spine01_vrf64
           vrf: vrf64
           ipv4: "10.252.64.49"
-          asn: 650301
+          asn: 650300
           bfd: swp1.164
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2
         - name: to_spine02_vrf1
           vrf: vrf1
           ipv4: "10.252.1.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.101
         - name: to_spine02_vrf2
           vrf: vrf2
           ipv4: "10.252.2.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.102
         - name: to_spine02_vrf3
           vrf: vrf3
           ipv4: "10.252.3.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.103
         - name: to_spine02_vrf4
           vrf: vrf4
           ipv4: "10.252.4.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.104
         - name: to_spine02_vrf5
           vrf: vrf5
           ipv4: "10.252.5.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.105
         - name: to_spine02_vrf6
           vrf: vrf6
           ipv4: "10.252.6.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.106
         - name: to_spine02_vrf7
           vrf: vrf7
           ipv4: "10.252.7.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.107
         - name: to_spine02_vrf8
           vrf: vrf8
           ipv4: "10.252.8.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.108
         - name: to_spine02_vrf9
           vrf: vrf9
           ipv4: "10.252.9.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.109
         - name: to_spine02_vrf10
           vrf: vrf10
           ipv4: "10.252.10.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.110
         - name: to_spine02_vrf11
           vrf: vrf11
           ipv4: "10.252.11.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.111
         - name: to_spine02_vrf12
           vrf: vrf12
           ipv4: "10.252.12.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.112
         - name: to_spine02_vrf13
           vrf: vrf13
           ipv4: "10.252.13.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.113
         - name: to_spine02_vrf14
           vrf: vrf14
           ipv4: "10.252.14.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.114
         - name: to_spine02_vrf15
           vrf: vrf15
           ipv4: "10.252.15.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.115
         - name: to_spine02_vrf16
           vrf: vrf16
           ipv4: "10.252.16.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.116
         - name: to_spine02_vrf17
           vrf: vrf17
           ipv4: "10.252.17.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.117
         - name: to_spine02_vrf18
           vrf: vrf18
           ipv4: "10.252.18.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.118
         - name: to_spine02_vrf19
           vrf: vrf19
           ipv4: "10.252.19.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.119
         - name: to_spine02_vrf20
           vrf: vrf20
           ipv4: "10.252.20.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.120
         - name: to_spine02_vrf21
           vrf: vrf21
           ipv4: "10.252.21.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.121
         - name: to_spine02_vrf22
           vrf: vrf22
           ipv4: "10.252.22.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.122
         - name: to_spine02_vrf23
           vrf: vrf23
           ipv4: "10.252.23.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.123
         - name: to_spine02_vrf24
           vrf: vrf24
           ipv4: "10.252.24.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.124
         - name: to_spine02_vrf25
           vrf: vrf25
           ipv4: "10.252.25.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.125
         - name: to_spine02_vrf26
           vrf: vrf26
           ipv4: "10.252.26.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.126
         - name: to_spine02_vrf27
           vrf: vrf27
           ipv4: "10.252.27.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.127
         - name: to_spine02_vrf28
           vrf: vrf28
           ipv4: "10.252.28.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.128
         - name: to_spine02_vrf29
           vrf: vrf29
           ipv4: "10.252.29.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.129
         - name: to_spine02_vrf30
           vrf: vrf30
           ipv4: "10.252.30.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.130
         - name: to_spine02_vrf31
           vrf: vrf31
           ipv4: "10.252.31.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.131
         - name: to_spine02_vrf32
           vrf: vrf32
           ipv4: "10.252.32.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.132
         - name: to_spine02_vrf33
           vrf: vrf33
           ipv4: "10.252.33.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.133
         - name: to_spine02_vrf34
           vrf: vrf34
           ipv4: "10.252.34.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.134
         - name: to_spine02_vrf35
           vrf: vrf35
           ipv4: "10.252.35.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.135
         - name: to_spine02_vrf36
           vrf: vrf36
           ipv4: "10.252.36.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.136
         - name: to_spine02_vrf37
           vrf: vrf37
           ipv4: "10.252.37.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.137
         - name: to_spine02_vrf38
           vrf: vrf38
           ipv4: "10.252.38.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.138
         - name: to_spine02_vrf39
           vrf: vrf39
           ipv4: "10.252.39.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.139
         - name: to_spine02_vrf40
           vrf: vrf40
           ipv4: "10.252.40.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.140
         - name: to_spine02_vrf41
           vrf: vrf41
           ipv4: "10.252.41.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.141
         - name: to_spine02_vrf42
           vrf: vrf42
           ipv4: "10.252.42.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.142
         - name: to_spine02_vrf43
           vrf: vrf43
           ipv4: "10.252.43.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.143
         - name: to_spine02_vrf44
           vrf: vrf44
           ipv4: "10.252.44.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.144
         - name: to_spine02_vrf45
           vrf: vrf45
           ipv4: "10.252.45.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.145
         - name: to_spine02_vrf46
           vrf: vrf46
           ipv4: "10.252.46.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.146
         - name: to_spine02_vrf47
           vrf: vrf47
           ipv4: "10.252.47.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.147
         - name: to_spine02_vrf48
           vrf: vrf48
           ipv4: "10.252.48.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.148
         - name: to_spine02_vrf49
           vrf: vrf49
           ipv4: "10.252.49.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.149
         - name: to_spine02_vrf50
           vrf: vrf50
           ipv4: "10.252.50.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.150
         - name: to_spine02_vrf51
           vrf: vrf51
           ipv4: "10.252.51.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.151
         - name: to_spine02_vrf52
           vrf: vrf52
           ipv4: "10.252.52.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.152
         - name: to_spine02_vrf53
           vrf: vrf53
           ipv4: "10.252.53.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.153
         - name: to_spine02_vrf54
           vrf: vrf54
           ipv4: "10.252.54.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.154
         - name: to_spine02_vrf55
           vrf: vrf55
           ipv4: "10.252.55.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.155
         - name: to_spine02_vrf56
           vrf: vrf56
           ipv4: "10.252.56.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.156
         - name: to_spine02_vrf57
           vrf: vrf57
           ipv4: "10.252.57.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.157
         - name: to_spine02_vrf58
           vrf: vrf58
           ipv4: "10.252.58.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.158
         - name: to_spine02_vrf59
           vrf: vrf59
           ipv4: "10.252.59.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.159
         - name: to_spine02_vrf60
           vrf: vrf60
           ipv4: "10.252.60.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.160
         - name: to_spine02_vrf61
           vrf: vrf61
           ipv4: "10.252.61.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.161
         - name: to_spine02_vrf62
           vrf: vrf62
           ipv4: "10.252.62.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.162
         - name: to_spine02_vrf63
           vrf: vrf63
           ipv4: "10.252.63.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.163
         - name: to_spine02_vrf64
           vrf: vrf64
           ipv4: "10.252.64.53"
-          asn: 650302
+          asn: 650300
           bfd: swp2.164
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3
         - name: to_spine03_vrf1
           vrf: vrf1
           ipv4: "10.252.1.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.101
         - name: to_spine03_vrf2
           vrf: vrf2
           ipv4: "10.252.2.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.102
         - name: to_spine03_vrf3
           vrf: vrf3
           ipv4: "10.252.3.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.103
         - name: to_spine03_vrf4
           vrf: vrf4
           ipv4: "10.252.4.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.104
         - name: to_spine03_vrf5
           vrf: vrf5
           ipv4: "10.252.5.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.105
         - name: to_spine03_vrf6
           vrf: vrf6
           ipv4: "10.252.6.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.106
         - name: to_spine03_vrf7
           vrf: vrf7
           ipv4: "10.252.7.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.107
         - name: to_spine03_vrf8
           vrf: vrf8
           ipv4: "10.252.8.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.108
         - name: to_spine03_vrf9
           vrf: vrf9
           ipv4: "10.252.9.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.109
         - name: to_spine03_vrf10
           vrf: vrf10
           ipv4: "10.252.10.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.110
         - name: to_spine03_vrf11
           vrf: vrf11
           ipv4: "10.252.11.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.111
         - name: to_spine03_vrf12
           vrf: vrf12
           ipv4: "10.252.12.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.112
         - name: to_spine03_vrf13
           vrf: vrf13
           ipv4: "10.252.13.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.113
         - name: to_spine03_vrf14
           vrf: vrf14
           ipv4: "10.252.14.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.114
         - name: to_spine03_vrf15
           vrf: vrf15
           ipv4: "10.252.15.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.115
         - name: to_spine03_vrf16
           vrf: vrf16
           ipv4: "10.252.16.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.116
         - name: to_spine03_vrf17
           vrf: vrf17
           ipv4: "10.252.17.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.117
         - name: to_spine03_vrf18
           vrf: vrf18
           ipv4: "10.252.18.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.118
         - name: to_spine03_vrf19
           vrf: vrf19
           ipv4: "10.252.19.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.119
         - name: to_spine03_vrf20
           vrf: vrf20
           ipv4: "10.252.20.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.120
         - name: to_spine03_vrf21
           vrf: vrf21
           ipv4: "10.252.21.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.121
         - name: to_spine03_vrf22
           vrf: vrf22
           ipv4: "10.252.22.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.122
         - name: to_spine03_vrf23
           vrf: vrf23
           ipv4: "10.252.23.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.123
         - name: to_spine03_vrf24
           vrf: vrf24
           ipv4: "10.252.24.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.124
         - name: to_spine03_vrf25
           vrf: vrf25
           ipv4: "10.252.25.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.125
         - name: to_spine03_vrf26
           vrf: vrf26
           ipv4: "10.252.26.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.126
         - name: to_spine03_vrf27
           vrf: vrf27
           ipv4: "10.252.27.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.127
         - name: to_spine03_vrf28
           vrf: vrf28
           ipv4: "10.252.28.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.128
         - name: to_spine03_vrf29
           vrf: vrf29
           ipv4: "10.252.29.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.129
         - name: to_spine03_vrf30
           vrf: vrf30
           ipv4: "10.252.30.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.130
         - name: to_spine03_vrf31
           vrf: vrf31
           ipv4: "10.252.31.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.131
         - name: to_spine03_vrf32
           vrf: vrf32
           ipv4: "10.252.32.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.132
         - name: to_spine03_vrf33
           vrf: vrf33
           ipv4: "10.252.33.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.133
         - name: to_spine03_vrf34
           vrf: vrf34
           ipv4: "10.252.34.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.134
         - name: to_spine03_vrf35
           vrf: vrf35
           ipv4: "10.252.35.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.135
         - name: to_spine03_vrf36
           vrf: vrf36
           ipv4: "10.252.36.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.136
         - name: to_spine03_vrf37
           vrf: vrf37
           ipv4: "10.252.37.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.137
         - name: to_spine03_vrf38
           vrf: vrf38
           ipv4: "10.252.38.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.138
         - name: to_spine03_vrf39
           vrf: vrf39
           ipv4: "10.252.39.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.139
         - name: to_spine03_vrf40
           vrf: vrf40
           ipv4: "10.252.40.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.140
         - name: to_spine03_vrf41
           vrf: vrf41
           ipv4: "10.252.41.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.141
         - name: to_spine03_vrf42
           vrf: vrf42
           ipv4: "10.252.42.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.142
         - name: to_spine03_vrf43
           vrf: vrf43
           ipv4: "10.252.43.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.143
         - name: to_spine03_vrf44
           vrf: vrf44
           ipv4: "10.252.44.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.144
         - name: to_spine03_vrf45
           vrf: vrf45
           ipv4: "10.252.45.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.145
         - name: to_spine03_vrf46
           vrf: vrf46
           ipv4: "10.252.46.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.146
         - name: to_spine03_vrf47
           vrf: vrf47
           ipv4: "10.252.47.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.147
         - name: to_spine03_vrf48
           vrf: vrf48
           ipv4: "10.252.48.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.148
         - name: to_spine03_vrf49
           vrf: vrf49
           ipv4: "10.252.49.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.149
         - name: to_spine03_vrf50
           vrf: vrf50
           ipv4: "10.252.50.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.150
         - name: to_spine03_vrf51
           vrf: vrf51
           ipv4: "10.252.51.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.151
         - name: to_spine03_vrf52
           vrf: vrf52
           ipv4: "10.252.52.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.152
         - name: to_spine03_vrf53
           vrf: vrf53
           ipv4: "10.252.53.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.153
         - name: to_spine03_vrf54
           vrf: vrf54
           ipv4: "10.252.54.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.154
         - name: to_spine03_vrf55
           vrf: vrf55
           ipv4: "10.252.55.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.155
         - name: to_spine03_vrf56
           vrf: vrf56
           ipv4: "10.252.56.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.156
         - name: to_spine03_vrf57
           vrf: vrf57
           ipv4: "10.252.57.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.157
         - name: to_spine03_vrf58
           vrf: vrf58
           ipv4: "10.252.58.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.158
         - name: to_spine03_vrf59
           vrf: vrf59
           ipv4: "10.252.59.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.159
         - name: to_spine03_vrf60
           vrf: vrf60
           ipv4: "10.252.60.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.160
         - name: to_spine03_vrf61
           vrf: vrf61
           ipv4: "10.252.61.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.161
         - name: to_spine03_vrf62
           vrf: vrf62
           ipv4: "10.252.62.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.162
         - name: to_spine03_vrf63
           vrf: vrf63
           ipv4: "10.252.63.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.163
         - name: to_spine03_vrf64
           vrf: vrf64
           ipv4: "10.252.64.57"
-          asn: 650303
+          asn: 650300
           bfd: swp3.164
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4
         - name: to_spine04_vrf1
           vrf: vrf1
           ipv4: "10.252.1.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.101
         - name: to_spine04_vrf2
           vrf: vrf2
           ipv4: "10.252.2.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.102
         - name: to_spine04_vrf3
           vrf: vrf3
           ipv4: "10.252.3.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.103
         - name: to_spine04_vrf4
           vrf: vrf4
           ipv4: "10.252.4.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.104
         - name: to_spine04_vrf5
           vrf: vrf5
           ipv4: "10.252.5.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.105
         - name: to_spine04_vrf6
           vrf: vrf6
           ipv4: "10.252.6.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.106
         - name: to_spine04_vrf7
           vrf: vrf7
           ipv4: "10.252.7.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.107
         - name: to_spine04_vrf8
           vrf: vrf8
           ipv4: "10.252.8.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.108
         - name: to_spine04_vrf9
           vrf: vrf9
           ipv4: "10.252.9.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.109
         - name: to_spine04_vrf10
           vrf: vrf10
           ipv4: "10.252.10.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.110
         - name: to_spine04_vrf11
           vrf: vrf11
           ipv4: "10.252.11.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.111
         - name: to_spine04_vrf12
           vrf: vrf12
           ipv4: "10.252.12.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.112
         - name: to_spine04_vrf13
           vrf: vrf13
           ipv4: "10.252.13.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.113
         - name: to_spine04_vrf14
           vrf: vrf14
           ipv4: "10.252.14.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.114
         - name: to_spine04_vrf15
           vrf: vrf15
           ipv4: "10.252.15.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.115
         - name: to_spine04_vrf16
           vrf: vrf16
           ipv4: "10.252.16.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.116
         - name: to_spine04_vrf17
           vrf: vrf17
           ipv4: "10.252.17.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.117
         - name: to_spine04_vrf18
           vrf: vrf18
           ipv4: "10.252.18.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.118
         - name: to_spine04_vrf19
           vrf: vrf19
           ipv4: "10.252.19.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.119
         - name: to_spine04_vrf20
           vrf: vrf20
           ipv4: "10.252.20.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.120
         - name: to_spine04_vrf21
           vrf: vrf21
           ipv4: "10.252.21.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.121
         - name: to_spine04_vrf22
           vrf: vrf22
           ipv4: "10.252.22.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.122
         - name: to_spine04_vrf23
           vrf: vrf23
           ipv4: "10.252.23.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.123
         - name: to_spine04_vrf24
           vrf: vrf24
           ipv4: "10.252.24.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.124
         - name: to_spine04_vrf25
           vrf: vrf25
           ipv4: "10.252.25.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.125
         - name: to_spine04_vrf26
           vrf: vrf26
           ipv4: "10.252.26.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.126
         - name: to_spine04_vrf27
           vrf: vrf27
           ipv4: "10.252.27.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.127
         - name: to_spine04_vrf28
           vrf: vrf28
           ipv4: "10.252.28.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.128
         - name: to_spine04_vrf29
           vrf: vrf29
           ipv4: "10.252.29.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.129
         - name: to_spine04_vrf30
           vrf: vrf30
           ipv4: "10.252.30.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.130
         - name: to_spine04_vrf31
           vrf: vrf31
           ipv4: "10.252.31.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.131
         - name: to_spine04_vrf32
           vrf: vrf32
           ipv4: "10.252.32.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.132
         - name: to_spine04_vrf33
           vrf: vrf33
           ipv4: "10.252.33.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.133
         - name: to_spine04_vrf34
           vrf: vrf34
           ipv4: "10.252.34.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.134
         - name: to_spine04_vrf35
           vrf: vrf35
           ipv4: "10.252.35.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.135
         - name: to_spine04_vrf36
           vrf: vrf36
           ipv4: "10.252.36.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.136
         - name: to_spine04_vrf37
           vrf: vrf37
           ipv4: "10.252.37.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.137
         - name: to_spine04_vrf38
           vrf: vrf38
           ipv4: "10.252.38.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.138
         - name: to_spine04_vrf39
           vrf: vrf39
           ipv4: "10.252.39.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.139
         - name: to_spine04_vrf40
           vrf: vrf40
           ipv4: "10.252.40.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.140
         - name: to_spine04_vrf41
           vrf: vrf41
           ipv4: "10.252.41.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.141
         - name: to_spine04_vrf42
           vrf: vrf42
           ipv4: "10.252.42.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.142
         - name: to_spine04_vrf43
           vrf: vrf43
           ipv4: "10.252.43.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.143
         - name: to_spine04_vrf44
           vrf: vrf44
           ipv4: "10.252.44.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.144
         - name: to_spine04_vrf45
           vrf: vrf45
           ipv4: "10.252.45.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.145
         - name: to_spine04_vrf46
           vrf: vrf46
           ipv4: "10.252.46.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.146
         - name: to_spine04_vrf47
           vrf: vrf47
           ipv4: "10.252.47.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.147
         - name: to_spine04_vrf48
           vrf: vrf48
           ipv4: "10.252.48.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.148
         - name: to_spine04_vrf49
           vrf: vrf49
           ipv4: "10.252.49.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.149
         - name: to_spine04_vrf50
           vrf: vrf50
           ipv4: "10.252.50.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.150
         - name: to_spine04_vrf51
           vrf: vrf51
           ipv4: "10.252.51.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.151
         - name: to_spine04_vrf52
           vrf: vrf52
           ipv4: "10.252.52.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.152
         - name: to_spine04_vrf53
           vrf: vrf53
           ipv4: "10.252.53.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.153
         - name: to_spine04_vrf54
           vrf: vrf54
           ipv4: "10.252.54.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.154
         - name: to_spine04_vrf55
           vrf: vrf55
           ipv4: "10.252.55.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.155
         - name: to_spine04_vrf56
           vrf: vrf56
           ipv4: "10.252.56.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.156
         - name: to_spine04_vrf57
           vrf: vrf57
           ipv4: "10.252.57.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.157
         - name: to_spine04_vrf58
           vrf: vrf58
           ipv4: "10.252.58.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.158
         - name: to_spine04_vrf59
           vrf: vrf59
           ipv4: "10.252.59.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.159
         - name: to_spine04_vrf60
           vrf: vrf60
           ipv4: "10.252.60.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.160
         - name: to_spine04_vrf61
           vrf: vrf61
           ipv4: "10.252.61.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.161
         - name: to_spine04_vrf62
           vrf: vrf62
           ipv4: "10.252.62.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.162
         - name: to_spine04_vrf63
           vrf: vrf63
           ipv4: "10.252.63.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.163
         - name: to_spine04_vrf64
           vrf: vrf64
           ipv4: "10.252.64.61"
-          asn: 650304
+          asn: 650300
           bfd: swp4.164
         # server02
         - name: to_server02
           vrf: vrf1
           ipv4: "10.252.1.10"
           asn: 650102
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server04
         - name: to_server04
           vrf: vrf2
           ipv4: "10.252.2.10"
           asn: 650104
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -9595,1317 +9595,1317 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1
         - name: to_spine01_vrf1
           vrf: vrf1
           ipv4: "10.252.1.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.101
         - name: to_spine01_vrf2
           vrf: vrf2
           ipv4: "10.252.2.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.102
         - name: to_spine01_vrf3
           vrf: vrf3
           ipv4: "10.252.3.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.103
         - name: to_spine01_vrf4
           vrf: vrf4
           ipv4: "10.252.4.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.104
         - name: to_spine01_vrf5
           vrf: vrf5
           ipv4: "10.252.5.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.105
         - name: to_spine01_vrf6
           vrf: vrf6
           ipv4: "10.252.6.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.106
         - name: to_spine01_vrf7
           vrf: vrf7
           ipv4: "10.252.7.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.107
         - name: to_spine01_vrf8
           vrf: vrf8
           ipv4: "10.252.8.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.108
         - name: to_spine01_vrf9
           vrf: vrf9
           ipv4: "10.252.9.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.109
         - name: to_spine01_vrf10
           vrf: vrf10
           ipv4: "10.252.10.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.110
         - name: to_spine01_vrf11
           vrf: vrf11
           ipv4: "10.252.11.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.111
         - name: to_spine01_vrf12
           vrf: vrf12
           ipv4: "10.252.12.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.112
         - name: to_spine01_vrf13
           vrf: vrf13
           ipv4: "10.252.13.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.113
         - name: to_spine01_vrf14
           vrf: vrf14
           ipv4: "10.252.14.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.114
         - name: to_spine01_vrf15
           vrf: vrf15
           ipv4: "10.252.15.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.115
         - name: to_spine01_vrf16
           vrf: vrf16
           ipv4: "10.252.16.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.116
         - name: to_spine01_vrf17
           vrf: vrf17
           ipv4: "10.252.17.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.117
         - name: to_spine01_vrf18
           vrf: vrf18
           ipv4: "10.252.18.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.118
         - name: to_spine01_vrf19
           vrf: vrf19
           ipv4: "10.252.19.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.119
         - name: to_spine01_vrf20
           vrf: vrf20
           ipv4: "10.252.20.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.120
         - name: to_spine01_vrf21
           vrf: vrf21
           ipv4: "10.252.21.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.121
         - name: to_spine01_vrf22
           vrf: vrf22
           ipv4: "10.252.22.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.122
         - name: to_spine01_vrf23
           vrf: vrf23
           ipv4: "10.252.23.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.123
         - name: to_spine01_vrf24
           vrf: vrf24
           ipv4: "10.252.24.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.124
         - name: to_spine01_vrf25
           vrf: vrf25
           ipv4: "10.252.25.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.125
         - name: to_spine01_vrf26
           vrf: vrf26
           ipv4: "10.252.26.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.126
         - name: to_spine01_vrf27
           vrf: vrf27
           ipv4: "10.252.27.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.127
         - name: to_spine01_vrf28
           vrf: vrf28
           ipv4: "10.252.28.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.128
         - name: to_spine01_vrf29
           vrf: vrf29
           ipv4: "10.252.29.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.129
         - name: to_spine01_vrf30
           vrf: vrf30
           ipv4: "10.252.30.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.130
         - name: to_spine01_vrf31
           vrf: vrf31
           ipv4: "10.252.31.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.131
         - name: to_spine01_vrf32
           vrf: vrf32
           ipv4: "10.252.32.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.132
         - name: to_spine01_vrf33
           vrf: vrf33
           ipv4: "10.252.33.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.133
         - name: to_spine01_vrf34
           vrf: vrf34
           ipv4: "10.252.34.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.134
         - name: to_spine01_vrf35
           vrf: vrf35
           ipv4: "10.252.35.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.135
         - name: to_spine01_vrf36
           vrf: vrf36
           ipv4: "10.252.36.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.136
         - name: to_spine01_vrf37
           vrf: vrf37
           ipv4: "10.252.37.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.137
         - name: to_spine01_vrf38
           vrf: vrf38
           ipv4: "10.252.38.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.138
         - name: to_spine01_vrf39
           vrf: vrf39
           ipv4: "10.252.39.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.139
         - name: to_spine01_vrf40
           vrf: vrf40
           ipv4: "10.252.40.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.140
         - name: to_spine01_vrf41
           vrf: vrf41
           ipv4: "10.252.41.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.141
         - name: to_spine01_vrf42
           vrf: vrf42
           ipv4: "10.252.42.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.142
         - name: to_spine01_vrf43
           vrf: vrf43
           ipv4: "10.252.43.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.143
         - name: to_spine01_vrf44
           vrf: vrf44
           ipv4: "10.252.44.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.144
         - name: to_spine01_vrf45
           vrf: vrf45
           ipv4: "10.252.45.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.145
         - name: to_spine01_vrf46
           vrf: vrf46
           ipv4: "10.252.46.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.146
         - name: to_spine01_vrf47
           vrf: vrf47
           ipv4: "10.252.47.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.147
         - name: to_spine01_vrf48
           vrf: vrf48
           ipv4: "10.252.48.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.148
         - name: to_spine01_vrf49
           vrf: vrf49
           ipv4: "10.252.49.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.149
         - name: to_spine01_vrf50
           vrf: vrf50
           ipv4: "10.252.50.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.150
         - name: to_spine01_vrf51
           vrf: vrf51
           ipv4: "10.252.51.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.151
         - name: to_spine01_vrf52
           vrf: vrf52
           ipv4: "10.252.52.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.152
         - name: to_spine01_vrf53
           vrf: vrf53
           ipv4: "10.252.53.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.153
         - name: to_spine01_vrf54
           vrf: vrf54
           ipv4: "10.252.54.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.154
         - name: to_spine01_vrf55
           vrf: vrf55
           ipv4: "10.252.55.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.155
         - name: to_spine01_vrf56
           vrf: vrf56
           ipv4: "10.252.56.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.156
         - name: to_spine01_vrf57
           vrf: vrf57
           ipv4: "10.252.57.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.157
         - name: to_spine01_vrf58
           vrf: vrf58
           ipv4: "10.252.58.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.158
         - name: to_spine01_vrf59
           vrf: vrf59
           ipv4: "10.252.59.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.159
         - name: to_spine01_vrf60
           vrf: vrf60
           ipv4: "10.252.60.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.160
         - name: to_spine01_vrf61
           vrf: vrf61
           ipv4: "10.252.61.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.161
         - name: to_spine01_vrf62
           vrf: vrf62
           ipv4: "10.252.62.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.162
         - name: to_spine01_vrf63
           vrf: vrf63
           ipv4: "10.252.63.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.163
         - name: to_spine01_vrf64
           vrf: vrf64
           ipv4: "10.252.64.65"
-          asn: 650301
+          asn: 650300
           bfd: swp1.164
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2
         - name: to_spine02_vrf1
           vrf: vrf1
           ipv4: "10.252.1.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.101
         - name: to_spine02_vrf2
           vrf: vrf2
           ipv4: "10.252.2.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.102
         - name: to_spine02_vrf3
           vrf: vrf3
           ipv4: "10.252.3.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.103
         - name: to_spine02_vrf4
           vrf: vrf4
           ipv4: "10.252.4.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.104
         - name: to_spine02_vrf5
           vrf: vrf5
           ipv4: "10.252.5.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.105
         - name: to_spine02_vrf6
           vrf: vrf6
           ipv4: "10.252.6.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.106
         - name: to_spine02_vrf7
           vrf: vrf7
           ipv4: "10.252.7.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.107
         - name: to_spine02_vrf8
           vrf: vrf8
           ipv4: "10.252.8.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.108
         - name: to_spine02_vrf9
           vrf: vrf9
           ipv4: "10.252.9.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.109
         - name: to_spine02_vrf10
           vrf: vrf10
           ipv4: "10.252.10.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.110
         - name: to_spine02_vrf11
           vrf: vrf11
           ipv4: "10.252.11.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.111
         - name: to_spine02_vrf12
           vrf: vrf12
           ipv4: "10.252.12.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.112
         - name: to_spine02_vrf13
           vrf: vrf13
           ipv4: "10.252.13.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.113
         - name: to_spine02_vrf14
           vrf: vrf14
           ipv4: "10.252.14.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.114
         - name: to_spine02_vrf15
           vrf: vrf15
           ipv4: "10.252.15.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.115
         - name: to_spine02_vrf16
           vrf: vrf16
           ipv4: "10.252.16.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.116
         - name: to_spine02_vrf17
           vrf: vrf17
           ipv4: "10.252.17.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.117
         - name: to_spine02_vrf18
           vrf: vrf18
           ipv4: "10.252.18.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.118
         - name: to_spine02_vrf19
           vrf: vrf19
           ipv4: "10.252.19.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.119
         - name: to_spine02_vrf20
           vrf: vrf20
           ipv4: "10.252.20.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.120
         - name: to_spine02_vrf21
           vrf: vrf21
           ipv4: "10.252.21.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.121
         - name: to_spine02_vrf22
           vrf: vrf22
           ipv4: "10.252.22.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.122
         - name: to_spine02_vrf23
           vrf: vrf23
           ipv4: "10.252.23.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.123
         - name: to_spine02_vrf24
           vrf: vrf24
           ipv4: "10.252.24.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.124
         - name: to_spine02_vrf25
           vrf: vrf25
           ipv4: "10.252.25.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.125
         - name: to_spine02_vrf26
           vrf: vrf26
           ipv4: "10.252.26.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.126
         - name: to_spine02_vrf27
           vrf: vrf27
           ipv4: "10.252.27.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.127
         - name: to_spine02_vrf28
           vrf: vrf28
           ipv4: "10.252.28.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.128
         - name: to_spine02_vrf29
           vrf: vrf29
           ipv4: "10.252.29.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.129
         - name: to_spine02_vrf30
           vrf: vrf30
           ipv4: "10.252.30.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.130
         - name: to_spine02_vrf31
           vrf: vrf31
           ipv4: "10.252.31.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.131
         - name: to_spine02_vrf32
           vrf: vrf32
           ipv4: "10.252.32.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.132
         - name: to_spine02_vrf33
           vrf: vrf33
           ipv4: "10.252.33.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.133
         - name: to_spine02_vrf34
           vrf: vrf34
           ipv4: "10.252.34.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.134
         - name: to_spine02_vrf35
           vrf: vrf35
           ipv4: "10.252.35.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.135
         - name: to_spine02_vrf36
           vrf: vrf36
           ipv4: "10.252.36.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.136
         - name: to_spine02_vrf37
           vrf: vrf37
           ipv4: "10.252.37.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.137
         - name: to_spine02_vrf38
           vrf: vrf38
           ipv4: "10.252.38.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.138
         - name: to_spine02_vrf39
           vrf: vrf39
           ipv4: "10.252.39.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.139
         - name: to_spine02_vrf40
           vrf: vrf40
           ipv4: "10.252.40.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.140
         - name: to_spine02_vrf41
           vrf: vrf41
           ipv4: "10.252.41.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.141
         - name: to_spine02_vrf42
           vrf: vrf42
           ipv4: "10.252.42.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.142
         - name: to_spine02_vrf43
           vrf: vrf43
           ipv4: "10.252.43.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.143
         - name: to_spine02_vrf44
           vrf: vrf44
           ipv4: "10.252.44.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.144
         - name: to_spine02_vrf45
           vrf: vrf45
           ipv4: "10.252.45.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.145
         - name: to_spine02_vrf46
           vrf: vrf46
           ipv4: "10.252.46.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.146
         - name: to_spine02_vrf47
           vrf: vrf47
           ipv4: "10.252.47.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.147
         - name: to_spine02_vrf48
           vrf: vrf48
           ipv4: "10.252.48.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.148
         - name: to_spine02_vrf49
           vrf: vrf49
           ipv4: "10.252.49.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.149
         - name: to_spine02_vrf50
           vrf: vrf50
           ipv4: "10.252.50.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.150
         - name: to_spine02_vrf51
           vrf: vrf51
           ipv4: "10.252.51.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.151
         - name: to_spine02_vrf52
           vrf: vrf52
           ipv4: "10.252.52.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.152
         - name: to_spine02_vrf53
           vrf: vrf53
           ipv4: "10.252.53.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.153
         - name: to_spine02_vrf54
           vrf: vrf54
           ipv4: "10.252.54.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.154
         - name: to_spine02_vrf55
           vrf: vrf55
           ipv4: "10.252.55.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.155
         - name: to_spine02_vrf56
           vrf: vrf56
           ipv4: "10.252.56.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.156
         - name: to_spine02_vrf57
           vrf: vrf57
           ipv4: "10.252.57.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.157
         - name: to_spine02_vrf58
           vrf: vrf58
           ipv4: "10.252.58.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.158
         - name: to_spine02_vrf59
           vrf: vrf59
           ipv4: "10.252.59.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.159
         - name: to_spine02_vrf60
           vrf: vrf60
           ipv4: "10.252.60.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.160
         - name: to_spine02_vrf61
           vrf: vrf61
           ipv4: "10.252.61.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.161
         - name: to_spine02_vrf62
           vrf: vrf62
           ipv4: "10.252.62.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.162
         - name: to_spine02_vrf63
           vrf: vrf63
           ipv4: "10.252.63.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.163
         - name: to_spine02_vrf64
           vrf: vrf64
           ipv4: "10.252.64.69"
-          asn: 650302
+          asn: 650300
           bfd: swp2.164
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3
         - name: to_spine03_vrf1
           vrf: vrf1
           ipv4: "10.252.1.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.101
         - name: to_spine03_vrf2
           vrf: vrf2
           ipv4: "10.252.2.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.102
         - name: to_spine03_vrf3
           vrf: vrf3
           ipv4: "10.252.3.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.103
         - name: to_spine03_vrf4
           vrf: vrf4
           ipv4: "10.252.4.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.104
         - name: to_spine03_vrf5
           vrf: vrf5
           ipv4: "10.252.5.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.105
         - name: to_spine03_vrf6
           vrf: vrf6
           ipv4: "10.252.6.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.106
         - name: to_spine03_vrf7
           vrf: vrf7
           ipv4: "10.252.7.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.107
         - name: to_spine03_vrf8
           vrf: vrf8
           ipv4: "10.252.8.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.108
         - name: to_spine03_vrf9
           vrf: vrf9
           ipv4: "10.252.9.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.109
         - name: to_spine03_vrf10
           vrf: vrf10
           ipv4: "10.252.10.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.110
         - name: to_spine03_vrf11
           vrf: vrf11
           ipv4: "10.252.11.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.111
         - name: to_spine03_vrf12
           vrf: vrf12
           ipv4: "10.252.12.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.112
         - name: to_spine03_vrf13
           vrf: vrf13
           ipv4: "10.252.13.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.113
         - name: to_spine03_vrf14
           vrf: vrf14
           ipv4: "10.252.14.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.114
         - name: to_spine03_vrf15
           vrf: vrf15
           ipv4: "10.252.15.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.115
         - name: to_spine03_vrf16
           vrf: vrf16
           ipv4: "10.252.16.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.116
         - name: to_spine03_vrf17
           vrf: vrf17
           ipv4: "10.252.17.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.117
         - name: to_spine03_vrf18
           vrf: vrf18
           ipv4: "10.252.18.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.118
         - name: to_spine03_vrf19
           vrf: vrf19
           ipv4: "10.252.19.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.119
         - name: to_spine03_vrf20
           vrf: vrf20
           ipv4: "10.252.20.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.120
         - name: to_spine03_vrf21
           vrf: vrf21
           ipv4: "10.252.21.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.121
         - name: to_spine03_vrf22
           vrf: vrf22
           ipv4: "10.252.22.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.122
         - name: to_spine03_vrf23
           vrf: vrf23
           ipv4: "10.252.23.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.123
         - name: to_spine03_vrf24
           vrf: vrf24
           ipv4: "10.252.24.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.124
         - name: to_spine03_vrf25
           vrf: vrf25
           ipv4: "10.252.25.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.125
         - name: to_spine03_vrf26
           vrf: vrf26
           ipv4: "10.252.26.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.126
         - name: to_spine03_vrf27
           vrf: vrf27
           ipv4: "10.252.27.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.127
         - name: to_spine03_vrf28
           vrf: vrf28
           ipv4: "10.252.28.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.128
         - name: to_spine03_vrf29
           vrf: vrf29
           ipv4: "10.252.29.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.129
         - name: to_spine03_vrf30
           vrf: vrf30
           ipv4: "10.252.30.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.130
         - name: to_spine03_vrf31
           vrf: vrf31
           ipv4: "10.252.31.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.131
         - name: to_spine03_vrf32
           vrf: vrf32
           ipv4: "10.252.32.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.132
         - name: to_spine03_vrf33
           vrf: vrf33
           ipv4: "10.252.33.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.133
         - name: to_spine03_vrf34
           vrf: vrf34
           ipv4: "10.252.34.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.134
         - name: to_spine03_vrf35
           vrf: vrf35
           ipv4: "10.252.35.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.135
         - name: to_spine03_vrf36
           vrf: vrf36
           ipv4: "10.252.36.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.136
         - name: to_spine03_vrf37
           vrf: vrf37
           ipv4: "10.252.37.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.137
         - name: to_spine03_vrf38
           vrf: vrf38
           ipv4: "10.252.38.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.138
         - name: to_spine03_vrf39
           vrf: vrf39
           ipv4: "10.252.39.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.139
         - name: to_spine03_vrf40
           vrf: vrf40
           ipv4: "10.252.40.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.140
         - name: to_spine03_vrf41
           vrf: vrf41
           ipv4: "10.252.41.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.141
         - name: to_spine03_vrf42
           vrf: vrf42
           ipv4: "10.252.42.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.142
         - name: to_spine03_vrf43
           vrf: vrf43
           ipv4: "10.252.43.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.143
         - name: to_spine03_vrf44
           vrf: vrf44
           ipv4: "10.252.44.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.144
         - name: to_spine03_vrf45
           vrf: vrf45
           ipv4: "10.252.45.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.145
         - name: to_spine03_vrf46
           vrf: vrf46
           ipv4: "10.252.46.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.146
         - name: to_spine03_vrf47
           vrf: vrf47
           ipv4: "10.252.47.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.147
         - name: to_spine03_vrf48
           vrf: vrf48
           ipv4: "10.252.48.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.148
         - name: to_spine03_vrf49
           vrf: vrf49
           ipv4: "10.252.49.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.149
         - name: to_spine03_vrf50
           vrf: vrf50
           ipv4: "10.252.50.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.150
         - name: to_spine03_vrf51
           vrf: vrf51
           ipv4: "10.252.51.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.151
         - name: to_spine03_vrf52
           vrf: vrf52
           ipv4: "10.252.52.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.152
         - name: to_spine03_vrf53
           vrf: vrf53
           ipv4: "10.252.53.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.153
         - name: to_spine03_vrf54
           vrf: vrf54
           ipv4: "10.252.54.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.154
         - name: to_spine03_vrf55
           vrf: vrf55
           ipv4: "10.252.55.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.155
         - name: to_spine03_vrf56
           vrf: vrf56
           ipv4: "10.252.56.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.156
         - name: to_spine03_vrf57
           vrf: vrf57
           ipv4: "10.252.57.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.157
         - name: to_spine03_vrf58
           vrf: vrf58
           ipv4: "10.252.58.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.158
         - name: to_spine03_vrf59
           vrf: vrf59
           ipv4: "10.252.59.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.159
         - name: to_spine03_vrf60
           vrf: vrf60
           ipv4: "10.252.60.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.160
         - name: to_spine03_vrf61
           vrf: vrf61
           ipv4: "10.252.61.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.161
         - name: to_spine03_vrf62
           vrf: vrf62
           ipv4: "10.252.62.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.162
         - name: to_spine03_vrf63
           vrf: vrf63
           ipv4: "10.252.63.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.163
         - name: to_spine03_vrf64
           vrf: vrf64
           ipv4: "10.252.64.73"
-          asn: 650303
+          asn: 650300
           bfd: swp3.164
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4
         - name: to_spine04_vrf1
           vrf: vrf1
           ipv4: "10.252.1.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.101
         - name: to_spine04_vrf2
           vrf: vrf2
           ipv4: "10.252.2.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.102
         - name: to_spine04_vrf3
           vrf: vrf3
           ipv4: "10.252.3.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.103
         - name: to_spine04_vrf4
           vrf: vrf4
           ipv4: "10.252.4.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.104
         - name: to_spine04_vrf5
           vrf: vrf5
           ipv4: "10.252.5.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.105
         - name: to_spine04_vrf6
           vrf: vrf6
           ipv4: "10.252.6.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.106
         - name: to_spine04_vrf7
           vrf: vrf7
           ipv4: "10.252.7.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.107
         - name: to_spine04_vrf8
           vrf: vrf8
           ipv4: "10.252.8.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.108
         - name: to_spine04_vrf9
           vrf: vrf9
           ipv4: "10.252.9.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.109
         - name: to_spine04_vrf10
           vrf: vrf10
           ipv4: "10.252.10.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.110
         - name: to_spine04_vrf11
           vrf: vrf11
           ipv4: "10.252.11.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.111
         - name: to_spine04_vrf12
           vrf: vrf12
           ipv4: "10.252.12.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.112
         - name: to_spine04_vrf13
           vrf: vrf13
           ipv4: "10.252.13.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.113
         - name: to_spine04_vrf14
           vrf: vrf14
           ipv4: "10.252.14.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.114
         - name: to_spine04_vrf15
           vrf: vrf15
           ipv4: "10.252.15.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.115
         - name: to_spine04_vrf16
           vrf: vrf16
           ipv4: "10.252.16.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.116
         - name: to_spine04_vrf17
           vrf: vrf17
           ipv4: "10.252.17.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.117
         - name: to_spine04_vrf18
           vrf: vrf18
           ipv4: "10.252.18.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.118
         - name: to_spine04_vrf19
           vrf: vrf19
           ipv4: "10.252.19.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.119
         - name: to_spine04_vrf20
           vrf: vrf20
           ipv4: "10.252.20.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.120
         - name: to_spine04_vrf21
           vrf: vrf21
           ipv4: "10.252.21.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.121
         - name: to_spine04_vrf22
           vrf: vrf22
           ipv4: "10.252.22.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.122
         - name: to_spine04_vrf23
           vrf: vrf23
           ipv4: "10.252.23.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.123
         - name: to_spine04_vrf24
           vrf: vrf24
           ipv4: "10.252.24.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.124
         - name: to_spine04_vrf25
           vrf: vrf25
           ipv4: "10.252.25.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.125
         - name: to_spine04_vrf26
           vrf: vrf26
           ipv4: "10.252.26.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.126
         - name: to_spine04_vrf27
           vrf: vrf27
           ipv4: "10.252.27.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.127
         - name: to_spine04_vrf28
           vrf: vrf28
           ipv4: "10.252.28.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.128
         - name: to_spine04_vrf29
           vrf: vrf29
           ipv4: "10.252.29.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.129
         - name: to_spine04_vrf30
           vrf: vrf30
           ipv4: "10.252.30.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.130
         - name: to_spine04_vrf31
           vrf: vrf31
           ipv4: "10.252.31.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.131
         - name: to_spine04_vrf32
           vrf: vrf32
           ipv4: "10.252.32.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.132
         - name: to_spine04_vrf33
           vrf: vrf33
           ipv4: "10.252.33.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.133
         - name: to_spine04_vrf34
           vrf: vrf34
           ipv4: "10.252.34.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.134
         - name: to_spine04_vrf35
           vrf: vrf35
           ipv4: "10.252.35.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.135
         - name: to_spine04_vrf36
           vrf: vrf36
           ipv4: "10.252.36.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.136
         - name: to_spine04_vrf37
           vrf: vrf37
           ipv4: "10.252.37.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.137
         - name: to_spine04_vrf38
           vrf: vrf38
           ipv4: "10.252.38.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.138
         - name: to_spine04_vrf39
           vrf: vrf39
           ipv4: "10.252.39.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.139
         - name: to_spine04_vrf40
           vrf: vrf40
           ipv4: "10.252.40.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.140
         - name: to_spine04_vrf41
           vrf: vrf41
           ipv4: "10.252.41.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.141
         - name: to_spine04_vrf42
           vrf: vrf42
           ipv4: "10.252.42.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.142
         - name: to_spine04_vrf43
           vrf: vrf43
           ipv4: "10.252.43.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.143
         - name: to_spine04_vrf44
           vrf: vrf44
           ipv4: "10.252.44.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.144
         - name: to_spine04_vrf45
           vrf: vrf45
           ipv4: "10.252.45.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.145
         - name: to_spine04_vrf46
           vrf: vrf46
           ipv4: "10.252.46.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.146
         - name: to_spine04_vrf47
           vrf: vrf47
           ipv4: "10.252.47.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.147
         - name: to_spine04_vrf48
           vrf: vrf48
           ipv4: "10.252.48.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.148
         - name: to_spine04_vrf49
           vrf: vrf49
           ipv4: "10.252.49.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.149
         - name: to_spine04_vrf50
           vrf: vrf50
           ipv4: "10.252.50.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.150
         - name: to_spine04_vrf51
           vrf: vrf51
           ipv4: "10.252.51.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.151
         - name: to_spine04_vrf52
           vrf: vrf52
           ipv4: "10.252.52.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.152
         - name: to_spine04_vrf53
           vrf: vrf53
           ipv4: "10.252.53.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.153
         - name: to_spine04_vrf54
           vrf: vrf54
           ipv4: "10.252.54.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.154
         - name: to_spine04_vrf55
           vrf: vrf55
           ipv4: "10.252.55.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.155
         - name: to_spine04_vrf56
           vrf: vrf56
           ipv4: "10.252.56.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.156
         - name: to_spine04_vrf57
           vrf: vrf57
           ipv4: "10.252.57.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.157
         - name: to_spine04_vrf58
           vrf: vrf58
           ipv4: "10.252.58.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.158
         - name: to_spine04_vrf59
           vrf: vrf59
           ipv4: "10.252.59.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.159
         - name: to_spine04_vrf60
           vrf: vrf60
           ipv4: "10.252.60.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.160
         - name: to_spine04_vrf61
           vrf: vrf61
           ipv4: "10.252.61.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.161
         - name: to_spine04_vrf62
           vrf: vrf62
           ipv4: "10.252.62.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.162
         - name: to_spine04_vrf63
           vrf: vrf63
           ipv4: "10.252.63.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.163
         - name: to_spine04_vrf64
           vrf: vrf64
           ipv4: "10.252.64.77"
-          asn: 650304
+          asn: 650300
           bfd: swp4.164
         # server02
         - name: to_server02
           vrf: vrf1
           ipv4: "10.252.1.14"
           asn: 650102
-          bfd: swp5s0
           import: import_bgp_from_servers
+          template: servers
         # server04
         - name: to_server04
           vrf: vrf2
           ipv4: "10.252.2.14"
           asn: 650104
-          bfd: swp5s1
           import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -12305,7 +12305,7 @@ node:
           bfd: True
 
     bgp:
-      asn: 650301
+      asn: 650300
       merge_paths: True
       neighbors:
         # leaf01
@@ -15014,7 +15014,7 @@ node:
 
 
     bgp:
-      asn: 650302
+      asn: 650300
       merge_paths: True
       neighbors:
         # leaf01
@@ -17710,7 +17710,7 @@ node:
         swp6:
 
     bgp:
-      asn: 650303
+      asn: 650300
       merge_paths: True
       neighbors:
         # leaf01
@@ -20403,16 +20403,16 @@ node:
 
         # to cisco 0/4/0/0
         swp5:
-          ipv4_addresses: ["10.252.0.89/30"]
+          ipv4_addresses: ["10.252.0.93/30"]
           bfd: True
 
         # to huawei 1/0/30
         swp6:
-          ipv4_addresses: ["10.252.0.93/30"]
+          ipv4_addresses: ["10.252.0.89/30"]
           bfd: True
 
     bgp:
-      asn: 650304
+      asn: 650300
       merge_paths: True
       neighbors:
         # leaf01

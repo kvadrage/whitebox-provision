@@ -136,7 +136,7 @@ template bgp fabric {
     connect delay time 1;
     error forget time 30;
     connect retry time 10;
-    password "Mellanox";
+    #password "Mellanox";
     check link on;
 }
 
@@ -149,6 +149,15 @@ template bgp ext {
     error forget time 30;
     connect retry time 10;
     password "Mellanox";
+    check link on;
+}
+
+template bgp servers {
+    graceful restart;
+    error wait time 5, 15;
+    connect delay time 1;
+    error forget time 30;
+    connect retry time 10;
     check link on;
 }
 
