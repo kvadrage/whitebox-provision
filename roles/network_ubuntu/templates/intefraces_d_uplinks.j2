@@ -1,0 +1,17 @@
+{% set node = node[ansible_hostname] %}
+{% set intvars = node.interfaces.common[item] %}
+{% if item | match("^lo*") %}
+
+{% for iface in intvars %}
+# {{iface}}
+auto {{iface}}
+{% if iface | match("^lo*") %}
+iface {{iface}} inet static
+{% else %}
+auto {{iface}}
+iface {{iface}} inet loopback
+{% endif %}
+  address {{intvars[iface].ipv4ipv4_addresses[0] | ipaddr('address')}}
+  netmask {{intvars[iface].ipv4ipv4_addresses[0] | ipaddr('netmask')}}
+
+{% endfor %}

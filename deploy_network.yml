@@ -14,10 +14,10 @@
     - network_alt_rcnet
     - bird
 
-# - hosts: servers_centos
-#   user: admin
-#   become: yes
-#   become_method: sudo
-#   roles:
-#     - network_centos
-#     - bird
+ # - hosts: servers
+ #   user: admin
+ #   become: yes
+ #   become_method: sudo
+ #   roles:
+ #     - network_ubuntu
+ #     - bird

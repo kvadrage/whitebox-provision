@@ -48,26 +48,28 @@
     - bird
     - local
 
-- name: render bird4 configuration
+- name: render bird4 configuration for switches
   template:
     src: bird4.conf.j2
-    dest: "{{bird4_conf}}"
+    dest: "{{bird4_conf_alt}}"
     mode: 0644
     backup: yes
     validate: "bird4 -c %s -p"
+  when: "'switches_alt' in group_names"
   notify:
     - enable bird
     - restart bird
   tags:
     - bird
 
-- name: render bird6 configuration
+- name: render bird6 configuration for switches
   template:
     src: bird6.conf.j2
-    dest: "{{bird6_conf}}"
+    dest: "{{bird6_conf_alt}}"
     mode: 0644
     backup: yes
     validate: "bird6 -c %s -p"
+  when: "'switches_alt' in group_names"
   notify:
     - enable bird
     - restart bird
