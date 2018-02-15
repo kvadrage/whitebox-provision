@@ -1,7 +1,12 @@
+#!/usr/bin/python
+
+__version__ = "0.1.0"
+
 import sys
 import struct
 import socket
 import subprocess
+import argparse
 
 IP_ADDR_ADD = "ip addr add dev {} {}/32"
 IP_ADDR_DEL = "ip addr del dev {} {}/32"
@@ -34,8 +39,12 @@ def del_ip_addrs(iface, addrs):
         execute_command(IP_ADDR_DEL.format(iface, addr))
 
 def run_add_action(args):
-    addrs = gen_ip_addrs(args.i, args.n)
-    add_ip_addrs(args.iface=)
+    addrs = gen_ip_addrs(args.START_IP, args.NUMBER)
+    add_ip_addrs(args.IFACE, addrs)
+
+def run_del_action(args):
+    addrs = gen_ip_addrs(args.START_IP, args.NUMBER)
+    del_ip_addrs(args.IFACE, addrs)
 
 def parse_args():
     parser = argparse.ArgumentParser(prog='ipgen', description='generate multiple ip addresses',
@@ -43,13 +52,13 @@ def parse_args():
     subparsers = parser.add_subparsers()
 
     parser_add = subparsers.add_parser('add', help='add ip seq to an interface')
-    parser_rename.add_argument('-i', dest='IFACE', type=str, help='interface')
-    parser_rename.add_argument('-s', dest='START_IP', type=str, help='start ip address (/32 mask)')
-    parser_rename.add_argument('-n', dest='NUMBER', type=int, help='total number of IP addresses to generate')
-    parser_del = subparsers.add_parser('add', help='del ip seq from an interface')
-    parser_del.add_argument('-i', dest='IFACE', type=str, help='interface')
-    parser_del.add_argument('-s', dest='START_IP', type=str, help='start ip address (/32 mask)')
-    parser_del.add_argument('-n', dest='NUMBER', type=int, help='total number of IP addresses to generate')
+    parser_add.add_argument('-i', dest='IFACE', type=str, required=True, help='interface')
+    parser_add.add_argument('-s', dest='START_IP', type=str, required=True, help='start ip address (/32 mask)')
+    parser_add.add_argument('-n', dest='NUMBER', type=int, required=True, help='total number of IP addresses to generate')
+    parser_del = subparsers.add_parser('del', help='del ip seq from an interface')
+    parser_del.add_argument('-i', dest='IFACE', type=str, required=True, help='interface')
+    parser_del.add_argument('-s', dest='START_IP', type=str, required=True, help='start ip address (/32 mask)')
+    parser_del.add_argument('-n', dest='NUMBER', type=int, required=True, help='total number of IP addresses to generate')
     parser_add.set_defaults(func=run_add_action)
     parser_del.set_defaults(func=run_del_action)
     return parser.parse_args()
