@@ -153,6 +153,8 @@ template bgp ext {
 }
 
 template bgp servers {
+    hold time 21;
+    keepalive time 7;
     graceful restart;
     error wait time 5, 15;
     connect delay time 1;

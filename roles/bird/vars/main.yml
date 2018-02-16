@@ -13,11 +13,11 @@ filters:
     #     }
     #     else reject;
     import_bgp_from_servers: |
-        if net ~ [ 10.250.0.0/16+ ] then accept;
+        if net ~ [ 10.250.0.0/16+, 100.64.0.0/16+ ] then accept;
         reject;
     import_bgp_from_servers_vrf1: |
-        if net ~ [ 10.250.1.0/24+ ] then accept;
+        if net ~ [ 10.250.0.0/16+, 100.64.0.0/16+ ] then accept;
         reject;
     import_bgp_from_servers_vrf2: |
-        if net ~ [ 10.250.2.0/24+ ] then accept;
+        if net ~ [ 10.250.0.0/16+, 100.64.0.0/16+ ] then accept;
         reject;
