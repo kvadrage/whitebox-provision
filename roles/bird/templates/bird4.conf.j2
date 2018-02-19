@@ -114,7 +114,7 @@ protocol kernel {
     learn on; # Learn all alien routes from the kernel
     # persist; # Don't remove routes on bird shutdown
     scan time 20; # Scan kernel routing table every 20 seconds
-    import all; # Default is import all
+    import none; # Default is import all
     export all; # Default is export none
 {%      if bgpvars.merge_paths is defined and bgpvars.merge_paths %}
     merge paths on;
@@ -136,7 +136,7 @@ template bgp fabric {
     connect delay time 1;
     error forget time 30;
     connect retry time 10;
-    #password "Mellanox";
+    password "Mellanox";
     check link on;
 }
 
@@ -160,6 +160,7 @@ template bgp servers {
     connect delay time 1;
     error forget time 30;
     connect retry time 10;
+    password "Mellanox";
     check link on;
 }
 

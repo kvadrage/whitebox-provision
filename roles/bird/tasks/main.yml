@@ -75,3 +75,17 @@
     - restart bird
   tags:
     - bird
+
+- name: render bird4 configuration for rhel/centos serveres
+  template:
+    src: bird4.conf.j2
+    dest: "{{bird4_conf_centos}}"
+    mode: 0644
+    backup: yes
+    validate: "bird -c %s -p"
+  when: "'servers' in group_names"
+  notify:
+    - enable bird
+    - restart bird
+  tags:
+    - bird

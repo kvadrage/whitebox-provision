@@ -1,0 +1,289 @@
+global:
+  save_local: "disable"
+  ignore_ifaces: ["eth0", "vagrant"]
+node:
+################################## spine04 ####################################
+  spine04:
+    router_id: "10.255.0.14"
+    vrfs:
+      - name: vrf1
+        table: 1
+      - name: vrf2
+        table: 2
+      - name: vrf3
+        table: 3
+      - name: vrf4
+        table: 4
+      - name: vrf5
+        table: 5
+      - name: vrf6
+        table: 6
+      - name: vrf7
+        table: 7
+      - name: vrf8
+        table: 8
+      - name: vrf9
+        table: 9
+      - name: vrf10
+        table: 10
+      - name: vrf11
+        table: 11
+      - name: vrf12
+        table: 12
+      - name: vrf13
+        table: 13
+      - name: vrf14
+        table: 14
+      - name: vrf15
+        table: 15
+      - name: vrf16
+        table: 16
+    interfaces:
+      loopback:
+        lo:
+          ipv4_addresses: ["127.0.0.1/8", "10.255.0.1/32"]
+        vrf1:
+          ipv4_addresses: ["10.255.1.14/32"]
+          vrf: vrf1
+        vrf2:
+          ipv4_addresses: ["10.255.2.14/32"]
+          vrf: vrf2
+        vrf3:
+          ipv4_addresses: ["10.255.3.14/32"]
+          vrf: vrf3
+        vrf4:
+          ipv4_addresses: ["10.255.4.14/32"]
+          vrf: vrf4
+        vrf5:
+          ipv4_addresses: ["10.255.5.14/32"]
+          vrf: vrf5
+        vrf6:
+          ipv4_addresses: ["10.255.6.14/32"]
+          vrf: vrf6
+        vrf7:
+          ipv4_addresses: ["10.255.7.14/32"]
+          vrf: vrf7
+        vrf8:
+          ipv4_addresses: ["10.255.8.14/32"]
+          vrf: vrf8
+        vrf9:
+          ipv4_addresses: ["10.255.9.14/32"]
+          vrf: vrf9
+        vrf10:
+          ipv4_addresses: ["10.255.10.14/32"]
+          vrf: vrf10
+        vrf11:
+          ipv4_addresses: ["10.255.11.14/32"]
+          vrf: vrf11
+        vrf12:
+          ipv4_addresses: ["10.255.12.14/32"]
+          vrf: vrf12
+        vrf13:
+          ipv4_addresses: ["10.255.13.14/32"]
+          vrf: vrf13
+        vrf14:
+          ipv4_addresses: ["10.255.14.14/32"]
+          vrf: vrf14
+        vrf15:
+          ipv4_addresses: ["10.255.15.14/32"]
+          vrf: vrf15
+        vrf16:
+          ipv4_addresses: ["10.255.16.14/32"]
+          vrf: vrf16
+      common:
+
+        # in
+        swp1:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.1.1/30"]
+          vrf: vrf1
+        # to swp3
+        swp2:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.2.1/30"]
+          vrf: vrf1
+        # from swp2
+        swp3:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.2.2/30"]
+          vrf: vrf2
+        # to swp5
+        swp4:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.4.1/30"]
+          vrf: vrf2
+        # from swp4
+        swp5:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.4.2/30"]
+          vrf: vrf3
+        # to swp7
+        swp6:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.6.1/30"]
+          vrf: vrf3
+        # from swp6
+        swp7:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.6.2/30"]
+          vrf: vrf4
+        # to swp9
+        swp8:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.8.1/30"]
+          vrf: vrf4
+        # from swp8
+        swp9:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.8.2/30"]
+          vrf: vrf5
+        # to swp11
+        swp10:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.10.1/30"]
+          vrf: vrf5
+        # from swp10
+        swp11:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.10.2/30"]
+          vrf: vrf6
+        # to swp13
+        swp12:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.12.1/30"]
+          vrf: vrf6
+        # from swp12
+        swp13:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.12.2/30"]
+          vrf: vrf7
+        # to swp15
+        swp14:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.14.1/30"]
+          vrf: vrf7
+        # from swp14
+        swp15:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.14.2/30"]
+          vrf: vrf8
+        # to swp17
+        swp16:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.16.1/30"]
+          vrf: vrf8
+        # from swp16
+        swp17:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.16.2/30"]
+          vrf: vrf9
+        # to swp19
+        swp18:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.18.1/30"]
+          vrf: vrf9
+        # from swp18
+        swp19:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.18.2/30"]
+          vrf: vrf10
+        # to swp21
+        swp20:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.20.1/30"]
+          vrf: vrf10
+        # from swp20
+        swp21:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.20.2/30"]
+          vrf: vrf11
+        # to swp23
+        swp22:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.22.1/30"]
+          vrf: vrf11
+        # from swp22
+        swp23:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.22.2/30"]
+          vrf: vrf12
+        # to swp25
+        swp24:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.24.1/30"]
+          vrf: vrf12
+        # from swp24
+        swp25:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.24.2/30"]
+          vrf: vrf13
+        # to swp27
+        swp26:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.26.1/30"]
+          vrf: vrf13
+        # from swp26
+        swp27:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.26.2/30"]
+          vrf: vrf14
+        # to swp29
+        swp28:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.28.1/30"]
+          vrf: vrf14
+        # from swp28
+        swp29:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.28.2/30"]
+          vrf: vrf15
+        # to swp31
+        swp30:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.30.1/30"]
+          vrf: vrf15
+        # from swp30
+        swp31:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.30.2/30"]
+          vrf: vrf16
+        # out
+        swp32:
+          autoneg: False
+          speed: 100000
+          ipv4_addresses: ["10.252.32.1/30"]
+          vrf: vrf16
+
+    ospf:
+      area: 0

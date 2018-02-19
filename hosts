@@ -15,7 +15,7 @@ spine03
 spine04
 
 [servers]
-#server01
-#server02
-#server03
-#server04
+server01
+server02
+server03
+server04

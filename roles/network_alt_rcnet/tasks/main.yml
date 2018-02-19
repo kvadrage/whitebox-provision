@@ -4,8 +4,7 @@
     msg: "{{ansible_hostname}} is not defined properly in vars"
   when: node is not defined or ansible_hostname not in node|default({})
   tags:
-    - ifaces_setup
-
+    - network
 
 - name: create ifaces vars
   set_fact:

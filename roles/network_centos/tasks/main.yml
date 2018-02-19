@@ -1,12 +1,47 @@
 ---
 
+- name: check if node is undefined
+  fail:
+    msg: "{{ansible_hostname}} is not defined properly in vars"
+  when: node is not defined or ansible_hostname not in node|default({})
+  tags:
+    - network
+
+- name: create ifaces vars
+  set_fact:
+    ignore_ifaces: "{{global.ignore_ifaces | default([])}}"
+    ifaces_all: "{{ ({} | combine(
+                node[ansible_hostname].interfaces.common|default({}),
+                node[ansible_hostname].interfaces.bond|default({}),
+                node[ansible_hostname].interfaces.bridge|default({}),
+                node[ansible_hostname].interfaces.loopback|default({})))}}
+                "
+    ifaces_loopback: "{{node[ansible_hostname].interfaces.loopback|default({})}}"
+    ifaces_common: "{{node[ansible_hostname].interfaces.common|default({})}}"
+    ifaces_bond: "{{node[ansible_hostname].interfaces.bond|default({})}}"
+    ifaces_bridge: "{{node[ansible_hostname].interfaces.bridge|default({})}}"
+    vrfs: "{{ node[ansible_hostname].vrfs|default({})|map(attribute='name')|list }}"
+  when: ansible_hostname in node and node[ansible_hostname].interfaces is defined
+  tags:
+    - network
+
+- debug:
+    msg:
+      - "ignore_ifaces: {{ignore_ifaces}}"
+      - "ifaces_loopback: {{ifaces_loopback.keys()}}"
+      - "ifaces_common: {{ifaces_common.keys()}}"
+      - "ifaces_bond: {{ifaces_bond.keys()}}"
+      - "ifaces_bridge: {{ifaces_bridge.keys()}}"
+      - "ifaces_all: {{ifaces_all.keys()}}"
+  tags:
+    - network
+
 - name: create rendered flat-file for interface
   template: src=ifcfg-iface.j2 dest="{{network_folder}}/ifcfg-{{item}}"
-  with_items: "{{ node[ansible_hostname].interfaces.common }}"
+  with_items: "{{ ifaces_all }}"
   notify: restart network
-  when: ansible_hostname in node and node[ansible_hostname].interfaces.common is defined
   tags:
-    - ifaces_setup
+    - network
 
 - name: create local network folder
   file: path={{network_folder_local}} state=directory recurse=yes
@@ -14,7 +49,7 @@
   become: false
   when: save_local is defined and save_local == "enable"
   tags:
-    - ifaces_setup
+    - network
     - local
 
 - name: create rendered flat-file for interface locally
@@ -24,5 +59,5 @@
   with_items: "{{ node[ansible_hostname].interfaces.common }}"
   when: save_local is defined and save_local == "enable"
   tags:
-    - ifaces_setup
+    - network
     - local

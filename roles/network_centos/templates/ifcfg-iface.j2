@@ -1,5 +1,5 @@
 {% set node = node[ansible_hostname] %}
-{% set intvars = node.interfaces.common[item] %}
+{% set intvars = ifaces_all[item] %}
 {% if item | match("^lo*") %}
 DEVICE=lo
 NAME=loopback
