@@ -21752,10 +21752,12 @@ node:
           ipv4: "10.252.1.1"
           asn: 650201
           bfd: eth11
+          template: servers
         - name: to_leafB
           ipv4: "10.252.1.5"
           asn: 650202
           bfd: eth12
+          template: servers
       import: all
       export: all
 
@@ -21781,10 +21783,12 @@ node:
           ipv4: "10.252.2.1"
           asn: 650201
           bfd: eth11
+          template: servers
         - name: to_leafB
           ipv4: "10.252.2.5"
           asn: 650202
           bfd: eth12
+          template: servers
       import: all
       export: all
 
@@ -21810,10 +21814,12 @@ node:
           ipv4: "10.252.1.9"
           asn: 650203
           bfd: eth11
+          template: servers
         - name: to_leafB
           ipv4: "10.252.1.13"
           asn: 650204
           bfd: eth12
+          template: servers
       import: all
       export: all
 
@@ -21839,9 +21845,11 @@ node:
           ipv4: "10.252.2.9"
           asn: 650203
           bfd: eth11
+          template: servers
         - name: to_leafB
           ipv4: "10.252.2.13"
           asn: 650204
           bfd: eth12
+          template: servers
       import: all
       export: all
