@@ -21731,7 +21731,7 @@ node:
       export: all
 
 ################################## server01 ####################################
-  server01:
+  pprb-server-1:
     router_id: "10.255.0.31"
     interfaces:
       loopback:
@@ -21762,7 +21762,7 @@ node:
       export: all
 
 ################################## server02 ####################################
-  server02:
+  pprb-server-1:
     router_id: "10.255.0.32"
     interfaces:
       loopback:
@@ -21793,7 +21793,7 @@ node:
       export: all
 
 ################################## server03 ####################################
-  server03:
+  pprb-server-3:
     router_id: "10.255.0.33"
     interfaces:
       loopback:
@@ -21824,7 +21824,7 @@ node:
       export: all
 
 ################################## server04 ####################################
-  server04:
+  pprb-server-4:
     router_id: "10.255.0.34"
     interfaces:
       loopback:
