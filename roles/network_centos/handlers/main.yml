@@ -2,3 +2,4 @@
   service:
     name: network
     state: restarted
+  ignore_errors: True
