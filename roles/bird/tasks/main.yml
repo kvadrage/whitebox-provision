@@ -55,7 +55,7 @@
     mode: 0644
     backup: yes
     validate: "bird4 -c %s -p"
-  when: "'switches_alt' in group_names"
+  when: "ansible_hostname in groups['switches_alt']"
   notify:
     - enable bird
     - restart bird

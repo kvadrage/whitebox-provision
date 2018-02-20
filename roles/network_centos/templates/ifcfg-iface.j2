@@ -4,6 +4,9 @@
 DEVICE=lo
 NAME=loopback
 {% else %}
+{% if intvars.vlan is defined and intvars.vlan %}
+VLAN=yes
+{% endif %}
 DEVICE={{item}}
 NAME={{item}}
 TYPE=Ethernet

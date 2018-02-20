@@ -4,34 +4,29 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: shutdown ifaces
-      command: ifdown {{item}}
-      when: item != "eth0"
-      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
-                  node[ansible_hostname].interfaces.bonds|default({}),
-                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
-    - name: clear ifaces
-      file:
-        path: "/etc/net/ifaces/{{item}}/"
-        state: absent
-      when: item != "eth0"
-      with_items: "{{ ({} | combine(node[ansible_hostname].interfaces.common|default({}),
-                  node[ansible_hostname].interfaces.bonds|default({}),
-                  node[ansible_hostname].interfaces.bridges|default({}))) }}"
+
+    - name: clear rc.network
+      copy: content="" dest="/etc/rc.d/rc.network"
+
+    - name: reset networking
+      blockinfile:
+        dest: /etc/rc.d/rc.network
+        block: |
+          swport reset all eth0,vagrant
       notify: restart network
 
     - name: clear bird config
-      copy: content="" dest=/etc/bird.conf
+      copy: content="" dest="/etc/bird/bird4.conf"
 
-    - name: initialize bird config
+    - name: initialize bird4 config
       blockinfile:
-        dest: /etc/bird.conf
+        dest: "/etc/bird/bird4.conf"
         block: |
           protocol kernel {
           }
-      notify: stop bird
+      notify: restart bird
   handlers:
     - name: restart network
       service: name=network state=restarted
-    - name: stop bird
-      service: name=bird state=stopped
+    - name: restart bird
+      service: name=bird state=restarted

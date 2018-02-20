@@ -8,8 +8,10 @@
 
 - hosts: localhost
   user: admin
-  become: yes
-  become_method: sudo
-  roles:
-    - network_alt_rcnet
-    - bird
+  tasks:
+    - name: include batch vars
+      include_vars:
+        file: group_vars/batch.yml
+        name: batch
+    - name: generate all vars from template
+      template: src=templates/leaf01_server01_500bgp.j2 dest=group_vars/leaf01_server01_500bgp.yml
