@@ -782,11 +782,13 @@ node:
         # to cisco 0/4/0/0
         swp5:
           ipv4_addresses: ["10.252.0.81/30"]
+          vrf: vrf1
           bfd: True
 
         # to huawei 1/0/30
         swp6:
           ipv4_addresses: ["10.252.0.85/30"]
+          vrf: vrf1
           bfd: True
 
     bgp:
@@ -847,12 +849,14 @@ node:
 {% endfor %}
         # cisco
         - name: to_cisco
+          vrf: vrf1
           ipv4: "10.252.0.82"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
+          vrf: vrf1
           ipv4: "10.252.0.86"
           asn: 64888
           bfd: swp6
@@ -1230,11 +1234,13 @@ node:
         # to cisco 0/4/0/0
         swp5:
           ipv4_addresses: ["10.252.0.93/30"]
+          vrf: vrf1
           bfd: True
 
         # to huawei 1/0/30
         swp6:
           ipv4_addresses: ["10.252.0.89/30"]
+          vrf: vrf1
           bfd: True
 
     bgp:
@@ -1295,12 +1301,14 @@ node:
 {% endfor %}
         # cisco
         - name: to_cisco
+          vrf: vrf1
           ipv4: "10.252.0.94"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
+          vrf: vrf1
           ipv4: "10.252.0.90"
           asn: 64888
           bfd: swp6
