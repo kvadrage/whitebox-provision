@@ -24,6 +24,10 @@ echo 5000 > /proc/sys/net/ipv4/tcp_max_syn_backlog
 echo 4096 > /proc/sys/net/core/somaxconn
 echo 25165824 > /proc/sys/net/core/optmem_max
 
+# some tuning for Bird
+ulimit -n 94180
+echo 94180 > /proc/sys/fs/file-max
+
 ## reset all network configuration
 swport reset all eth0,vagrant
 sleep 1

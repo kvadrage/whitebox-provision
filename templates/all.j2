@@ -120,53 +120,53 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.17"
-          asn: 650300
+          asn: 650301
           bfd: swp1
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine01_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.17"
-          asn: 650300
+          asn: 650301
           bfd: swp1.{{ vrfs.offset + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.21"
-          asn: 650300
+          asn: 650302
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.21"
-          asn: 650300
+          asn: 650302
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.25"
-          asn: 650300
+          asn: 650303
           bfd: swp3
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine03_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.25"
-          asn: 650300
+          asn: 650303
           bfd: swp3.{{ vrfs.offset + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.29"
-          asn: 650300
+          asn: 650304
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.29"
-          asn: 650300
+          asn: 650304
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # server01
@@ -291,53 +291,53 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.33"
-          asn: 650300
+          asn: 650301
           bfd: swp1
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine01_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.33"
-          asn: 650300
+          asn: 650301
           bfd: swp1.{{ vrfs.offset + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.37"
-          asn: 650300
+          asn: 650302
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.37"
-          asn: 650300
+          asn: 650302
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.41"
-          asn: 650300
+          asn: 650303
           bfd: swp3
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine03_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.41"
-          asn: 650300
+          asn: 650303
           bfd: swp3.{{ vrfs.offset + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.45"
-          asn: 650300
+          asn: 650304
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.45"
-          asn: 650300
+          asn: 650304
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # server01
@@ -462,53 +462,53 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.49"
-          asn: 650300
+          asn: 650301
           bfd: swp1
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine01_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.49"
-          asn: 650300
+          asn: 650301
           bfd: swp1.{{ vrfs.offset + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.53"
-          asn: 650300
+          asn: 650302
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.53"
-          asn: 650300
+          asn: 650302
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.57"
-          asn: 650300
+          asn: 650303
           bfd: swp3
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine03_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.57"
-          asn: 650300
+          asn: 650303
           bfd: swp3.{{ vrfs.offset + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.61"
-          asn: 650300
+          asn: 650304
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.61"
-          asn: 650300
+          asn: 650304
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # server03
@@ -633,53 +633,53 @@ node:
         # spine01
         - name: to_spine01
           ipv4: "10.252.0.65"
-          asn: 650300
+          asn: 650301
           bfd: swp1
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine01_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.65"
-          asn: 650300
+          asn: 650301
           bfd: swp1.{{ vrfs.offset + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
           ipv4: "10.252.0.69"
-          asn: 650300
+          asn: 650302
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.69"
-          asn: 650300
+          asn: 650302
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
           ipv4: "10.252.0.73"
-          asn: 650300
+          asn: 650303
           bfd: swp3
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine03_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.73"
-          asn: 650300
+          asn: 650303
           bfd: swp3.{{ vrfs.offset + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
           ipv4: "10.252.0.77"
-          asn: 650300
+          asn: 650304
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_spine04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.77"
-          asn: 650300
+          asn: 650304
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # server02
@@ -790,7 +790,7 @@ node:
           bfd: True
 
     bgp:
-      asn: 650300
+      asn: 650301
       merge_paths: True
       neighbors:
         # leaf01
@@ -946,7 +946,7 @@ node:
 
 
     bgp:
-      asn: 650300
+      asn: 650302
       merge_paths: True
       neighbors:
         # leaf01
@@ -1089,7 +1089,7 @@ node:
         swp6:
 
     bgp:
-      asn: 650300
+      asn: 650303
       merge_paths: True
       neighbors:
         # leaf01
@@ -1238,7 +1238,7 @@ node:
           bfd: True
 
     bgp:
-      asn: 650300
+      asn: 650304
       merge_paths: True
       neighbors:
         # leaf01
