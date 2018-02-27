@@ -89,6 +89,7 @@ ip -6 addr add {{ addr | ipv6 }} dev {{ifname}}
 {%    endfor %}
 {%  endif %}
 {%  if iface.ipv4_routes is defined %}
+## ipv4 static routes
 {%    for route in iface.ipv4_routes %}
 {%      if iface.vrf is defined %}
 ip route add vrf {{iface.vrf}} {{ route }}
@@ -98,6 +99,7 @@ ip route add {{ route }}
 {%    endfor %}
 {%  endif %}
 {%  if iface.ipv6_routes is defined %}
+## ipv6 static routes
 {%    for route in iface.ipv6_routes %}
 {%      if iface.vrf is defined %}
 ip -6 route add vrf {{iface.vrf}} {{ route }}
@@ -111,8 +113,10 @@ ip -6 route add {{ route }}
 # regular interfaces
 {% for ifname in intvars|sort  %}
 {%  set iface = intvars[ifname] %}
+{%  set iftype = "physical" %}
 ## {{ifname}}
 {%  if ifname | match("[A-Za-z0-9]+\.[0-9]+") %}
+{%    set iftype = "vlan" %}
 {%    set master = ifname.split(".")[0] %}
 {%    set vid = ifname.split(".")[1] %}
 ip link add link {{master}} name {{ifname}} type vlan id {{vid}}
@@ -122,7 +126,7 @@ ip link set dev {{ifname}} mtu {{iface.mtu}}
 {%  else %}
 ip link set dev {{ifname}} mtu 9216
 {%  endif %}
-{%  if iface.speed is defined %}
+{%  if iface.speed is defined and iftype == "physical" %}
 {%    if iface.autoneg is defined and not iface.autoneg %}
 {%      set autoneg = "off" %}
 {%    else %}

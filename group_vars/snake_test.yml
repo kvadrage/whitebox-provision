@@ -3,8 +3,8 @@ global:
   ignore_ifaces: ["eth0", "vagrant"]
 node:
 ################################## spine04 ####################################
-  spine04:
-    router_id: "10.255.0.14"
+  spine01-snake:
+    router_id: "10.255.0.11"
     vrfs:
       - name: vrf1
         table: 1
@@ -43,52 +43,54 @@ node:
         lo:
           ipv4_addresses: ["127.0.0.1/8", "10.255.0.1/32"]
         vrf1:
-          ipv4_addresses: ["10.255.1.14/32"]
+          ipv4_addresses: ["10.255.1.11/32"]
           vrf: vrf1
+          ipv4_routes:
+            - "10.252.32.0/30 dev swp2"
         vrf2:
-          ipv4_addresses: ["10.255.2.14/32"]
+          ipv4_addresses: ["10.255.2.11/32"]
           vrf: vrf2
         vrf3:
-          ipv4_addresses: ["10.255.3.14/32"]
+          ipv4_addresses: ["10.255.3.11/32"]
           vrf: vrf3
         vrf4:
-          ipv4_addresses: ["10.255.4.14/32"]
+          ipv4_addresses: ["10.255.4.11/32"]
           vrf: vrf4
         vrf5:
-          ipv4_addresses: ["10.255.5.14/32"]
+          ipv4_addresses: ["10.255.5.11/32"]
           vrf: vrf5
         vrf6:
-          ipv4_addresses: ["10.255.6.14/32"]
+          ipv4_addresses: ["10.255.6.11/32"]
           vrf: vrf6
         vrf7:
-          ipv4_addresses: ["10.255.7.14/32"]
+          ipv4_addresses: ["10.255.7.11/32"]
           vrf: vrf7
         vrf8:
-          ipv4_addresses: ["10.255.8.14/32"]
+          ipv4_addresses: ["10.255.8.11/32"]
           vrf: vrf8
         vrf9:
-          ipv4_addresses: ["10.255.9.14/32"]
+          ipv4_addresses: ["10.255.9.11/32"]
           vrf: vrf9
         vrf10:
-          ipv4_addresses: ["10.255.10.14/32"]
+          ipv4_addresses: ["10.255.10.11/32"]
           vrf: vrf10
         vrf11:
-          ipv4_addresses: ["10.255.11.14/32"]
+          ipv4_addresses: ["10.255.11.11/32"]
           vrf: vrf11
         vrf12:
-          ipv4_addresses: ["10.255.12.14/32"]
+          ipv4_addresses: ["10.255.12.11/32"]
           vrf: vrf12
         vrf13:
-          ipv4_addresses: ["10.255.13.14/32"]
+          ipv4_addresses: ["10.255.13.11/32"]
           vrf: vrf13
         vrf14:
-          ipv4_addresses: ["10.255.14.14/32"]
+          ipv4_addresses: ["10.255.14.11/32"]
           vrf: vrf14
         vrf15:
-          ipv4_addresses: ["10.255.15.14/32"]
+          ipv4_addresses: ["10.255.15.11/32"]
           vrf: vrf15
         vrf16:
-          ipv4_addresses: ["10.255.16.14/32"]
+          ipv4_addresses: ["10.255.16.11/32"]
           vrf: vrf16
       common:
 
@@ -284,6 +286,3 @@ node:
           speed: 100000
           ipv4_addresses: ["10.252.32.1/30"]
           vrf: vrf16
-
-    ospf:
-      area: 0
