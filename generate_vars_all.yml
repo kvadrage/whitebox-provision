@@ -13,5 +13,9 @@
       include_vars:
         file: group_vars/batch.yml
         name: batch
+    - name: get extra vars
+      set_fact:
+        src_template: "{{src|default('templates/all.j2')}}"
+        dst_vars: "{{dst|default('group_vars/all')}}"
     - name: generate all vars from template
-      template: src=templates/all.j2 dest=group_vars/all
+      template: src={{src_template}} dest={{dst_vars}}
