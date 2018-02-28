@@ -51,6 +51,14 @@ node:
           vrf: vrf2
           bfd: True
 
+        # to server sdn1 eth11
+        swp8:
+          autoneg: True
+          speed: 100000
+          ipv4_addresses: ["10.252.1.101/30"]
+          vrf: vrf1
+          bfd: True
+
         # to spine01 swp1
         swp1:
           autoneg: False
@@ -185,6 +193,13 @@ node:
           bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
+        # server_sdn1
+        - name: to_server_sdn1
+          vrf: vrf1
+          ipv4: "10.252.1.102"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -222,6 +237,14 @@ node:
           speed: 25000
           ipv4_addresses: ["10.252.2.5/30"]
           vrf: vrf2
+          bfd: True
+
+        # to server sdn1 eth12
+        swp8:
+          autoneg: True
+          speed: 100000
+          ipv4_addresses: ["10.252.1.105/30"]
+          vrf: vrf1
           bfd: True
 
         # to spine01 swp2
@@ -358,6 +381,13 @@ node:
           bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
+        # server_sdn1
+        - name: to_server_sdn1
+          vrf: vrf1
+          ipv4: "10.252.1.106"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -395,6 +425,14 @@ node:
           speed: 25000
           ipv4_addresses: ["10.252.2.9/30"]
           vrf: vrf2
+          bfd: True
+
+        # to server sdn2 eth11
+        swp8:
+          autoneg: True
+          speed: 100000
+          ipv4_addresses: ["10.252.1.109/30"]
+          vrf: vrf1
           bfd: True
 
         # to spine01 swp3
@@ -531,6 +569,13 @@ node:
           bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
+        # server_sdn2
+        - name: to_server_sdn2
+          vrf: vrf1
+          ipv4: "10.252.1.110"
+          asn: 650112
+          import: import_bgp_from_servers
+          template: servers
       import: all
       export: all
 
@@ -568,6 +613,14 @@ node:
           speed: 25000
           ipv4_addresses: ["10.252.2.13/30"]
           vrf: vrf2
+          bfd: True
+
+        # to server sdn2 eth12
+        swp8:
+          autoneg: True
+          speed: 100000
+          ipv4_addresses: ["10.252.1.113/30"]
+          vrf: vrf1
           bfd: True
 
         # to spine01 swp4
@@ -702,6 +755,13 @@ node:
           ipv4: "10.252.2.14"
           asn: 650104
           bfd: swp5s1
+          import: import_bgp_from_servers
+          template: servers
+        # server_sdn2
+        - name: to_server_sdn2
+          vrf: vrf1
+          ipv4: "10.252.1.114"
+          asn: 650112
           import: import_bgp_from_servers
           template: servers
       import: all
