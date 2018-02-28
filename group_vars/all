@@ -2725,6 +2725,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.2"
           asn: 650101
+          bfd: swp5s0
           import: import_bgp_from_servers
           template: servers
         # server02
@@ -2732,6 +2733,7 @@ node:
           vrf: vrf2
           ipv4: "10.252.2.2"
           asn: 650102
+          bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -5449,6 +5451,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.6"
           asn: 650101
+          bfd: swp5s0
           import: import_bgp_from_servers
           template: servers
         # server02
@@ -5456,6 +5459,7 @@ node:
           vrf: vrf2
           ipv4: "10.252.2.6"
           asn: 650102
+          bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -8173,6 +8177,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.10"
           asn: 650103
+          bfd: swp5s0
           import: import_bgp_from_servers
           template: servers
         # server04
@@ -8180,6 +8185,7 @@ node:
           vrf: vrf2
           ipv4: "10.252.2.10"
           asn: 650104
+          bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -10897,6 +10903,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.14"
           asn: 650103
+          bfd: swp5s0
           import: import_bgp_from_servers
           template: servers
         # server04
@@ -10904,6 +10911,7 @@ node:
           vrf: vrf2
           ipv4: "10.252.2.14"
           asn: 650104
+          bfd: swp5s1
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -12297,11 +12305,13 @@ node:
         # to cisco 0/4/0/0
         swp5:
           ipv4_addresses: ["10.252.0.81/30"]
+          vrf: vrf1
           bfd: True
 
         # to huawei 1/0/30
         swp6:
           ipv4_addresses: ["10.252.0.85/30"]
+          vrf: vrf1
           bfd: True
 
     bgp:
@@ -13610,12 +13620,14 @@ node:
           bfd: swp4.164
         # cisco
         - name: to_cisco
+          vrf: vrf1
           ipv4: "10.252.0.82"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
+          vrf: vrf1
           ipv4: "10.252.0.86"
           asn: 64888
           bfd: swp6
@@ -20404,11 +20416,13 @@ node:
         # to cisco 0/4/0/0
         swp5:
           ipv4_addresses: ["10.252.0.93/30"]
+          vrf: vrf1
           bfd: True
 
         # to huawei 1/0/30
         swp6:
           ipv4_addresses: ["10.252.0.89/30"]
+          vrf: vrf1
           bfd: True
 
     bgp:
@@ -21717,12 +21731,14 @@ node:
           bfd: swp4.164
         # cisco
         - name: to_cisco
+          vrf: vrf1
           ipv4: "10.252.0.94"
           asn: 65333
           bfd: swp5
           template: ext
         # huawei
         - name: to_huawei
+          vrf: vrf1
           ipv4: "10.252.0.90"
           asn: 64888
           bfd: swp6
@@ -21762,7 +21778,7 @@ node:
       export: all
 
 ################################## server02 ####################################
-  pprb-server-1:
+  pprb-server-2:
     router_id: "10.255.0.32"
     interfaces:
       loopback:
