@@ -2749,6 +2749,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.102"
           asn: 650111
+          bfd: swp8
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -5490,6 +5491,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.106"
           asn: 650111
+          bfd: swp8
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -8231,6 +8233,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.110"
           asn: 650112
+          bfd: swp8
           import: import_bgp_from_servers
           template: servers
       import: all
@@ -10972,6 +10975,7 @@ node:
           vrf: vrf1
           ipv4: "10.252.1.114"
           asn: 650112
+          bfd: swp8
           import: import_bgp_from_servers
           template: servers
       import: all
