@@ -19,3 +19,10 @@ pprb-server-1
 pprb-server-2
 pprb-server-3
 pprb-server-4
+
+[test_switches]
+spine01-snake
+
+[test_servers]
+pprb-server-1
+pprb-server-2

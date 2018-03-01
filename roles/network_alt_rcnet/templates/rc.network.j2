@@ -75,6 +75,7 @@ ip link set dev {{member}} master {{bond}}
 # bridges
 
 # loopbacks
+sleep 2s
 {% for ifname in loopvars|sort  %}
 {%  set iface = loopvars[ifname] %}
 ## {{ifname}}

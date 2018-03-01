@@ -311,7 +311,7 @@ node:
 {% endfor %}
 
     bgp:
-      asn: 650202
+      asn: 650201
       merge_paths: True
       neighbors:
         # spine01
@@ -689,7 +689,7 @@ node:
 {% endfor %}
 
     bgp:
-      asn: 650204
+      asn: 650203
       merge_paths: True
       neighbors:
         # spine01
@@ -883,14 +883,14 @@ node:
         # leaf02
         - name: to_leaf02
           ipv4: "10.252.0.34"
-          asn: 650202
+          asn: 650201
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.34"
-          asn: 650202
+          asn: 650201
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # leaf03
@@ -909,14 +909,14 @@ node:
         # leaf04
         - name: to_leaf04
           ipv4: "10.252.0.66"
-          asn: 650204
+          asn: 650203
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.66"
-          asn: 650204
+          asn: 650203
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # cisco
@@ -1041,14 +1041,14 @@ node:
         # leaf02
         - name: to_leaf02
           ipv4: "10.252.0.38"
-          asn: 650202
+          asn: 650201
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.38"
-          asn: 650202
+          asn: 650201
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # leaf03
@@ -1067,14 +1067,14 @@ node:
         # leaf04
         - name: to_leaf04
           ipv4: "10.252.0.70"
-          asn: 650204
+          asn: 650203
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.70"
-          asn: 650204
+          asn: 650203
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
       import: all
@@ -1184,14 +1184,14 @@ node:
         # leaf02
         - name: to_leaf02
           ipv4: "10.252.0.42"
-          asn: 650202
+          asn: 650201
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.42"
-          asn: 650202
+          asn: 650201
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # leaf03
@@ -1210,14 +1210,14 @@ node:
         # leaf04
         - name: to_leaf04
           ipv4: "10.252.0.74"
-          asn: 650204
+          asn: 650203
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.74"
-          asn: 650204
+          asn: 650203
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
       import: all
@@ -1335,14 +1335,14 @@ node:
         # leaf02
         - name: to_leaf02
           ipv4: "10.252.0.46"
-          asn: 650202
+          asn: 650201
           bfd: swp2
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf02_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.46"
-          asn: 650202
+          asn: 650201
           bfd: swp2.{{ vrfs.offset + n }}
 {% endfor %}
         # leaf03
@@ -1361,14 +1361,14 @@ node:
         # leaf04
         - name: to_leaf04
           ipv4: "10.252.0.78"
-          asn: 650204
+          asn: 650203
           bfd: swp4
 {% for n in vrfs_range %}
 {% set vrf = vrfs.prefix + n|string%}
         - name: to_leaf04_{{vrf}}
           vrf: {{vrf}}
           ipv4: "10.252.{{n}}.78"
-          asn: 650204
+          asn: 650203
           bfd: swp4.{{ vrfs.offset + n }}
 {% endfor %}
         # cisco
@@ -1413,7 +1413,7 @@ node:
           template: servers
         - name: to_leafB
           ipv4: "10.252.1.5"
-          asn: 650202
+          asn: 650201
           bfd: eth12
           template: servers
       import: all
@@ -1444,7 +1444,7 @@ node:
           template: servers
         - name: to_leafB
           ipv4: "10.252.2.5"
-          asn: 650202
+          asn: 650201
           bfd: eth12
           template: servers
       import: all
@@ -1475,7 +1475,7 @@ node:
           template: servers
         - name: to_leafB
           ipv4: "10.252.1.13"
-          asn: 650204
+          asn: 650203
           bfd: eth12
           template: servers
       import: all
@@ -1506,7 +1506,7 @@ node:
           template: servers
         - name: to_leafB
           ipv4: "10.252.2.13"
-          asn: 650204
+          asn: 650203
           bfd: eth12
           template: servers
       import: all

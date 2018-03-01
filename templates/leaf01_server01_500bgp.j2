@@ -67,6 +67,29 @@ node:
           vrf: vrf1
           bfd: True
 {% endfor %}
+{% for n in range(1,256,4) %}
+        swp5s0.{{1024+n}}:
+          ipv4_addresses: ["10.252.105.{{n}}/30"]
+          vrf: vrf1
+{% endfor %}
+{% for n in range(1,256,4) %}
+        swp5s0.{{1280+n}}:
+          ipv4_addresses: ["10.252.106.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+{% endfor %}
+{% for n in range(1,256,4) %}
+        swp5s0.{{1536+n}}:
+          ipv4_addresses: ["10.252.107.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+{% endfor %}
+{% for n in range(1,256,4) %}
+        swp5s0.{{1792+n}}:
+          ipv4_addresses: ["10.252.108.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+{% endfor %}
         # to server02 eth11
         swp5s1:
           autoneg: True
@@ -74,7 +97,16 @@ node:
           ipv4_addresses: ["10.252.2.1/30"]
           vrf: vrf2
           bfd: True
-          # to server01 eth11 (for 500 BGP sessions test)
+
+        # to server sdn1 eth11
+        swp8:
+          autoneg: True
+          speed: 100000
+          ipv4_addresses: ["10.252.1.101/30"]
+          vrf: vrf1
+          bfd: True
+
+{#          # to server01 eth11 (for 500 BGP sessions test)
 {% for n in range(1,256,4) %}
         swp5s1.{{n}}:
           ipv4_addresses: ["10.252.201.{{n}}/30"]
@@ -113,7 +145,7 @@ node:
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
-
+#}
         # to spine02 swp1
         swp2:
           autoneg: False
@@ -243,7 +275,7 @@ node:
           asn: 650101
           import: import_bgp_from_servers
           template: servers
-          bfd: swp5s0.{{n}}
+          bfd: swp5s0.{{256+n}}
 {% endfor %}
 {% for n in range(2,256,4) %}
         - name: to_server01_3_{{n}}
@@ -252,7 +284,7 @@ node:
           asn: 650101
           import: import_bgp_from_servers
           template: servers
-          bfd: swp5s0.{{n}}
+          bfd: swp5s0.{{512+n}}
 {% endfor %}
 {% for n in range(2,256,4) %}
         - name: to_server01_4_{{n}}
@@ -261,22 +293,59 @@ node:
           asn: 650101
           import: import_bgp_from_servers
           template: servers
-          bfd: swp5s0.{{n}}
+          bfd: swp5s0.{{768+n}}
+{% endfor %}
+{% for n in range(2,256,4) %}
+        - name: to_server01_5_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.105.{{n}}"
+          asn: 650101
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp5s0.{{1024+n}}
+{% endfor %}
+{% for n in range(2,256,4) %}
+        - name: to_server01_6_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.106.{{n}}"
+          asn: 650101
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp5s0.{{1280+n}}
+{% endfor %}
+{% for n in range(2,256,4) %}
+        - name: to_server01_7_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.107.{{n}}"
+          asn: 650101
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp5s0.{{1536+n}}
+{% endfor %}
+{% for n in range(2,256,4) %}
+        - name: to_server01_8_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.108.{{n}}"
+          asn: 650101
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp5s0.{{1792+n}}
 {% endfor %}
 
         # server02
         - name: to_server02
           vrf: vrf2
           ipv4: "10.252.2.2"
-          asn: 650102
+          asn: 650101
           import: import_bgp_from_servers
           template: servers
           bfd: swp5s1
+{#
 {% for n in range(2,256,4) %}
         - name: to_server02_1_{{n}}
           vrf: vrf2
           ipv4: "10.252.201.{{n}}"
-          asn: 650102
+          asn: 650101
           import: import_bgp_from_servers
           template: servers
           bfd: swp5s1.{{n}}
@@ -285,7 +354,7 @@ node:
         - name: to_server02_2_{{n}}
           vrf: vrf2
           ipv4: "10.252.202.{{n}}"
-          asn: 650102
+          asn: 650101
           import: import_bgp_from_servers
           template: servers
           bfd: swp5s1.{{n}}
@@ -294,7 +363,7 @@ node:
         - name: to_server02_3_{{n}}
           vrf: vrf2
           ipv4: "10.252.203.{{n}}"
-          asn: 650102
+          asn: 650101
           import: import_bgp_from_servers
           template: servers
           bfd: swp5s1.{{n}}
@@ -303,11 +372,12 @@ node:
         - name: to_server02_4_{{n}}
           vrf: vrf2
           ipv4: "10.252.204.{{n}}"
-          asn: 650102
+          asn: 650101
           import: import_bgp_from_servers
           template: servers
           bfd: swp5s1.{{n}}
 {% endfor %}
+#}
       import: all
       export: all
 
@@ -337,36 +407,64 @@ node:
           bfd: eth11
           template: servers
 {% for n in range(1,256,4) %}
-        - name: to_server01_1_{{n}}
+        - name: to_leafA_1_{{n}}
           ipv4: "10.252.101.{{n}}"
           asn: 650201
           template: servers
           bfd: eth11
 {% endfor %}
 {% for n in range(1,256,4) %}
-        - name: to_server01_2_{{n}}
+        - name: to_leafA_2_{{n}}
           ipv4: "10.252.102.{{n}}"
           asn: 650201
           template: servers
           bfd: eth11
 {% endfor %}
 {% for n in range(1,256,4) %}
-        - name: to_server01_3_{{n}}
+        - name: to_leafA_3_{{n}}
           ipv4: "10.252.103.{{n}}"
           asn: 650201
           template: servers
           bfd: eth11
 {% endfor %}
 {% for n in range(1,256,4) %}
-        - name: to_server01_4_{{n}}
+        - name: to_leafA_4_{{n}}
           ipv4: "10.252.104.{{n}}"
+          asn: 650201
+          template: servers
+          bfd: eth11
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_leafA_5_{{n}}
+          ipv4: "10.252.105.{{n}}"
+          asn: 650201
+          template: servers
+          bfd: eth11
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_leafA_6_{{n}}
+          ipv4: "10.252.106.{{n}}"
+          asn: 650201
+          template: servers
+          bfd: eth11
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_leafA_7_{{n}}
+          ipv4: "10.252.107.{{n}}"
+          asn: 650201
+          template: servers
+          bfd: eth11
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_leafA_8_{{n}}
+          ipv4: "10.252.108.{{n}}"
           asn: 650201
           template: servers
           bfd: eth11
 {% endfor %}
         - name: to_leafB
           ipv4: "10.252.1.5"
-          asn: 650202
+          asn: 650201
           bfd: eth12
           template: servers
       import: all
@@ -388,14 +486,15 @@ node:
           ipv4_addresses: ["10.252.2.6/30"]
           bfd: True
     bgp:
-      asn: 650102
+      asn: 650103
       merge_paths: True
       neighbors:
         - name: to_leafA
           ipv4: "10.252.2.1"
-          asn: 650201
+          asn: 650203
           bfd: eth11
           template: servers
+{#
 {% for n in range(1,256,4) %}
         - name: to_server02_1_{{n}}
           ipv4: "10.252.201.{{n}}"
@@ -424,9 +523,10 @@ node:
           template: servers
           bfd: eth11
 {% endfor %}
+#}
         - name: to_leafB
           ipv4: "10.252.1.5"
-          asn: 650202
+          asn: 650203
           bfd: eth12
           template: servers
       import: all
