@@ -77,7 +77,9 @@ protocol bfd {
 
 # Direct protocol for global routing table
 protocol direct {
-    interface "-eth0","lo"{% for iface in intvars %}{% if not intvars[iface].vrf is defined %}, "{{iface}}"{% endif %}{% endfor %};
+{#    interface "-eth0","lo"{% for iface in intvars %}{% if not intvars[iface].vrf is defined %}, "{{iface}}"{% endif %}{% endfor %};
+#}
+    interface "-eth0","lo";
 }
 
 {% if vrfs is defined %}
@@ -85,7 +87,9 @@ protocol direct {
 {%   for vrf in vrfs %}
 # {{vrf.name}}
 protocol direct {
-    interface "{{vrf.name}}"{% for iface in intvars %}{% if iface != vrf.name and intvars[iface].vrf is defined and intvars[iface].vrf == vrf.name %}, "{{iface}}"{% endif %}{% endfor -%};
+{#    interface "{{vrf.name}}"{% for iface in intvars %}{% if iface != vrf.name and intvars[iface].vrf is defined and intvars[iface].vrf == vrf.name %}, "{{iface}}"{% endif %}{% endfor -%};
+#}
+    interface "{{vrf.name}}";
     table {{vrf.name}};
 }
 {%   endfor %}
