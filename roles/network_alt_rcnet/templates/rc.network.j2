@@ -161,3 +161,12 @@ ip link set dev lo up
 {% for ifname in intvars|sort %}
 ip link set dev {{ifname}} up
 {% endfor %}
+
+# some tuning for Bird
+sysctl -w net.core.rmem_max=8388608
+sysctl -w net.core.wmem_max=8388608
+sysctl -w net.core.optmem_max=25165824
+sysctl -w net.core.rmem_default=1064960
+sysctl -w net.core.wmem_default=1064960
+ulimit -n 188360
+echo 188360 > /proc/sys/fs/file-max
