@@ -2,4 +2,5 @@ vrfs:
   start: 1
   stop: 64
   prefix: "vrf"
-  offset: 100
+  offset1: 100
+  offset2: 200

@@ -72,6 +72,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.18/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.18/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine02 swp1
@@ -85,6 +89,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.22/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.22/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -103,6 +111,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.26/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.26/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine04 swp1
@@ -117,6 +129,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.30/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.30/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -137,6 +153,11 @@ node:
           ipv4: "10.252.{{n}}.17"
           asn: 650300
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_spine01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.17"
+          asn: 650300
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
@@ -150,6 +171,11 @@ node:
           ipv4: "10.252.{{n}}.21"
           asn: 650300
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_spine02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.21"
+          asn: 650300
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
@@ -163,6 +189,11 @@ node:
           ipv4: "10.252.{{n}}.25"
           asn: 650300
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_spine03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.25"
+          asn: 650300
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
@@ -176,6 +207,11 @@ node:
           ipv4: "10.252.{{n}}.29"
           asn: 650300
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_spine04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.29"
+          asn: 650300
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # server01
         - name: to_server01
@@ -261,6 +297,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.34/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.34/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine02 swp2
@@ -274,6 +314,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.38/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.38/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -292,6 +336,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.42/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.42/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine04 swp2
@@ -306,6 +354,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.46/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.46/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -326,6 +378,11 @@ node:
           ipv4: "10.252.{{n}}.33"
           asn: 650300
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_spine01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.33"
+          asn: 650300
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
@@ -339,6 +396,11 @@ node:
           ipv4: "10.252.{{n}}.37"
           asn: 650300
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_spine02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.37"
+          asn: 650300
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
@@ -352,6 +414,11 @@ node:
           ipv4: "10.252.{{n}}.41"
           asn: 650300
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_spine03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.41"
+          asn: 650300
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
@@ -365,6 +432,11 @@ node:
           ipv4: "10.252.{{n}}.45"
           asn: 650300
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_spine04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.45"
+          asn: 650300
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # server01
         - name: to_server01
@@ -450,6 +522,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.50/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.50/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine02 swp3
@@ -463,6 +539,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.54/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.54/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -481,6 +561,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.58/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.58/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine04 swp3
@@ -495,6 +579,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.62/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.62/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -515,6 +603,11 @@ node:
           ipv4: "10.252.{{n}}.49"
           asn: 650300
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_spine01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.49"
+          asn: 650300
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
@@ -528,6 +621,11 @@ node:
           ipv4: "10.252.{{n}}.53"
           asn: 650300
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_spine02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.53"
+          asn: 650300
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
@@ -541,6 +639,11 @@ node:
           ipv4: "10.252.{{n}}.57"
           asn: 650300
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_spine03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.57"
+          asn: 650300
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
@@ -554,6 +657,11 @@ node:
           ipv4: "10.252.{{n}}.61"
           asn: 650300
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_spine04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.61"
+          asn: 650300
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # server03
         - name: to_server03
@@ -639,6 +747,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.66/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.66/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine02 swp4
@@ -652,6 +764,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.70/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.70/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -670,6 +786,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.74/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.74/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to spine04 swp4
@@ -684,6 +804,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.78/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.78/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -704,6 +828,11 @@ node:
           ipv4: "10.252.{{n}}.65"
           asn: 650300
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_spine01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.65"
+          asn: 650300
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine02
         - name: to_spine02
@@ -717,6 +846,11 @@ node:
           ipv4: "10.252.{{n}}.69"
           asn: 650300
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_spine02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.69"
+          asn: 650300
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine03
         - name: to_spine03
@@ -730,6 +864,11 @@ node:
           ipv4: "10.252.{{n}}.73"
           asn: 650300
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_spine03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.73"
+          asn: 650300
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # spine04
         - name: to_spine04
@@ -743,6 +882,11 @@ node:
           ipv4: "10.252.{{n}}.77"
           asn: 650300
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_spine04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.77"
+          asn: 650300
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # server02
         - name: to_server03
@@ -804,6 +948,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.17/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.17/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf02 swp1
@@ -817,6 +965,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.33/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.33/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -834,6 +986,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.49/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.49/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf04 swp1
@@ -847,6 +1003,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.65/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.65/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -879,6 +1039,11 @@ node:
           ipv4: "10.252.{{n}}.18"
           asn: 650201
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_leaf01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.18"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf02
         - name: to_leaf02
@@ -892,6 +1057,11 @@ node:
           ipv4: "10.252.{{n}}.34"
           asn: 650201
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_leaf02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.34"
+          asn: 650201
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf03
         - name: to_leaf03
@@ -905,6 +1075,11 @@ node:
           ipv4: "10.252.{{n}}.50"
           asn: 650203
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_leaf03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.50"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf04
         - name: to_leaf04
@@ -918,6 +1093,11 @@ node:
           ipv4: "10.252.{{n}}.66"
           asn: 650203
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_leaf04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.66"
+          asn: 650203
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # cisco
         - name: to_cisco
@@ -969,6 +1149,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.21/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.21/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf02 swp2
@@ -982,6 +1166,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.37/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.37/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -999,6 +1187,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.53/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.53/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf04 swp2
@@ -1012,6 +1204,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.69/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.69/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -1037,6 +1233,11 @@ node:
           ipv4: "10.252.{{n}}.22"
           asn: 650201
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_leaf01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.22"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf02
         - name: to_leaf02
@@ -1050,6 +1251,11 @@ node:
           ipv4: "10.252.{{n}}.38"
           asn: 650201
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_leaf02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.38"
+          asn: 650201
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf03
         - name: to_leaf03
@@ -1063,6 +1269,11 @@ node:
           ipv4: "10.252.{{n}}.54"
           asn: 650203
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_leaf03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.54"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf04
         - name: to_leaf04
@@ -1076,6 +1287,11 @@ node:
           ipv4: "10.252.{{n}}.70"
           asn: 650203
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_leaf04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.70"
+          asn: 650203
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
       import: all
       export: all
@@ -1113,6 +1329,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.25/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.25/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf02 swp3
@@ -1126,6 +1346,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.41/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.41/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -1143,6 +1367,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.57/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.57/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf04 swp3
@@ -1156,6 +1384,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.73/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.73/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -1180,6 +1412,11 @@ node:
           ipv4: "10.252.{{n}}.26"
           asn: 650201
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_leaf01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.26"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf02
         - name: to_leaf02
@@ -1193,6 +1430,11 @@ node:
           ipv4: "10.252.{{n}}.42"
           asn: 650201
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_leaf02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.42"
+          asn: 650201
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf03
         - name: to_leaf03
@@ -1206,6 +1448,11 @@ node:
           ipv4: "10.252.{{n}}.58"
           asn: 650203
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_leaf03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.58"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf04
         - name: to_leaf04
@@ -1219,6 +1466,11 @@ node:
           ipv4: "10.252.{{n}}.74"
           asn: 650203
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_leaf04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.74"
+          asn: 650203
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
       import: all
       export: all
@@ -1256,6 +1508,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.29/30"]
           vrf: {{vrf}}
           bfd: True
+        swp1.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.29/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf02 swp4
@@ -1269,6 +1525,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp2.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.45/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp2.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.45/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -1286,6 +1546,10 @@ node:
           ipv4_addresses: ["10.252.{{n}}.61/30"]
           vrf: {{vrf}}
           bfd: True
+        swp3.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.61/30"]
+          vrf: {{vrf}}
+          bfd: True
 {% endfor %}
 
         # to leaf04 swp4
@@ -1299,6 +1563,10 @@ node:
 {% set vrf = vrfs.prefix + n|string%}
         swp4.{{ vrfs.offset1 + n }}:
           ipv4_addresses: ["10.252.{{n}}.77/30"]
+          vrf: {{vrf}}
+          bfd: True
+        swp4.{{ vrfs.offset2 + n }}:
+          ipv4_addresses: ["10.253.{{n}}.77/30"]
           vrf: {{vrf}}
           bfd: True
 {% endfor %}
@@ -1331,6 +1599,11 @@ node:
           ipv4: "10.252.{{n}}.30"
           asn: 650201
           bfd: swp1.{{ vrfs.offset1 + n }}
+        - name: to_leaf01_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.30"
+          asn: 650201
+          bfd: swp1.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf02
         - name: to_leaf02
@@ -1344,6 +1617,11 @@ node:
           ipv4: "10.252.{{n}}.46"
           asn: 650201
           bfd: swp2.{{ vrfs.offset1 + n }}
+        - name: to_leaf02_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.46"
+          asn: 650201
+          bfd: swp2.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf03
         - name: to_leaf03
@@ -1357,6 +1635,11 @@ node:
           ipv4: "10.252.{{n}}.62"
           asn: 650203
           bfd: swp3.{{ vrfs.offset1 + n }}
+        - name: to_leaf03_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.62"
+          asn: 650203
+          bfd: swp3.{{ vrfs.offset2 + n }}
 {% endfor %}
         # leaf04
         - name: to_leaf04
@@ -1370,6 +1653,11 @@ node:
           ipv4: "10.252.{{n}}.78"
           asn: 650203
           bfd: swp4.{{ vrfs.offset1 + n }}
+        - name: to_leaf04_{{vrf}}_2
+          vrf: {{vrf}}
+          ipv4: "10.253.{{n}}.78"
+          asn: 650203
+          bfd: swp4.{{ vrfs.offset2 + n }}
 {% endfor %}
         # cisco
         - name: to_cisco
