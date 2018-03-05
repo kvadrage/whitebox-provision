@@ -137,57 +137,54 @@ node:
           ipv4_routes:
             - "10.252.1.0/30 via 10.252.30.1"
       common:
-
         # to server01 eth11 (for 500 BGP sessions test)
-        {% for n in range(1,256,4) %}
+{% for n in range(1,256,4) %}
         swp1.{{n}}:
           ipv4_addresses: ["10.252.101.{{n}}/30"]
           vrf: vrf1
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{256+n}}:
           ipv4_addresses: ["10.252.102.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{512+n}}:
           ipv4_addresses: ["10.252.103.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{768+n}}:
           ipv4_addresses: ["10.252.104.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{1024+n}}:
           ipv4_addresses: ["10.252.105.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{1280+n}}:
           ipv4_addresses: ["10.252.106.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{1536+n}}:
           ipv4_addresses: ["10.252.107.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
-        {% for n in range(1,256,4) %}
+{% endfor %}
+{% for n in range(1,256,4) %}
         swp1.{{1792+n}}:
           ipv4_addresses: ["10.252.108.{{n}}/30"]
           vrf: vrf1
           bfd: True
-        {% endfor %}
+{% endfor %}
 
         # in
         swp1:
@@ -394,7 +391,7 @@ node:
           bfd: swp1
           import: import_bgp_from_servers
           template: servers
-    {% for n in range(2,256,4) %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_1_{{n}}
           vrf: vrf1
           ipv4: "10.252.101.{{n}}"
@@ -402,8 +399,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_2_{{n}}
           vrf: vrf1
           ipv4: "10.252.102.{{n}}"
@@ -411,8 +408,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{256+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_3_{{n}}
           vrf: vrf1
           ipv4: "10.252.103.{{n}}"
@@ -420,8 +417,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{512+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_4_{{n}}
           vrf: vrf1
           ipv4: "10.252.104.{{n}}"
@@ -429,8 +426,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{768+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_5_{{n}}
           vrf: vrf1
           ipv4: "10.252.105.{{n}}"
@@ -438,8 +435,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{1024+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_6_{{n}}
           vrf: vrf1
           ipv4: "10.252.106.{{n}}"
@@ -447,8 +444,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{1280+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_7_{{n}}
           vrf: vrf1
           ipv4: "10.252.107.{{n}}"
@@ -456,8 +453,8 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{1536+n}}
-    {% endfor %}
-    {% for n in range(2,256,4) %}
+{% endfor %}
+{% for n in range(2,256,4) %}
         - name: to_sdn1_8_{{n}}
           vrf: vrf1
           ipv4: "10.252.108.{{n}}"
@@ -465,7 +462,7 @@ node:
           import: import_bgp_from_servers
           template: servers
           bfd: swp1.{{1792+n}}
-    {% endfor %}
+{% endfor %}
         # sdn2
         - name: to_sdn2
           vrf: vrf16
