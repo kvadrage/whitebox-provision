@@ -3,7 +3,7 @@ global:
   ignore_ifaces: ["eth0", "vagrant"]
 node:
 ################################## spine02 ####################################
-  spine01-snake:
+  spine02:
     router_id: "10.255.0.12"
     vrfs:
       - name: vrf1
@@ -137,6 +137,57 @@ node:
           ipv4_routes:
             - "10.252.1.0/30 via 10.252.30.1"
       common:
+
+        # to server01 eth11 (for 500 BGP sessions test)
+        {% for n in range(1,256,4) %}
+        swp1.{{n}}:
+          ipv4_addresses: ["10.252.101.{{n}}/30"]
+          vrf: vrf1
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{256+n}}:
+          ipv4_addresses: ["10.252.102.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{512+n}}:
+          ipv4_addresses: ["10.252.103.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{768+n}}:
+          ipv4_addresses: ["10.252.104.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{1024+n}}:
+          ipv4_addresses: ["10.252.105.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{1280+n}}:
+          ipv4_addresses: ["10.252.106.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{1536+n}}:
+          ipv4_addresses: ["10.252.107.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
+        {% for n in range(1,256,4) %}
+        swp1.{{1792+n}}:
+          ipv4_addresses: ["10.252.108.{{n}}/30"]
+          vrf: vrf1
+          bfd: True
+        {% endfor %}
 
         # in
         swp1:
@@ -330,3 +381,219 @@ node:
           speed: 100000
           ipv4_addresses: ["10.252.32.1/30"]
           vrf: vrf16
+
+    bgp:
+      asn: 650302
+      merge_paths: True
+      neighbors:
+        # sdn1
+        - name: to_sdn1
+          vrf: vrf1
+          ipv4: "10.252.1.2"
+          asn: 650111
+          bfd: swp1
+          import: import_bgp_from_servers
+          template: servers
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_1_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.101.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_2_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.102.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{256+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_3_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.103.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{512+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_4_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.104.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{768+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_5_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.105.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{1024+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_6_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.106.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{1280+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_7_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.107.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{1536+n}}
+    {% endfor %}
+    {% for n in range(2,256,4) %}
+        - name: to_sdn1_8_{{n}}
+          vrf: vrf1
+          ipv4: "10.252.108.{{n}}"
+          asn: 650111
+          import: import_bgp_from_servers
+          template: servers
+          bfd: swp1.{{1792+n}}
+    {% endfor %}
+        # sdn2
+        - name: to_sdn2
+          vrf: vrf16
+          ipv4: "10.252.32.2"
+          asn: 650111
+          bfd: swp32
+          import: import_bgp_from_servers
+          template: servers
+
+################################## SDN1 ####################################
+  SDN1:
+    router_id: "10.250.0.101"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.101/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.1.2/30"]
+          bfd: True
+
+        eth12:
+          ipv4_addresses: ["10.252.1.6/30"]
+          bfd: True
+    bgp:
+      asn: 650111
+      merge_paths: True
+      neighbors:
+        - name: to_spine02
+          ipv4: "10.252.1.1"
+          asn: 650302
+          bfd: eth11
+          template: servers
+{% for n in range(1,256,4) %}
+        - name: to_spine02_1_{{n}}
+          ipv4: "10.252.101.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_2_{{n}}
+          ipv4: "10.252.102.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{256+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_3_{{n}}
+          ipv4: "10.252.103.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{512+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_4_{{n}}
+          ipv4: "10.252.104.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{768+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_5_{{n}}
+          ipv4: "10.252.105.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{1024+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_6_{{n}}
+          ipv4: "10.252.106.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{1280+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_7_{{n}}
+          ipv4: "10.252.107.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{1536+n}}
+{% endfor %}
+{% for n in range(1,256,4) %}
+        - name: to_spine02_8_{{n}}
+          ipv4: "10.252.108.{{n}}"
+          asn: 650302
+          template: servers
+          bfd: eth11.{{1792+n}}
+{% endfor %}
+
+        - name: to_leafB
+          ipv4: "10.252.1.5"
+          asn: 650201
+          bfd: eth12
+          template: servers
+      import: all
+      export: all
+
+
+################################## SDN2 ####################################
+  SDN2:
+    router_id: "10.250.0.102"
+    interfaces:
+      loopback:
+        "lo:0":
+          ipv4_addresses: ["10.250.1.102/32"]
+      common:
+        eth11:
+          ipv4_addresses: ["10.252.32.2/30"]
+          bfd: True
+
+        eth12:
+          ipv4_addresses: ["10.252.1.6/30"]
+          bfd: True
+    bgp:
+      asn: 650112
+      merge_paths: True
+      neighbors:
+        - name: to_spine02
+          ipv4: "10.252.32.1"
+          asn: 650302
+          bfd: eth11
+          template: servers
+
+        - name: to_leafB
+          ipv4: "10.252.1.5"
+          asn: 650201
+          bfd: eth12
+          template: servers
+      import: all
+      export: all

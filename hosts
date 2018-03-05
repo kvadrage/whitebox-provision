@@ -21,8 +21,8 @@ pprb-server-3
 pprb-server-4
 
 [test_switches]
-spine01-snake
+spine02
 
 [test_servers]
-pprb-server-1
-pprb-server-2
+sdn1
+sdn2
